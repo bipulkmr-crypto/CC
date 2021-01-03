@@ -26,46 +26,13 @@ char decode(string s)
     char ch[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
     ll n;
     ll i;
-    ll dec = 0;
-    n = stoi(s, nullptr, 2);
+    n=stoi(s,nullptr,2);
+    cout << ch[n];
     return (ch[n]);
 }
-
 int main()
 {
-    ll i, t;
-    cin >> t;
-    while (t--)
-    {
-        ll n;
-        cin >> n;
-        string s="";
-        string decoded = "";
-        cin>>s;
-        string p = "";
-        for (i = 0; i < n; i += 4)
-        {
-            p = "";
-            for (ll j = i; j < i + 4; j++)
-
-            {
-                p += s[j];
-            }
-            decoded += decode(p);
-        }
-        /*for(i=0;i<n;)
-        {
-            p=s.substr(i,i+4);
-            i=i+4;
-            
-           //decoded+= decode(s);
-           cout<<p<<endl;
-           p="";
-        }*/
-        cout << decoded << endl;
-        /* code */
-    }
-
-    // cout<<"Hello World";
-    return 0;
+    string s;
+    cin >> s;
+    cout << decode(s);
 }

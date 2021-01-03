@@ -26,34 +26,24 @@ char decode(string s)
     char ch[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
     ll n;
     ll i;
-    ll dec = 0;
-    n = stoi(s, nullptr, 2);
+    ll dec=0;
+    n=stoi(s,nullptr,2);
     return (ch[n]);
 }
 
 int main()
 {
     ll i, t;
-    cin >> t;
+    cin>>t;
     while (t--)
     {
         ll n;
-        cin >> n;
+        cin>>n;
         string s="";
         string decoded = "";
-        cin>>s;
-        string p = "";
-        for (i = 0; i < n; i += 4)
-        {
-            p = "";
-            for (ll j = i; j < i + 4; j++)
-
-            {
-                p += s[j];
-            }
-            decoded += decode(p);
-        }
-        /*for(i=0;i<n;)
+        cin >> s;
+        string p="";
+        for(i=0;i<n;)
         {
             p=s.substr(i,i+4);
             i=i+4;
@@ -61,10 +51,11 @@ int main()
            //decoded+= decode(s);
            cout<<p<<endl;
            p="";
-        }*/
-        cout << decoded << endl;
+        }
+        cout<<decoded<<endl;
         /* code */
     }
+
 
     // cout<<"Hello World";
     return 0;
