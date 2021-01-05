@@ -21,42 +21,57 @@ typedef long long int ll;
 #define gl(n) scanf(% d, &n)
 #define pi(n) printf(% d, n)
 #define pl(n) printf(% lld, n)
-char decode(string s)
-{
-    char ch[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
-    ll n;
-    ll i;
-    ll dec=0;
-    n=stoi(s,nullptr,2);
-    return (ch[n]);
-}
-
 int main()
 {
-    ll i, t;
-    cin>>t;
+    ll t;
+    cin >> t;
     while (t--)
     {
-        ll n;
-        cin>>n;
-        string s="";
-        string decoded = "";
-        cin >> s;
-        string p="";
-        for(i=0;i<n;)
+        ll n, k, x, y;
+        cin >> n >> k >> x >> y;
+        k = k % 4;
+        if (x == y)
         {
-            p=s.substr(i,i+4);
-            i=i+4;
-            
-           //decoded+= decode(s);
-           cout<<p<<endl;
-           p="";
+            cout << n << " " << n << endl;
         }
-        cout<<decoded<<endl;
-        /* code */
+
+        else if (x > y)
+        {
+            if (k == 1)
+            {
+                cout << n << " " << (n - x + y) << endl;
+            }
+            else if (k == 2)
+            {
+                cout << (n - x + y) << " " << n << endl;
+            }
+            else if (k == 3)
+            {
+                cout << 0 << " " << (x - y) << endl;
+            }
+            else
+            {
+                cout << (x - y) << " "<< "0" << endl;
+            }
+        }
+        else
+        {
+            if (k == 1)
+            {
+                cout << (n + x - y) << " " << n << endl;
+            }
+            else if (k == 2)
+            {
+                cout << (n) << " " << (y - x) << endl;
+            }
+            else if (k == 3)
+            {
+                cout << (y - x) << " " << 0 << endl;
+            }
+            else
+            {
+                cout << (0) << " " << (y - x) << endl;
+            }
+        }
     }
-
-
-    // cout<<"Hello World";
-    return 0;
 }

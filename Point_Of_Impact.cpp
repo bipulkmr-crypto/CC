@@ -45,8 +45,14 @@ int main()
             {
                 cout << (n - x + y) << " " << n << endl;
             }
-            else
+            else if (k == 3)
+            {
                 cout << 0 << " " << (x - y) << endl;
+            }
+            else
+            {
+                cout << (x - y) << " "<< "0" << endl;
+            }
         }
         else
         {
@@ -54,13 +60,17 @@ int main()
             {
                 cout << (n + x - y) << " " << n << endl;
             }
-            else if (k == 1)
+            else if (k == 2)
             {
-                cout << (n) << " " << (y - x) << endl;
+                cout << (n) << " " << (n-y + x) << endl;
             }
             else if (k == 3)
             {
                 cout << (y - x) << " " << 0 << endl;
+            }
+            else
+            {
+                cout << (0) << " " << (y - x) << endl;
             }
         }
     }

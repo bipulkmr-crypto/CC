@@ -24,29 +24,5 @@ typedef long long int ll;
 int main()
 {
     ll t;
-    cin>>t;
-    while(t--)
-    {
-        
-        ll n,i;
-        cin>>n;
-        ll arr[n];
-        for(i=1;i<n-1;i++)
-        {
-            arr[i]=i+1;
-        }
-        arr[0]=n;
-        arr[n-1]=1;
-        rep(i,n)
-        cout<<arr[i]<<" ";
-        cout<<"\n";
-
-        
-        
-        
-        
-
-
-    }
-     
+    
 }

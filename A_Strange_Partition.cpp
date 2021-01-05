@@ -28,25 +28,25 @@ int main()
     while(t--)
     {
         
-        ll n,i;
-        cin>>n;
+        ll n,x;
+        cin>>n>>x;
         ll arr[n];
-        for(i=1;i<n-1;i++)
-        {
-            arr[i]=i+1;
-        }
-        arr[0]=n;
-        arr[n-1]=1;
+        ll input;
+        double sum=0.0;
+        ll i;
         rep(i,n)
-        cout<<arr[i]<<" ";
-        cout<<"\n";
-
-        
-        
-        
-        
-
-
+        {
+            cin>>arr[i];
+        }
+        ll max=0,min=0;
+    
+        rep(i,n)
+        {
+            double d=(double)arr[i];
+            max+=(int)ceil(d/x);
+            sum+=(double)arr[i];
+        }
+        min=(int)(ceil(sum/x));
+        cout<<min<<" "<<max<<endl;
     }
-     
 }
