@@ -25,10 +25,12 @@ typedef long long int ll;
 int main()
 {
     ll t;
+    cin>>t;
     while (t--)
     {
        ll n, x;
        cin>>n>>x;
+       ll c=1;
        vector<ll> v;
        ll i,input;
        ll sum=0;
@@ -47,7 +49,7 @@ int main()
            {
                ll div=(*it1/x);
                vector<ll>::iterator p=it2+div;
-               for(i=0;i<div;i++)
+               for(i=0;i<x;i++)
                {
                    v.push_back(div);
                }
@@ -55,7 +57,8 @@ int main()
            else{
                flag=false;
            }
-           it1++;
+           it1=v.begin()+c;
+           c++;
        }
        sum=accumulate(v.begin(),v.end(),0);
        cout<<sum<<endl;
