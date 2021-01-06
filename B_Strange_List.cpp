@@ -6,6 +6,7 @@
 #include <utility>
 #include <cmath>
 #include <cstring>
+#include<numeric>
 #include <algorithm>
 using namespace std;
 typedef long long int ll;
@@ -24,5 +25,41 @@ typedef long long int ll;
 int main()
 {
     ll t;
+    while (t--)
+    {
+       ll n, x;
+       cin>>n>>x;
+       vector<ll> v;
+       ll i,input;
+       ll sum=0;
+       rep(i,n)
+       {
+           cin>>input;
+           v.push_back(input);
+       }
+       vector<ll>::iterator it1=v.begin();
+       vector<ll>::iterator it2=v.end();
+       bool flag=true;
+       while(flag)
+       {
+
+           if((*it1)%x==0)
+           {
+               ll div=(*it1/x);
+               vector<ll>::iterator p=it2+div;
+               for(i=0;i<div;i++)
+               {
+                   v.push_back(div);
+               }
+           }
+           else{
+               flag=false;
+           }
+           it1++;
+       }
+       sum=accumulate(v.begin(),v.end(),0);
+       cout<<sum<<endl;
+    }
     
+
 }
