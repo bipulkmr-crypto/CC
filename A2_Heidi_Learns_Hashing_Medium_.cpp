@@ -23,34 +23,18 @@ typedef long long int ll;
 #define pl(n) printf(%lld,n)
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
+    ll n;
+    string s;
+    string s2="";
+    cin>>n;
+    cin>>s;
+    ll i;
+    ll ans=0;
+    ll num=stoi(s,0,2);
+    
+    
+    for(i=1;i<=n;i++)
     {
-        ll n;
-        cin>>n;
-        ll i,j,k;
-        for(i=1;i<=n;i++)
-        {
-            for(j=1;j<=i;j++)
-            {
-                cout<<"*";
-            }
-            for(j=n-i;j>0;j--)
-            {
-                cout<<"#";
-            }
-             for(j=n-i;j>0;j--)
-            {
-                cout<<"#";
-            }
-            for(j=1;j<=i;j++)
-            {
-                cout<<"*";
-            }
-            cout<<endl;
-            
-        }
-        cout<<endl;
+        fu(i,)
     }
 }
