@@ -3,12 +3,22 @@ using namespace std;
 int main()
 {
     int i,j,k;
-    for(i=0;i<10;i++)
+    cout<<"          0"<<endl;
+    for(i=1;i<=10;i++)
     {
-        for(j=9-i;j>=0;j++)
+        for(j=9-i;j>=0;j--)
         {
-            cotu<<" ";
+            cout<<" ";
         }
-        for()
+        for(j=9;j>=(10-i);j--)
+        {
+            cout<<j;
+        }
+        cout<<"0";
+        for(j=9;j>=(10-i);j--)
+        {
+            cout<<j;
+        }
+        cout<<endl;
     }
 }
