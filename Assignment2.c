@@ -1,32 +1,32 @@
-#include ​<stdio.h>
-#include​<time.h>
-
-int​ f=0,​sum=0​;
-int​ perfect(​int n)
+#include <stdio.h>
+#include <time.h>
+int f = 0, sum = 0;
+int perfect(int n)
 {
     f++;
-    if(n==1)
+    if (n == 1)
     {
         return 1;
     }
     else
     {
-        if(n%f == 0)
+        if (n % f == 0)
         {
-            sum+=f;
-            return(perfect(n/f));
+            sum += f;
+            return (perfect(n / f));
         }
         else
         {
-            return(perfect(n));
+            return (perfect(n));
         }
     }
 }
+
 int main()
 {
-    clock_t start,end;
+    clock_t start, end;
     double cpu_time_used;
-    start=clock();
+    start = clock();
     int n, d, i, s = 0;
     printf("Enter a number to check if it is perfect number or not\n");
     scanf("%d", &n);
@@ -44,7 +44,7 @@ int main()
     }
     else
     {
-        printf("NO\n";)
+        printf("NO\n");
     }
     //Recursive Approach
     d = perfect(n);
