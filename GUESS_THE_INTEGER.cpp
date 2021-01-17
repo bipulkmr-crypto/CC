@@ -78,7 +78,7 @@ int main()
         }
         else if(left[0]>(right[0]+1))
         {  
-            ll diff=(left[0]-(right[0]+1));
+            ll diff=(left[0]-(right[right.size()-1]+1));
             if(flag2!=true)
             {
                 cout<<-1<<endl;
