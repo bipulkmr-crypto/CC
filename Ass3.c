@@ -35,5 +35,5 @@ int main()
     cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
     printf("\nCode execution time (in s) =");
     printf("%f\n", cpu_time_used);
-    return 0;
+    return 1;
 }
