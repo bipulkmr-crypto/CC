@@ -21,20 +21,26 @@ typedef long long int ll;
 #define gl(n) scanf(% d, &n)
 #define pi(n) printf(% d, n)
 #define pl(n) printf(% lld, n)
-int fib(int n) 
+ll gcd(ll a, ll b)
 {
-    cout << "top : " << n << endl;
-    if(n<=1)
-        return n;
-
-    
-    int f = fib(n-1)+fib(n-2); 
-
-    cout << "bottom: " << n < endl;
-
-    return f;
+    if (b == 0)
+        return a;
+    else
+        return (gcd(b, a % b));
 }
 int main()
 {
-    fib(4);
+    ll l, r;
+    cin >> l;
+    cin >> r;
+    ll c = (r - l + 1) / 2;
+    ll i, j;
+  
+    
+        cout <<"YES"<< endl;
+        for (i = 0; i < c; i++)
+        {
+                cout << (l +i*2) << " " << (l+i*2 + 1);cout << endl;
+        }
+    
 }

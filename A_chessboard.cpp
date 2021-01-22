@@ -28,10 +28,29 @@ int main()
     while(t--)
     {
         ll x1,x2,y1,y2;
+        ll diff=0;
         cin>>x1>>y1;
         cin>>x2>>y2;
-        
-        if((x2/y2)==(x1/y1))
+        if((x1==x2)||(y1==y2))
+        {
+            if(x1==x2)
+            {
+                diff=abs(y1-y2);
+            }
+            else
+            {
+                diff=abs(x1-x2);
+            }
+            if(diff%2)
+            {
+                cout<<"SECOND"<<endl;
+            }
+            else
+            {
+                cout<<"FIRST"<<endl;
+            }
+        }
+        else if((x2/y2)==(x1/y1))
         {
             if(x1%2)
             {
