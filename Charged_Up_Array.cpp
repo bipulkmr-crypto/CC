@@ -27,31 +27,22 @@ int main()
     cin>>t;
     while(t--)
     {
-        ll x,y;
-        cin>>x>>y;
-        ll ans=0;
-        if(x>=y)
+        ll n;
+        cin>>n;
+        ll i;
+        ll arr[n];
+        rep(i,n)
         {
-            if(x%2==0)
-            ans=(x*x)-y+1;
-            else
-            {
-                --x;
-                ans=(x*x)+y;
-            }
+            cin>>arr[i];
         }
-        else
+        ll mar=(int)(pow(2,(n-1)));
+
+        ll sum = 0;
+        rep(i,n)
         {
-            if(y%2==1)
-            {
-                ans=y*y-x+1;
-            }
-            else
-            {
-                --y;
-                ans=y*y+x;
-            }
+            if(arr[i]>=mar)
+            sum+=arr[i];
         }
-        cout<<ans<<endl;
+        cout<<sum<<endl;
     }
 }

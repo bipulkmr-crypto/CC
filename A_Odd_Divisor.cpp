@@ -8,7 +8,7 @@
 #include <cstring>
 #include <algorithm>
 using namespace std;
-typedef unsigned long long int ll;
+typedef long long int ll;
 #define mod 1000000007
 #define pb push_back
 #define mp make_pair
@@ -27,31 +27,22 @@ int main()
     cin>>t;
     while(t--)
     {
-        ll x,y;
-        cin>>x>>y;
-        ll ans=0;
-        if(x>=y)
+        ll n;
+        cin>>n;
+        ll c=0;
+        while(n)
         {
-            if(x%2==0)
-            ans=(x*x)-y+1;
-            else
-            {
-                --x;
-                ans=(x*x)+y;
-            }
+            c+=n&1;
+            n>>=1;
+        }
+        if(c==1)
+        {
+            cout<<"NO\n";
         }
         else
         {
-            if(y%2==1)
-            {
-                ans=y*y-x+1;
-            }
-            else
-            {
-                --y;
-                ans=y*y+x;
-            }
+            cout<<"YES\n";
         }
-        cout<<ans<<endl;
     }
+
 }

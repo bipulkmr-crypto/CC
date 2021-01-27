@@ -8,7 +8,7 @@
 #include <cstring>
 #include <algorithm>
 using namespace std;
-typedef unsigned long long int ll;
+typedef long long int ll;
 #define mod 1000000007
 #define pb push_back
 #define mp make_pair
@@ -24,34 +24,40 @@ typedef unsigned long long int ll;
 int main()
 {
     ll t;
-    cin>>t;
+    cin >> t;
     while(t--)
     {
-        ll x,y;
-        cin>>x>>y;
-        ll ans=0;
-        if(x>=y)
+        ll n;
+        ll c=0;
+        cin >> n;
+        ll arr[n];
+        ll i;
+        ll hop=0;
+        ll k=0;
+        rep(i,n)
         {
-            if(x%2==0)
-            ans=(x*x)-y+1;
-            else
-            {
-                --x;
-                ans=(x*x)+y;
-            }
+            cin >> arr[i];
         }
+        if(arr[0]==0)
+        {
+            cout<<-1<<endl;
+        }
+        bool flag=false;
         else
         {
-            if(y%2==1)
+            while(c<=n)
             {
-                ans=y*y-x+1;
-            }
-            else
-            {
-                --y;
-                ans=y*y+x;
+                c+=arr[k];
+                if(c>n)
+                {
+                    flag=true;
+                    break;
+                }
+                else 
+                {
+                    k+=arr[k];
+                }   
             }
         }
-        cout<<ans<<endl;
     }
 }
