@@ -28,39 +28,36 @@ int main()
     while (t--)
     {
         ll n;
-        cin >> n;
-
-        ll c2021 = n % 2020;
-        ll c2020 = (n - c2021) / 2020 - c2021;
-        if (c2020 >= 0 && 2020 * c2020 + 2021 * c2021 == n)
-
+        ll d;
+        ll i;
+        ll p=d;
+        cin >> n >> d;
+        ll arr[n];
+        rep(i, n)
         {
-            cout << "YES" << endl;
+            cin >> arr[i];
         }
-        else
+        /*rep(i,n)
         {
-            cout << "NO" << endl;
+
+            if(arr[i]%d==(d-3))
+            cout<<"NO\n";
+            else
+            cout<<"YES\n";
+        }*/
+        rep(i, n)
+        {
+            if (arr[i] >= 90)
+            {
+                cout << "YES\n";
+            }
+            else
+            {
+                while(d<arr[i])
+                {
+                    w
+                }
+            }
         }
     }
 }
-    /* while(temp>0)
-        {
-            c++;
-            temp/=10;
-        }
-        last=(n)/(ll)(pow(10,c-1));
-        if(n%2020==0)
-        {
-            cout<<"YES"<<endl;
-        }
-        else if(n%2021==0)
-        {
-            cout<<"YES"<<endl;
-        }
-        else if(((n%10)*2)<=(last))
-            {
-                cout<<"YES"<<endl;
-            }
-        else
-        cout<<"NO"<<endl;
-        */

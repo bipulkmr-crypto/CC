@@ -23,15 +23,28 @@ typedef long long int ll;
 #define pl(n) printf(% lld, n)
 int main()
 {
+
     ll n;
     cin >> n;
+    ll door[26] = {0};
+    ll key[26] = {0};
+    string s;
+    cin >> s;
     ll i;
-    ll totalpos=0;
-    ll attack=0;
-    fu(i, 1,n)
+    ll c = 0;
+    ll len = s.length();
+    rep(i, len)
     {
-        totalpos=(i*i)*(i*i-1)/2;
-        attack=4*(i-1)*(i-2);
-        cout<<(totalpos-attack)<<endl;
+        if (i % 2 == 0)
+            key[s[i] - 97]++;
+        else
+        {
+            ll pos = tolower(s[i]) - 97;
+            if (key[pos] > 0)
+                key[pos]--;
+            else
+                c++;
+        }
     }
+    cout << c << endl;
 }

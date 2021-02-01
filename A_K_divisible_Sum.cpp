@@ -23,15 +23,28 @@ typedef long long int ll;
 #define pl(n) printf(% lld, n)
 int main()
 {
-    ll n;
-    cin >> n;
-    ll i;
-    ll totalpos=0;
-    ll attack=0;
-    fu(i, 1,n)
+    ll t;
+    cin >> t;
+    while (t--)
     {
-        totalpos=(i*i)*(i*i-1)/2;
-        attack=4*(i-1)*(i-2);
-        cout<<(totalpos-attack)<<endl;
+        ll n, k;
+        double x;
+        cin >> n >> k;
+        x = (double)(k);
+        ll ans = 0;
+        ans = (ll)ceil((x) / n);
+        ll pow = 2;
+        double check = ((x) / n);
+        if ((x / n - 1) - 1 < 0)
+        {
+            while ((check - 1) < 0)
+            {
+                check = (ll)ceil((pow * x) / n);
+                pow *= 2;
+            }
+            ans=(ll)ceil(check);
+
+        }
+        cout << ans << endl;
     }
 }

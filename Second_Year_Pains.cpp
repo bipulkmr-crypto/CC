@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstring>
 #include <algorithm>
+#include<set>
 using namespace std;
 typedef long long int ll;
 #define mod 1000000007
@@ -23,15 +24,31 @@ typedef long long int ll;
 #define pl(n) printf(% lld, n)
 int main()
 {
-    ll n;
-    cin >> n;
-    ll i;
-    ll totalpos=0;
-    ll attack=0;
-    fu(i, 1,n)
+    ll t;
+    cin >> t;
+    while (t--)
     {
-        totalpos=(i*i)*(i*i-1)/2;
-        attack=4*(i-1)*(i-2);
-        cout<<(totalpos-attack)<<endl;
+        ll n, p;
+        cin >> n;
+        cin >> p;
+        set<int> s;
+        ll i;
+        ll inp;
+        for (i = 0; i < n; i++)
+        {
+            cin >> inp;
+            s.insert(inp);
+        }
+        bool flag = true;
+        for (i = 0; i < p; i++)
+        {
+            cin >> inp;
+            if (s.find(inp) != s.end())
+            {
+                cout << "YES\n";
+            }
+            else
+                cout << "NO\n";
+        }
     }
 }

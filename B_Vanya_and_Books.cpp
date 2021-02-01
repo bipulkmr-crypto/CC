@@ -24,14 +24,18 @@ typedef long long int ll;
 int main()
 {
     ll n;
+    ll i, c = 0,k=0;
     cin >> n;
-    ll i;
-    ll totalpos=0;
-    ll attack=0;
-    fu(i, 1,n)
+    if (n < 10)
     {
-        totalpos=(i*i)*(i*i-1)/2;
-        attack=4*(i-1)*(i-2);
-        cout<<(totalpos-attack)<<endl;
+        c += n;
+    }
+    else
+    {
+        while (n > 0)
+        {
+            c+=n%10+1;
+            n/=10;
+        }
     }
 }

@@ -21,16 +21,36 @@ typedef long long int ll;
 #define gl(n) scanf(%d,&n)
 #define pi(n) printf(%d,n)
 #define pl(n) printf(%lld,n)
-bool isprime(ll i)
+vector<bool> segmentedSieve(ll L,ll R)
 {
-    ll j,c=0;
-    
-    fu(j,2,i)
+    ll lim=sqrt(R);
+    vector<bool> mark(lim+1,false);
+    vector<ll> primes;
+    for(ll i=2;i<=lim;i++)
     {
-        if((i%j)==0)
-        c++;
+        if(!mark[i])
+        {
+            primes.emplace_back(i);
+            for(ll j=i*i;j<=lim;j+=i)
+            {
+                mark[j]=true;
+            }
+        }
     }
-    return((c==1));
+    vector<bool> isPrime(R-L+1,true);
+    for(ll i:primes)
+    {
+        for(ll j=max(i*i,L+i-1)/(i*i);j<=lim;j+=i)
+        {
+            isPrime[j-L]=false;
+        }
+        if(L==1)
+        {
+            isPrime[0]=false;
+        }
+        
+    }
+    return isPrime;
 }
 int main()
 {
@@ -41,12 +61,14 @@ int main()
         ll a,b;
         ll i;
         cin>>a>>b;
-        fu(i,a,b){
-            if(isprime(i))
+        
+        vector<bool> ans=segmentedSieve(a,b);
+        for(ll i=0;i<ans.size();i++)
+        {
+            if(ans[i])
             {
-                cout << i<<endl;
+                cout<<(i+a+1)<<endl;
             }
         }
-        cout << endl;
     }
 }
