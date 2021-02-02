@@ -24,27 +24,23 @@ typedef long long int ll;
 int main()
 {
     ll t;
-    cin>>t;
+    cin >> t;
     while(t--)
     {
         ll n,k;
         cin>>n>>k;
         ll arr[n];
-        ll i;
+        ll i,c=0;
+        set<ll> s;
+        ll input;
         rep(i,n)
-        cin>>arr[i];
-        while(k%2==0)
         {
-            k/=2;
+            s.insert(i+1);
         }
-        for(i=0;i<n;i++)
+        bool flag=false;
+        rep(i,n)
         {
-            if(arr[i]%k!=0)
-            {
-                cout<<"NO\n";
-                return 0;
-            }
+            
         }
-        cout<<"YES\n";
     }
 }

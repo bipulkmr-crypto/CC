@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstring>
 #include <algorithm>
+#include<set>
 using namespace std;
 typedef long long int ll;
 #define mod 1000000007
@@ -19,8 +20,8 @@ typedef long long int ll;
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)
 #define gl(n) scanf(%d,&n)
-#define pi(n) printf(%d,n)
-#define pl(n) printf(%lld,n)
+#define pi(n) printf("%d",n)
+#define pl(n) printf("%lld",n)
 int main()
 {
     ll t;
@@ -29,28 +30,27 @@ int main()
     {
         ll n;
         cin>>n;
-        ll arr[n];
-        ll i,curr=0;
-        ll ts=0;
-        rep(i,n)
+        ll arr[n+1]={0};
+        set<ll> s;
+        set<ll> check;
+        s.insert(1);
+        s.insert(2);
+        ll i;
+        bool flag1=false,flag2=false;
+        fu(i,1,n)
         {
             cin>>arr[i];
-            ts+=arr[i];
+            // check.insert(arr[i]);
+            arr[i]+=arr[i-1];
+            s.insert(arr[i]);
         }
-        ll max=0;
-        rep(i,n)
-        {
-            curr+=arr[i];
-            if(max<curr)
-            max=curr;
-            if(curr<=0)
-            curr=0;            
-        }
-        if(max>ts)
-        cout<<"NO\n";
-        else
-        {
-            cout<<"YES\n";
-        }
+        ll ans=s.size();
+        // if(flag1&flag2)
+        // {
+        //     ans-=1;
+        // }
+        // if(check.size() == 1&&n!=1)
+        // ans-=1;
+        cout<<ans<<endl;
     }
 }

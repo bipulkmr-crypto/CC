@@ -21,30 +21,23 @@ typedef long long int ll;
 #define gl(n) scanf(%d,&n)
 #define pi(n) printf(%d,n)
 #define pl(n) printf(%lld,n)
-int main()
+int  main()
 {
-    ll t;
-    cin>>t;
-    while(t--)
+    ll m,n;
+    cin>>m>>n;
+    ll c[m+n]={0};
+    ll d[m+n]={0};
+    ll i,j;
+    rep(i,n+m)
     {
-        ll n,k;
-        cin>>n>>k;
-        ll arr[n];
-        ll i;
-        rep(i,n)
-        cin>>arr[i];
-        while(k%2==0)
-        {
-            k/=2;
-        }
-        for(i=0;i<n;i++)
-        {
-            if(arr[i]%k!=0)
-            {
-                cout<<"NO\n";
-                return 0;
-            }
-        }
-        cout<<"YES\n";
+        cin>>c[i];
+    }
+    rep(i,n+m)
+    {
+        cin>>d[i];
+    }
+    rep(i,m+n)
+    {
+        
     }
 }

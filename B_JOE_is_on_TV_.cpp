@@ -23,28 +23,14 @@ typedef long long int ll;
 #define pl(n) printf(%lld,n)
 int main()
 {
-    ll t;
-    cin>>t;
-    while(t--)
+    ll n;
+    cin>>n;
+    double sum=0;
+    ll i;
+    fu(i,1,n)
     {
-        ll n,k;
-        cin>>n>>k;
-        ll arr[n];
-        ll i;
-        rep(i,n)
-        cin>>arr[i];
-        while(k%2==0)
-        {
-            k/=2;
-        }
-        for(i=0;i<n;i++)
-        {
-            if(arr[i]%k!=0)
-            {
-                cout<<"NO\n";
-                return 0;
-            }
-        }
-        cout<<"YES\n";
+        sum+=1/(double(i));
     }
+    printf("%.30f",sum);
+    printf("\n");
 }

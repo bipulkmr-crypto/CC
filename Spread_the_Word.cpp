@@ -24,27 +24,22 @@ typedef long long int ll;
 int main()
 {
     ll t;
-    cin>>t;
+    scanf("%lld", &t);
     while(t--)
     {
-        ll n,k;
-        cin>>n>>k;
-        ll arr[n];
+        ll n;
         ll i;
-        rep(i,n)
-        cin>>arr[i];
-        while(k%2==0)
-        {
-            k/=2;
-        }
-        for(i=0;i<n;i++)
-        {
-            if(arr[i]%k!=0)
-            {
-                cout<<"NO\n";
-                return 0;
-            }
-        }
-        cout<<"YES\n";
+        scanf("%lld",&n);
+        ll arr[n+1]={0};
+       for(i=1;i<=n;i++)
+       {
+           cin>>arr[i];
+           arr[i]+=arr[i-1];
+       }
+       ll curr=1;
+       ll c=0;
+       for(curr=1;curr<n;curr+=arr[(int)curr])
+       c++;
+        cout<<c<<endl;
     }
 }

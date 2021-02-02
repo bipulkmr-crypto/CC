@@ -25,26 +25,28 @@ int main()
 {
     ll t;
     cin>>t;
-    while(t--)
+    while (t--)
     {
-        ll n,k;
-        cin>>n>>k;
-        ll arr[n];
-        ll i;
+        
+        map<ll,ll> m;
+        ll n,i;
+        cin>>n;
+        ll inp,diff;
+        bool flag=true;
         rep(i,n)
-        cin>>arr[i];
-        while(k%2==0)
         {
-            k/=2;
+            cin>>inp;
+            diff=inp-5;
+            if(diff==10&&(m[5]<2||m[10]<1))
+            flag=false;
+
+            else if(diff==5 &&(m[5]<1))
+            flag=false;
+            m[inp]++;
         }
-        for(i=0;i<n;i++)
-        {
-            if(arr[i]%k!=0)
-            {
-                cout<<"NO\n";
-                return 0;
-            }
-        }
+        if(flag)
         cout<<"YES\n";
+        else 
+        cout<<"NO\n";
     }
 }
