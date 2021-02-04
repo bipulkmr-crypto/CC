@@ -30,21 +30,27 @@ int main()
         ll n, k;
         double x;
         cin >> n >> k;
-        x = (double)(k);
-        ll ans = 0;
-        ans = (ll)ceil((x) / n);
-        ll pow = 2;
-        double check = ((x) / n);
-        if ((x / n - 1) - 1 < 0)
+        if(n==1)
+        cout<<k<<endl;
+        else if(k==n)
+        cout<<1<<endl;
+        else if(n>k)
         {
-            while ((check - 1) < 0)
-            {
-                check = (ll)ceil((pow * x) / n);
-                pow *= 2;
-            }
-            ans=(ll)ceil(check);
-
+            ll p=n/k;
+            if((n%k)!=0)
+            p++;
+            k*=p;
+            ll a=k/n;
+            if((k%n)!=0)
+            a++;
+            cout<<a<<endl;
         }
-        cout << ans << endl;
+        else
+        {
+            ll a=k/n;
+            if((k%n)!=0)
+            a++;
+            cout<<a<<endl;
+        }
     }
 }

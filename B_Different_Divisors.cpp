@@ -27,40 +27,46 @@ int main()
     cin >> t;
     while (t--)
     {
-        string s;
-        cin >> s;
-        ll i, c = 0;
-        ll n = s.length();
-        string str;
-        str=s;
-        fu(i,n/2,n-1)
+        ll d;
+        cin >> d;
+        ll n = 1;
+        vector<ll> v;
+        ll j;
+        ll i, im = (ll)(sqrt(n));
+        for (i = d + 1;; i++)
         {
-            s[i]=s[n-i-1];
-        }
-        if(s>str)
-        cout<<s<<endl;
-        else
-        {
-            for(i=(n-1)/2;i>=0;i--)
+            ll t = 1;
+            for (j = 2; j * j <= i; j++)
             {
-                if(s[i]!='9')
+                if (i % j == 0)
                 {
-                s[i]++;break;
-                }
-                else{
-                    s[i]='0';
+                    t = 0;
+                    break;
                 }
             }
-            for(i=n/2;i<n;i++)
+            if (t)
             {
-                s[i]=s[n-i-1];
+                v.pb(i);
+                break;
             }
-            if(s[0]=='0')
-            {
-                s+='1';
-                s[0]='1';
-            }
-            cout<<s<<endl;
         }
+        for(i=v.back()+d; ;i++)
+        {
+            ll t=1;
+            for(j=2;j*j<=i;j++)
+            {
+                if(i%j==0)
+                {
+                    t=0;
+                    break;
+                }
+            }
+            if(t)
+            {
+                v.pb(i);
+                break;
+            }
+        }
+        cout<<(min((v[0]*v[1]),(v[0]*v[0]*v[0])))<<endl;
     }
 }

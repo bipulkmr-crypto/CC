@@ -37,27 +37,7 @@ int main()
         {
             cin >> arr[i];
         }
-        /*rep(i,n)
-        {
-
-            if(arr[i]%d==(d-3))
-            cout<<"NO\n";
-            else
-            cout<<"YES\n";
-        }*/
-        rep(i, n)
-        {
-            if (arr[i] >= 90)
-            {
-                cout << "YES\n";
-            }
-            else
-            {
-                while(d<arr[i])
-                {
-                    w
-                }
-            }
-        }
+        
+    
     }
 }
