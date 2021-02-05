@@ -27,35 +27,23 @@ int main()
     cin>>t;
     while(t--)
     {
-        ll n;
-        cin>>n;
-        ll arr[n-1];
-        ll a[n]={1};
-        ll i,j;
-        
-        rep(i,n)
-        cin>>arr[i];
-        for(i=n-2;i>=0;i--)
+        string a,b;
+        ll freq[26]={0};
+        cin>>a>>b;
+        ll i;
+        rep(i,a.length())
         {
-            if(arr[i]==0)
-            {
-                a[i]=a[i+1]=1;
-            }
-            else if(arr[i]==1)
-            {
-                a[i]=arr[i];
-                a[i+1]=2;
-            }
-            else
-            {
-                a[i]=2;
-                a[i+1]=1;
-            }
+            freq[a[i]-97]++;
         }
-        rep(i,n)
+         rep(i,b.length())
         {
-            cout<<a[i]<<" ";
+            freq[b[i]-97]--;
         }
-        cout<<"\n";
+        ll c=0;
+        rep(i,26)
+        {
+            c+=abs(freq[i]);
+        }
+        printf("%lld",c);
     }
 }

@@ -27,35 +27,23 @@ int main()
     cin>>t;
     while(t--)
     {
-        ll n;
-        cin>>n;
-        ll arr[n-1];
-        ll a[n]={1};
-        ll i,j;
-        
-        rep(i,n)
-        cin>>arr[i];
-        for(i=n-2;i>=0;i--)
-        {
-            if(arr[i]==0)
+        ll i;
+        ll l,r;cin>>l>>r;
+        ll c=0;
+        fu(i,l,r)
+        {   
+            ll temp=i;
+            ll hex=0;
+            while(temp>0)
             {
-                a[i]=a[i+1]=1;
+                hex+=temp%16;
+                temp/=16;
             }
-            else if(arr[i]==1)
+            if(__gcd(i,hex)>1)
             {
-                a[i]=arr[i];
-                a[i+1]=2;
-            }
-            else
-            {
-                a[i]=2;
-                a[i+1]=1;
+                c++;
             }
         }
-        rep(i,n)
-        {
-            cout<<a[i]<<" ";
-        }
-        cout<<"\n";
+        printf("%lld\n",c);
     }
 }

@@ -27,35 +27,30 @@ int main()
     cin>>t;
     while(t--)
     {
-        ll n;
-        cin>>n;
-        ll arr[n-1];
-        ll a[n]={1};
-        ll i,j;
+        string s;
+        cin>>s;
+        ll len=s.length();
+        ll i;
+        ll c1=0,c2=0;
+        string temp="",s2="";
+        // rep(i,len-7)
+        // {
+        //     temp=s.substr(i,i+7);
+        //     if(temp=="SUVOJIT")
+        //     c2++;
+        //     else
+        //     {
+        //         s2+=temp;
+        //     }
+        // }
+        // rep(i,temp.length()-4)
+        // {
+        //     temp=temp.substr(i,i+4);
+        //     if(temp=="SUVO")
+        //     c1++;
+        // }
+        rep()
         
-        rep(i,n)
-        cin>>arr[i];
-        for(i=n-2;i>=0;i--)
-        {
-            if(arr[i]==0)
-            {
-                a[i]=a[i+1]=1;
-            }
-            else if(arr[i]==1)
-            {
-                a[i]=arr[i];
-                a[i+1]=2;
-            }
-            else
-            {
-                a[i]=2;
-                a[i+1]=1;
-            }
-        }
-        rep(i,n)
-        {
-            cout<<a[i]<<" ";
-        }
-        cout<<"\n";
+        cout<<"SUVO = "<<c1<<", "<<"SUVOJIT = "<<c2<<endl; 
     }
 }

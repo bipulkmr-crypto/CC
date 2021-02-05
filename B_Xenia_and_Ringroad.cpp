@@ -23,39 +23,23 @@ typedef long long int ll;
 #define pl(n) printf(%lld,n)
 int main()
 {
-    ll t;
-    cin>>t;
-    while(t--)
+    ll n,m;
+    cin>>n>>m;
+    ll arr[m+1]={0};
+    ll i,c=0;
+    rep(i,m)
+    cin>>arr[i];
+    c+=(arr[0]-1);
+    fu(i,0,m-2)
     {
-        ll n;
-        cin>>n;
-        ll arr[n-1];
-        ll a[n]={1};
-        ll i,j;
-        
-        rep(i,n)
-        cin>>arr[i];
-        for(i=n-2;i>=0;i--)
+        if(arr[i]>arr[i+1])
         {
-            if(arr[i]==0)
-            {
-                a[i]=a[i+1]=1;
-            }
-            else if(arr[i]==1)
-            {
-                a[i]=arr[i];
-                a[i+1]=2;
-            }
-            else
-            {
-                a[i]=2;
-                a[i+1]=1;
-            }
+            c+=(n-arr[i]+arr[i+1]);
         }
-        rep(i,n)
+        else
         {
-            cout<<a[i]<<" ";
+            c+=arr[i+1]-arr[i];
         }
-        cout<<"\n";
     }
+    cout<<c;
 }

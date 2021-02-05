@@ -29,33 +29,12 @@ int main()
     {
         ll n;
         cin>>n;
-        ll arr[n-1];
-        ll a[n]={1};
-        ll i,j;
-        
-        rep(i,n)
-        cin>>arr[i];
-        for(i=n-2;i>=0;i--)
-        {
-            if(arr[i]==0)
-            {
-                a[i]=a[i+1]=1;
-            }
-            else if(arr[i]==1)
-            {
-                a[i]=arr[i];
-                a[i+1]=2;
-            }
-            else
-            {
-                a[i]=2;
-                a[i+1]=1;
-            }
-        }
-        rep(i,n)
-        {
-            cout<<a[i]<<" ";
-        }
-        cout<<"\n";
+        ll a,b;
+        cin>>a>>b;
+        ll x=round(((b*n*1.0)/(ll)(b+a)));
+        ll sum=0;
+        ll y=(ll)n-x;
+        sum=(a*x*x)+(b*y*y);
+        cout<<sum<<endl;
     }
 }

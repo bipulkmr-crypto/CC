@@ -23,39 +23,29 @@ typedef long long int ll;
 #define pl(n) printf(%lld,n)
 int main()
 {
-    ll t;
-    cin>>t;
-    while(t--)
+    ll n;
+    cin>>n;
+    map<ll,ll> m;
+    ll i;
+    ll inp;
+    ll k;
+    rep(i,n)
     {
-        ll n;
-        cin>>n;
-        ll arr[n-1];
-        ll a[n]={1};
-        ll i,j;
-        
-        rep(i,n)
-        cin>>arr[i];
-        for(i=n-2;i>=0;i--)
-        {
-            if(arr[i]==0)
-            {
-                a[i]=a[i+1]=1;
-            }
-            else if(arr[i]==1)
-            {
-                a[i]=arr[i];
-                a[i+1]=2;
-            }
-            else
-            {
-                a[i]=2;
-                a[i+1]=1;
-            }
-        }
-        rep(i,n)
-        {
-            cout<<a[i]<<" ";
-        }
-        cout<<"\n";
+        cin>>inp;
+        m[inp]++;
     }
+    cin>>k;
+    map<ll,ll>::iterator it=m.begin();
+    ll min=99999;
+    for(it=m.begin();it!=m.end();it++)
+    {
+        if((it->second)==k)
+        {
+            if(it->first<min)
+            {
+                min=it->first;
+            }
+        }
+    }
+    cout<<min<<endl;
 }
