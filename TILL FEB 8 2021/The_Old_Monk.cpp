@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstring>
 #include <algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
 #define mod 1000000007
@@ -14,7 +15,6 @@ typedef long long int ll;
 #define mp make_pair
 #define ff first
 #define ss second
-#define rep(i,n) for(i=0;i<n;i++)
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)

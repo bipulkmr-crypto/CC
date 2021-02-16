@@ -10,7 +10,7 @@ int getNextGap(int gap)
     }
     return gap;
 }
-void combSort(int a[], int n)
+void combSort(int* ptr, int n)
 {
     int gap = n;
     int temp = 0;
@@ -21,11 +21,11 @@ void combSort(int a[], int n)
         swapped = false;
         for (int i = 0; i < n - gap; i++)
         {
-            if (a[i] > a[i + gap])
+            if (*(ptr+i) > *(ptr+gap))
             {
-                temp = a[i];
-                a[i] = a[i + 1];
-                a[i + 1] = temp;
+                temp = *(ptr+i);
+                *(ptr)=*(ptr+i);
+	            *(ptr+i) = temp;
                 swapped = true;
             }
         }
@@ -45,7 +45,7 @@ int main()
     combSort(arr, n);
     for (i = 0; i < n; i++)
     {
-        printf("%d ", arr[i]);
+        printf("%d ", *(arr+i));
     }
     //Demonstrating Linear search
     /*printf("Enter a value to be searched");

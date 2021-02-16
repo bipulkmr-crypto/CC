@@ -1,0 +1,1 @@
+{"name":"Local: Assignment6","url":"/home/crypto/git_workspace/CC/TILL FEB 8 2021/Assignment6.c","tests":[{"id":1613106744451,"input":"5\n12 34 43 1 3","output":"1 3 12 34 43"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/TILL FEB 8 2021/Assignment6.c","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: extendedEuc","url":"/home/crypto/git_workspace/CC/extendedEuc.cpp","tests":[{"id":1613364408980,"input":"4 6","output":"-1 1 2"},{"id":1613364691563,"input":"17  17","output":"0 1 17"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/extendedEuc.cpp","group":"local","local":true}
