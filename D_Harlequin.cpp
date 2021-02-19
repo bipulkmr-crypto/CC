@@ -23,14 +23,19 @@ typedef long long int ll;
 #define pl(n) printf(% lld, n)
 int main()
 {
-    ll t;
-    cin >> t;
-    while (t--)
+    ll n;
+    cin >> n;
+    ll arr[n];
+    ll i;
+    map<ll, ll> m;
+    ll inp;
+    rep(i, n)
     {
-        ll n, k;
-        cin >> n >> k;
-        ll jump=ceil(n/2.00);
-        ll ans=(k+(n%2)*(k/jump))%n;
-        cout<<ans<<endl;
+        cin >> inp;
+        m[inp % 2]++;
     }
+    if(m[0]==n)
+    cout<<"second\n";
+    else
+    cout<<"first\n";
 }

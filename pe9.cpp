@@ -21,41 +21,23 @@ typedef long long int ll;
 #define gl(n) scanf(%d,&n)
 #define pi(n) printf(%d,n)
 #define pl(n) printf(%lld,n)
-ll gcd(ll a,ll b,ll &x,ll &y)
-{
-    if(b==0)
-    {
-        x=1;
-        y=0;
-        return a;
-    }
-    ll x1,y1;
-    ll d=gcd(b,a%b,x1,y1);
-    x=y1;
-    y=x1-(a/b)*y1;
-    return d;
-    
-}
 int main()
 {
-    // ios_base::sync_with_stdio(NULL);
-    // cin.tie(NULL);
-    // cout.tie(NULL);
-    ll t;
-    cin>>t;
-    while(t--)
+    ll i,j,k;
+    ll ans=1;
+    for(i=1;i<=1000/3;i++)
     {
-        ll a,b;
-        scanf("%lld %lld",&a,&b);
-        ll x,y,c;
-        c=gcd(a,b,x,y);
-       if(c==1)
-       {
-           ll ans=a*b-a-b+1;
-           printf("%lld\n",ans);
-       }
-       else
-       printf("-1\n");
-    
+        for(j=i+1;j<=1000;j++)
+        {
+            for(k=j+1;k<=1000;k++)
+            {
+                if(((k*k)==(i*i+j*j))&&((i+j+k)==1000))
+                {
+                    ans=i*j*k; 
+                    break;      
+                }
+            }
+        }
     }
+    cout<<ans<<endl;
 }

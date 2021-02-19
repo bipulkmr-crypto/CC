@@ -25,12 +25,39 @@ int main()
 {
     ll t;
     cin >> t;
-    while (t--)
+    ll arr[t];
+    ll i;
+    rep(i, t)
+            cin >>
+        arr[i];
+    ll co = 0, c2 = 0;
+    rep(i, t)
     {
-        ll n, k;
-        cin >> n >> k;
-        ll jump=ceil(n/2.00);
-        ll ans=(k+(n%2)*(k/jump))%n;
-        cout<<ans<<endl;
+        if (arr[i] %2)
+            co++;
+        else
+            c2++;
+    }
+    if (co > c2)
+    {
+        rep(i, t)
+        {
+            if (arr[i] % 2 == 0)
+            {
+                cout << (i+1)<< endl;
+                break;
+            }
+        }
+    }
+    else
+    {
+         rep(i, t)
+        {
+            if (arr[i] % 2 == 1)
+            {
+                cout << (i+1) << endl;
+                break;
+            }
+        }
     }
 }

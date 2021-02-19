@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstring>
 #include <algorithm>
+#include<set>
 using namespace std;
 typedef long long int ll;
 #define mod 1000000007
@@ -21,41 +22,29 @@ typedef long long int ll;
 #define gl(n) scanf(%d,&n)
 #define pi(n) printf(%d,n)
 #define pl(n) printf(%lld,n)
-ll gcd(ll a,ll b,ll &x,ll &y)
-{
-    if(b==0)
-    {
-        x=1;
-        y=0;
-        return a;
-    }
-    ll x1,y1;
-    ll d=gcd(b,a%b,x1,y1);
-    x=y1;
-    y=x1-(a/b)*y1;
-    return d;
-    
-}
 int main()
 {
-    // ios_base::sync_with_stdio(NULL);
-    // cin.tie(NULL);
-    // cout.tie(NULL);
     ll t;
     cin>>t;
     while(t--)
     {
-        ll a,b;
-        scanf("%lld %lld",&a,&b);
-        ll x,y,c;
-        c=gcd(a,b,x,y);
-       if(c==1)
-       {
-           ll ans=a*b-a-b+1;
-           printf("%lld\n",ans);
-       }
-       else
-       printf("-1\n");
-    
+        ll n;
+        cin>>n;
+        ll arr[n];
+        ll i;
+        rep(i,n)
+        cin>>arr[i];
+        set<double> s;
+        ll j;
+        for(i=n-1;i>=0;i--)
+        {
+            for(j=i-1;j>=0;j--)
+            {
+                ll diff=arr[i]-arr[j];
+                double d=0.50*diff;
+                s.insert(d);
+            }
+        }
+        cout<<(s.size())<<endl;
     }
 }

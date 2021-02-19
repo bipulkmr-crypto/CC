@@ -44,20 +44,32 @@ int main()
             }
         }
     }
-    while (t--)
+    vector<ll> v;
+    for(i = 1;i*i<=n;i++)
     {
-        ll n;
-        ll c = 0;
-        cin >> n;
-        rep(i, n)
+        for(j=1;j*j*j*j<=n;j++)
         {
-            ll temp = i * i + 1;
-            if (temp < n)
+            if(is_prime[i*i+j*j*j*j])
             {
-                if (is_prime[temp])
-                    c++;
+                v.push_back(i*i+j*j*j*j);
             }
         }
+    }
+    sort(v.begin(),v.end());
+    unique(v.begin(),v.end());
+
+    while (t--)
+    {
+        ll q;
+        ll c = 0;
+        cin >> q;
+        ll low=0,mid,high=n-1;
+        while(high-low>1)
+        {
+            mid=low+(high-low)/2;
+            if(mid)
+        }
+
         cout << c << endl;
     }
 }
