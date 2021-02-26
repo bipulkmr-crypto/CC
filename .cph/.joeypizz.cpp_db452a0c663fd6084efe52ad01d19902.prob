@@ -1,0 +1,1 @@
+{"name":"Local: joeypizz","url":"/home/crypto/git_workspace/CC/joeypizz.cpp","tests":[{"id":1613982921460,"input":"3\n\nPizzeria 108\n\nDominos 145\n\nPizzapizza 49","output":"Dominos"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/joeypizz.cpp","group":"local","local":true}

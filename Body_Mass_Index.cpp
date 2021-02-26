@@ -23,39 +23,23 @@ typedef long long int ll;
 #define pl(n) printf(%lld,n)
 int main()
 {
-    ios_base::sync_with_stdio(NULL);
-    cin.tie(NULL);
-    cout.tie(NULL);
     ll t;
     cin>>t;
     while(t--)
     {
-       ll n;
-       cin>>n;
-       ll arr[n];
-       ll i;
-       rep(i,n)
-       cin>>arr[i];
-       ll ans=0;
-       rep(i,n)
-       {
-           ans^=arr[i];
-       }
-       sort(arr,arr+n);
-       bool flag=true;
-       rep(i,n)
-       {
-           ll val=arr[i]^ans;
-           if(!binary_search(arr,arr+n,val))
-           {
-               flag=false;
-               break;
-           }
-       }
-        if(flag)
-        cout<<ans;
+        ll m,h;
+        ll b;
+        cin>>m>>h;
+        b=(m)/(h*h);
+        if(b<=18)
+        {
+            cout<<"1"<<endl;
+        }
+        else if(b>18&&b<=24)
+        cout<<'2'<<endl;
+        else if(b>24&&b<=29)
+        cout<<"3"<<endl;
         else 
-        cout<<-1;
-        cout<<endl;
+        cout<<"4"<<endl;
     }
 }
