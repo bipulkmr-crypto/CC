@@ -67,7 +67,7 @@ int main()
             }
             else
             {
-                high=mid;
+                high=mid-1;
             }
         }
         cout<<ans<<endl;

@@ -37,7 +37,6 @@ int main()
     while(high-low>1)
     {
         mid=low+(high-low)/2;
-       jlaksjfl;jlf.jkjljfjsjflnjsfmflpfi; jujs fksa;lioeoppp @ielfjjLlaujof a
        if(good(mid))
        {
            high=mid;
