@@ -78,7 +78,7 @@ int main()
 		if (a[1] >= 1 && a[2] >= 1 && a[3] >= 1)
 		{
 			ll ans = 0;
-			ll low = 3, high = s.length() - 1, mid;
+			ll low = 3, high = s.length() , mid;
 			while (high - low > 1)
 			{
 				mid = low + (high - low) / 2;

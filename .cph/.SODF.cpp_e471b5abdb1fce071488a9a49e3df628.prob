@@ -1,0 +1,1 @@
+{"name":"Local: SODF","url":"/home/crypto/git_workspace/CC/SODF.cpp","tests":[{"id":1615022370295,"input":"2\n2 10\n100000 200000","output":"22\n1495105"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/SODF.cpp","group":"local","local":true}

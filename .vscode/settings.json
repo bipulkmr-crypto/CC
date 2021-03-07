@@ -34,6 +34,7 @@
         "variant": "c",
         "cmath": "cpp",
         "JK.C": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "complex": "cpp"
     }
 }
