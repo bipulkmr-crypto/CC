@@ -1,0 +1,1 @@
+{"name":"Local: all","url":"/home/crypto/git_workspace/CC/all.c","tests":[{"id":1615283863504,"input":"5\n1 3 4 2 6","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/all.c","group":"local","local":true}
