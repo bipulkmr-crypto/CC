@@ -1,0 +1,1 @@
+{"name":"Local: mex","url":"/home/crypto/git_workspace/CC/mex.cpp","tests":[{"id":1615739691939,"input":"2\n3\n1 2 1\n3\n1 0 1","output":"6\n2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/mex.cpp","group":"local","local":true}
