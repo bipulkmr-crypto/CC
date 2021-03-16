@@ -1,0 +1,1 @@
+{"name":"Local: bucket","url":"/home/crypto/git_workspace/CC/bucket.cpp","tests":[{"id":1615827374141,"input":"2\n5\n1 2 5 3 4\n4\n1 2 3 4\n4\n10 32 1 3\n2\n1 4","output":"23\n46"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/bucket.cpp","group":"local","local":true}
