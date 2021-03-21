@@ -30,3 +30,28 @@ typedef long long int ll;
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)
+int main()
+{
+    ll n;
+    cin>>n;
+    ll arr[n];
+    ll i;
+    rep(i,n)
+    {
+        cin>>arr[i];
+    }
+    lll q;
+    cin>>q;
+    while (q--)
+    {
+        ll l,r;
+        cin>>l>>r;
+        stack<ll> s;
+        ll x=0;
+        l--;
+        r--;
+        s.push(r);
+       for()
+        
+    }
+}
