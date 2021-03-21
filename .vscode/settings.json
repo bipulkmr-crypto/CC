@@ -38,6 +38,7 @@
         "complex": "cpp",
         "chrono": "cpp",
         "random": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "string.h": "c"
     }
 }

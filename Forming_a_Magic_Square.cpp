@@ -15,16 +15,21 @@ typedef long long int ll;
 #define pb push_back
 #define mp make_pair
 #define ff first
+#define all(v) v.begin(),v.end()
 #define ss second
 #define rep(i,n) for(i=0;i<n;i++)
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
-#define gi(n) scanf(%d,&n) 
+#define gi(n) scanf(%d,&n)
 
-vector<ll> 
 int main()
 {
-    ll n;
-    ll pro=1;
-    ll i=1;
+    ll arr[3][3]={0};
+    ll i,j;
+    rep(i,3)
+    {
+        rep(j,3)
+        cin>>arr[i][j];
+    }
+    ll arr1[][]={(4,9,2),(3,5,7)}
 }
