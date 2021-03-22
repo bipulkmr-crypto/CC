@@ -42,58 +42,59 @@ int main()
         // cin >> a >> b;
         ll p, q;
         cin >> p >> q;
-        ll a = min(p, q);
-        ll b = max(p, q);
-        if (a == 1 || b == 1)
-            cout << (a * b) << endl;
-        else if (a == 2 && b == 2)
-            cout << 4 << endl;
-        else
-        {
-            ll x = a / 2;
-            ll y = x;
-            a -= 2;
-            ll ans = 0;
-            while (a >= 0)
-            {
-                ans += a;
-                a -= 2;
-            }
-
-            while (x-- && b > 0)
-            {
-                ans += b;
-                b -= 2;
-            }
-
-            ans = ans * 2;
-            // while (a >= 0 && b >= 0)
-            // {
-            //     ans += (a + b);
-            //     a -= 2;
-            //     b -= 2;
-            // }
-            // ans *= 2;
-            if (a > 0)
-                ans += a;
-            // if (b == 1)
-            //     ans += 1;
-            // if(b>0)
-            // ans+=b;
-
-            if (y & 1)
-                ans += 1;
-            cout << ans << endl;
-        }
-        // ll p, q;
-        // cin >> p >> q;
+        cout<<p*q<<endl;
         // ll a = min(p, q);
         // ll b = max(p, q);
-        // ll ans = a * ((a - 2) / 2);
-        // ans += b * (b / 2);
-        // ans *= 2;
-        // ans += (a - 2) % 2;
-        // ans += b % 2;
-        // cout << ans << endl;
+        // if (a == 1 || b == 1)
+        //     cout << (a * b) << endl;
+        // else if (a == 2 && b == 2)
+        //     cout << 4 << endl;
+        // else
+        // {
+        //     ll x = a / 2;
+        //     ll y = x;
+        //     a -= 2;
+        //     ll ans = 0;
+        //     while (a >= 0)
+        //     {
+        //         ans += a;
+        //         a -= 2;
+        //     }
+
+        //     while (x-- )
+        //     {
+        //         ans += b;
+        //         b -= 2;
+        //     }
+
+        //     ans = ans * 2;
+        //     // while (a >= 0 && b >= 0)
+        //     // {
+        //     //     ans += (a + b);
+        //     //     a -= 2;
+        //     //     b -= 2;
+        //     // }
+        //     // ans *= 2;
+        //     if (a > 0)
+        //         ans += a;
+        //     // if (b == 1)
+        //     //     ans += 1;
+        //     // if(b>0)
+        //     // ans+=b;
+
+        //     if (y & 1)
+        //         ans += 2*b;
+        //     cout << ans << endl;
+        // }
+        // // ll p, q;
+        // // cin >> p >> q;
+        // // ll a = min(p, q);
+        // // ll b = max(p, q);
+        // // ll ans = a * ((a - 2) / 2);
+        // // ans += b * (b / 2);
+        // // ans *= 2;
+        // // ans += (a - 2) % 2;
+        // // ans += b % 2;
+        // // cout << ans << endl;
     }
 }
