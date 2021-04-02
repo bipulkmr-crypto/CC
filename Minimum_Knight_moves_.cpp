@@ -32,71 +32,55 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-vector<vector<ll>> arr(10001);
-vector<bool> visited(10001);
-ll currdep = 0;
-// void dfs(ll x)
-// {
-//     currdep++;
-//     visited[x]=false;
-//     for(ll i=0;i<arr[x].size();i++)
-//     {
-//         if(!visited[arr[x][i]])
-//         {
-//             dfs(arr[x][i]);
-//         }
-//     }
-// }
-void dfs(ll src)
-{
-    // if (src == 1)
-    // {
-    //     flag = true;
-    //     return;
-    // }
-    currdep++;
-    visited[src] = true;
-    for (ll i = 0; i < arr[src].size(); i++)
-    {
-        if (!visited[arr[src][i]])
-            dfs(arr[src][i]);
-    }
-}
 int main()
 {
-    ll n;
-    ll i;
-    cin >> n;
-    // resize(arr,10001);
-    // resize(visited,10001);
-    rep(i, n - 1)
-    {
-        ll a, b;
-        cin >> a >> b;
-        arr[a].push_back(b);
-        arr[b].push_back(a);
-    }
-    ll ans = 0;
-    ll node = 1;
-    for (i = 1; i <= n; i++)
-    {
-        if (!visited[i])
-        {
-            dfs(i);
+    ll t;
+    cin >> t;
 
-            if (ans < currdep)
+    vector<pair<ll, ll>> dir = {{2, -1}, {2, 1}, {-2, 1}, {-2, -1}, {1, 2}, {1, -2}, {-1, 2}, {-1, 2}, {-1, -2}};
+    while (t--)
+    {
+        ll arr[8][8];
+        memset(arr, -1, sizeof(arr));
+        char c1, c2;
+        ll a, b;
+        cin >> c1 >> a >> c2 >> b;
+        ll x = c1 - 'a';
+        ll y = c2 - 'a';
+        auto isvalid = [&](ll x, ll y) {
+        return (0 <= x && x < 8 && 0 <= y && y < 8);
+    };
+        a--;b--;
+        queue<pair<ll,ll> > q;
+        vector<ll> d(9),p(8+1);
+        q.push(make_pair(x,a));
+        while(!q.empty())
+        {
+            auto v=q.front();
+            q.pop();
+            ll i;
+            ll curr=0;
+            ll max=0;
+            rep(i,8)
             {
-                ans = currdep;
-                node = i;
+                ll newx=v.ff+dir[i].ff;
+                ll newy=v.ss+diff[i].ss;
+                if(newx==y&&newy==b)
+                break;
+                if(isvalid(newx,newy)&&arr[newx][newy]==-1)
+                {
+                    arr[newx][newy]=0;
+                    // curr++;
+                    d[]=d[v]+1;
+                    p[u]=v;
+                    q.push({newx,newy});
+
+                }
             }
-            currdep = 0;
         }
+        
     }
-    cout << ans << endl;
-    cout << node << endl;
-    // cout << (ans-2) << endl;
 }
-//Trying using BFS two times first finding the maximum distance mode and then repeating the process
 // #include <iostream>
 // #include<bits/stdc++.h>
 // using namespace std;
@@ -129,26 +113,3 @@ int main()
 // #define fu(i,a,n) for(i=a;i<=n;i++)
 // #define fd(i,n,a) for(i=n;i>=a;i--)
 // #define gi(n) scanf(%d,&n)
-// vector<vector<ll> > arr;
-// vector<bool> visited;
-// vector<ll> d;
-// int main()
-// {
-//     ll n;
-//     cin>>n;
-//     arr.resize(10000+1,0);
-//     visited.resize(10001,false);
-//     d.resize(10000+1,0);
-//     ll i;
-//     rep(i,n-1)
-//     {
-//         ll a,b;
-//         cin>>a>>b;
-//         arr[a].push_back(b);
-//         arr[b].push_back(a);
-//     }
-//     for(i=1;i<=n;i++)
-//     {
-
-//     }
-// }

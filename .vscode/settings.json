@@ -39,6 +39,11 @@
         "chrono": "cpp",
         "random": "cpp",
         "limits": "cpp",
-        "string.h": "c"
+        "string.h": "c",
+        "bitset": "c",
+        "memory_resource": "c",
+        "algorithm": "c",
+        "scoped_allocator": "c",
+        "utility": "c"
     }
 }

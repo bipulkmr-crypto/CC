@@ -1,0 +1,1 @@
+{"name":"Local: shilkhe","url":"/home/crypto/git_workspace/CC/shilkhe.cpp","tests":[{"id":1616832210069,"input":"7\n34 34 68 34 34 68 34","output":"Yes"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/shilkhe.cpp","group":"local","local":true}
