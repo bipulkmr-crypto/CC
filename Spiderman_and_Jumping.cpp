@@ -38,12 +38,12 @@ ll solve(ll i)
 {
     if(i>=n)
     return 0;
-    cout<<i<<" "<<dp[i]<<endl;
+    // cout<<i<<" "<<dp[i]<<endl;
     if(dp[i]!=-1)
     return dp[i];
     ll ans=INF;
     ans=abs(arr[i]-arr[i+1])+min(ans,solve(i+1));
-    for(ll j=2;(i+j)<n;j+=2)
+    for(ll j=2;(i+j)<n;j*=2)
     {
         ans=min(ans,abs(arr[i]-arr[i+j])+solve(i+j));
     }

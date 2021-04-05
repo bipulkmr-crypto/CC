@@ -29,75 +29,8 @@ typedef long long int ll;
 #define rep(i,n) for(i=0;i<n;i++)
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
-    ll n,k;
-    vll a;
-    vll b;
-bool good(ll x)
-{
-    ll i;
-    ll buffer=k;
-    ll needed,possible;
-    for(i=0;i<n;i++)
-    {
-        possible=(b[i]/a[i]);
-        if(possible<x)
-        {
-            needed=x*a[i]-b[i];
-            buffer-=needed;
-        }
-        if(buffer<0)
-        return false;
-    }
-    return true;
-}
+#define gi(n) scanf(%d,&n)
 int main()
 {
-
-    cin>>n>>k;
-    a.resize(n);
-    b.resize(n);
-    ll i;
-    rep(i,n)
-    {
-        cin>>a[i];
-    }
-    rep(i,n)
-    {
-        cin>>b[i];
-    }
-    ll ans=0;
-    // vector<pll> arr;
-    // rep(i,n)
-    // {
-    //     ll possible=b[i]/a[i];
-    //     ll needed=(possible+1)
-    // }
-    if(n==1)
-    {
-        cout<<((b[0]+k)/a[0])<<endl;
-        return 0;
-    }
-    ll low=0,high=1e13,mid;
-    while(high-low>1)
-    {
-        mid=low+(high-low)/2;
-        if(good(mid))
-        {
-            low=mid;
-
-        }
-        else
-        {
-            high=mid;
-        }
-    }
-    if(good(high))
-    {
-        cout<<high<<endl;
-    }
-    else
-    {
-        cout<<low<<endl;
-    }
-
+    ll fact[10][]
 }

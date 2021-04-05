@@ -29,75 +29,36 @@ typedef long long int ll;
 #define rep(i,n) for(i=0;i<n;i++)
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
-    ll n,k;
-    vll a;
-    vll b;
-bool good(ll x)
-{
-    ll i;
-    ll buffer=k;
-    ll needed,possible;
-    for(i=0;i<n;i++)
-    {
-        possible=(b[i]/a[i]);
-        if(possible<x)
-        {
-            needed=x*a[i]-b[i];
-            buffer-=needed;
-        }
-        if(buffer<0)
-        return false;
-    }
-    return true;
-}
+#define gi(n) scanf(%d,&n)
 int main()
 {
-
-    cin>>n>>k;
-    a.resize(n);
-    b.resize(n);
-    ll i;
-    rep(i,n)
+    ll n;
+    cin>>n;
+    ll siz=2*n;
+    ll arr[siz];
+    ll  i;
+    rep(i,siz)
     {
-        cin>>a[i];
+        cin>>arr[i];
     }
-    rep(i,n)
+    ll inc1,inc2;
+    inc1=1,inc2=1;
+    ll j;
+    for(i=0;i<n-1;i++)
     {
-        cin>>b[i];
-    }
-    ll ans=0;
-    // vector<pll> arr;
-    // rep(i,n)
-    // {
-    //     ll possible=b[i]/a[i];
-    //     ll needed=(possible+1)
-    // }
-    if(n==1)
-    {
-        cout<<((b[0]+k)/a[0])<<endl;
-        return 0;
-    }
-    ll low=0,high=1e13,mid;
-    while(high-low>1)
-    {
-        mid=low+(high-low)/2;
-        if(good(mid))
+        if(arr[i]>arr[i+1])
         {
-            low=mid;
-
-        }
-        else
-        {
-            high=mid;
+            inc1=0;
+            break;
         }
     }
-    if(good(high))
+    for(i=0;i<n;i++)
     {
-        cout<<high<<endl;
+        if(arr[i+n]>arr[i+1+n])
+        {
+            inc2=0;
+            break;
+        }
     }
-    else
-    {
-        cout<<low<<endl;
-    }
-
+    if(inc1==)
 }

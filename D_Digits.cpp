@@ -32,54 +32,26 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-ll arr[100001] = {0};
-ll dp[100001] = {-1};
-ll solve(ll i)
-{
-    if (i < 0)
-        return 0;
-    cout<<i<<endl;
-    if (i == 1)
-    {
-        return abs(arr[0]-arr[1]);
-    }
-    if(i==2)
-    {
-        return abs(arr[0]-arr[2]);
-    }
-    if (dp[i] != -1)
-        return dp[i];
-    // ll ans = min(solve(i - 2), solve(i - 1));
-    ll val1=abs(arr[i]-arr[i-2])+min(solve(i-2),solve(i-1)) ;
-    ll val2=abs(arr[i]-arr[i-1])+min(solve(i-1),solve(i-2));
-    ll ans=min(val1,val2);
-    dp[i] = ans;
-    return ans;
-}
+ll n, k;
+ll arr[n];
+
 int main()
 {
 
-    ll n;
-    cin >> n;
-    ll i;
+    cin >> n >> k;
 
+    ll i;
     rep(i, n)
     {
         cin >> arr[i];
     }
-    rep(i, n)
-    cout<<arr[i]<<" ";
-    cout << endl;
-    ll ans = solve(n-1);
-    cout << ans << endl;
-    rep(i, n)
-    cout<<dp[i]<<" ";
+    ll ans = 0;
+    ll low=0,mid,high=n;
+    while (high-low>1)
+    {
+        mid=low+high-low/2;
+        if(good(mid))
+
+    }
+    
 }
-// 
-if(i==1)
-return 0;
-if(i==2)return 1;
-if(fib[i]!=-1)
-    return fib[i];
-fib[i]=fib[i-1]+fib[i+1];
-return 
