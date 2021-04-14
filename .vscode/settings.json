@@ -44,6 +44,7 @@
         "memory_resource": "c",
         "algorithm": "c",
         "scoped_allocator": "c",
-        "utility": "c"
+        "utility": "c",
+        "iomanip": "cpp"
     }
 }
