@@ -32,8 +32,9 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-ll countDigit(ll n) {
-  return floor(log10(n) + 1);
+ll countDigit(ll n)
+{
+    return floor(log10(n) + 1);
 }
 int main()
 {
@@ -47,21 +48,22 @@ int main()
         if (c < 9)
         {
             ll x = primes[c];
-            ll y=primes[c];
-            while(countDigit(x)<a)
+            ll y = primes[c];
+            while (countDigit(x) < a)
             {
-                x*=2;
+                x *= 2;
             }
-            while (countDigit(y)<b)
+            while (countDigit(y) < b)
             {
-                y*=3;
+                y *= 3;
             }
-            cout<<x<<" "<<y<<endl;
-            
+            cout << x << " " << y << endl;
         }
         else
         {
-            cout<<"111111111"<<" "<<"111111111"<<endl;
+            cout << "111111111"
+                 << " "
+                 << "111111111" << endl;
         }
     }
 }

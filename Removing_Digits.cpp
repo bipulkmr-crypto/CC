@@ -1,7 +1,7 @@
 #include <iostream>
 #include<bits/stdc++.h>
 using namespace std;
-typedef  int ll;
+typedef long long int ll;
 #define  fast ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define mod 1000000007
 #define pb push_back
@@ -30,32 +30,33 @@ typedef  int ll;
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)
+ll dp[1000001];
+ll solve(ll n)
+{
+    if(n<10)
+    return 1;
+    else if(dp[n]!=-1)
+    return dp[n];
+    else 
+    {
+        ll temp=n;
+        ll ans=LLONG_MAX;
+        while(temp>0)
+        {
+           ll d=temp%10;
+           if(d!=0)
+            ans=min(ans,1+solve(n-d));
+            temp/=10;
+        }
+        dp[n]=ans;
+        return ans;
+    }
+}
 int main()
 {
     ll n;
-    ll x;
-    cin>>n>>x;
-    ll coins[n+1];
-    ll i;
-    for(i=1;i<=n;i++)
-    {
-        cin>>coins[i];
-    }
-    int dp[n+1][x+1]={{0}};
-    memset(dp,0,sizeof(dp));
-    dp[0][0]=1;
-    for(i=1;i<=n;i++)
-    {
-        for(ll j=0;j<=x;j++)
-        {
-            dp[i][j]=dp[i-1][j];
-            ll left=j-coins[i];
-            if(left>=0)
-            {
-                dp[i][j]+=dp[i][left];
-                dp[i][j]%=mod;
-            }
-        }
-    }
-    cout<<dp[n][x]<<endl;
+    cin>>n;
+    memset(dp,-1,sizeof(dp));
+    ll ans=solve(n);
+    cout<<ans<<endl;
 }

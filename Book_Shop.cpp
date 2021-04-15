@@ -1,7 +1,7 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long int ll;
+typedef  int ll;
 #define fast                          \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
@@ -32,45 +32,48 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
+vector<ll> price;
+vector<ll> pages;
+ll dp[1001][100001];
+ll solve(ll n, ll val)
+{
+    if (n == 0 || val == 0)
+    {
+        return 0;
+    }
+    else if(dp[n][val]!=0)
+    return dp[n][val];
+    else
+    {
+        ll ans = -1;
+        if(price[n]<=val)
+        ans = max(pages[n] + solve(n - 1, val - price[n]), solve(n - 1, val));
+        else
+        ans=solve(n-1,val);
+        dp[n][val]=ans;
+        return ans;
+    }
+}
 int main()
 {
     ll n;
-    cin >> n ;
-    char arr[n][n];
+    cin >> n;
+    ll val;
+    cin >> val;
+    price.resize(n + 1, 0);
+    pages.resize(n + 1, 0);
+    memset(dp,0,sizeof(dp));
     ll i, j;
-    ll dp[n][n];
-    memset(dp, 0, sizeof(dp));
-    rep(i, n)
-    {
-        rep(j, n)
-        {
-            cin >> arr[i][j];
-        }
-    }
-    dp[0][0] = 1;
     for (i = 0; i < n; i++)
     {
-        for (j = 0; j < n; j++)
-        {
-            if (arr[i][j] == '.')
-            {
-                if (i > 0 && j > 0)
-                    dp[i][j] += (dp[i - 1][j] % mod + dp[i][j - 1] % mod) % mod;
-                else if(i>0)
-                {
-                    dp[i][j]+=dp[i-1][j]%mod;
-                }
-                else if(j>0)
-                {
-                    dp[i][j]+=dp[i][j-1]%mod;
-                }
-                    
-            }
-            else
-            {
-                dp[i][j]=0;
-            }
-        }
+        ll a, b;
+        cin >> a;
+        price[i + 1] = a;
     }
-    cout<<(dp[n-1][n-1])<<endl;
+    fu(i, 1, n)
+    {
+        cin >> pages[i];
+    }
+    ll ans = solve(n, val);
+    cout << ans << endl;
 }

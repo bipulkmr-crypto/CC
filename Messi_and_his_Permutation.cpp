@@ -34,43 +34,53 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 int main()
 {
-    ll n;
-    cin >> n ;
-    char arr[n][n];
-    ll i, j;
-    ll dp[n][n];
-    memset(dp, 0, sizeof(dp));
-    rep(i, n)
+    ll t;
+    cin >> t;
+    while (t--)
     {
-        rep(j, n)
+        ll n, y;
+        cin >> n >> y;
+        if (n == y)
         {
-            cin >> arr[i][j];
+            cout << 1 << " ";
+            ll i;
+            for (i = n; i > 1; i--)
+                cout << i << " ";
+            cout << endl;
+            continue;
+        }
+        else if (y < n||((n*(n+1))/2)>y)
+        {
+            cout << -1 << endl;
+        }
+        else
+        {
+            set<ll> s;
+            ll i;
+            fu(i, 1, n)
+            {
+                s.insert(i);
+            }
+            ll temp = n;
+            while ((y - temp) > 0)
+            {
+                cout << (y - temp) << " ";
+                s.erase(y - temp);
+                y = y - temp + 1;
+                temp -= 1;
+            }
+            cout << 1 << " ";
+            s.erase(1);
+            if (s.size() != 0)
+            {
+
+                auto it = s.rbegin();
+                for (; it != s.rend(); it++)
+                {
+                    cout << (*it) << " ";
+                }
+                cout << endl;
+            }
         }
     }
-    dp[0][0] = 1;
-    for (i = 0; i < n; i++)
-    {
-        for (j = 0; j < n; j++)
-        {
-            if (arr[i][j] == '.')
-            {
-                if (i > 0 && j > 0)
-                    dp[i][j] += (dp[i - 1][j] % mod + dp[i][j - 1] % mod) % mod;
-                else if(i>0)
-                {
-                    dp[i][j]+=dp[i-1][j]%mod;
-                }
-                else if(j>0)
-                {
-                    dp[i][j]+=dp[i][j-1]%mod;
-                }
-                    
-            }
-            else
-            {
-                dp[i][j]=0;
-            }
-        }
-    }
-    cout<<(dp[n-1][n-1])<<endl;
 }

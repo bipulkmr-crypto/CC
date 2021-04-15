@@ -1,7 +1,7 @@
 #include <iostream>
 #include<bits/stdc++.h>
 using namespace std;
-typedef  int ll;
+typedef long long int ll;
 #define  fast ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define mod 1000000007
 #define pb push_back
@@ -32,30 +32,25 @@ typedef  int ll;
 #define gi(n) scanf(%d,&n)
 int main()
 {
-    ll n;
-    ll x;
-    cin>>n>>x;
-    ll coins[n+1];
-    ll i;
-    for(i=1;i<=n;i++)
+    ll t;
+    cin>>t;
+    while (t--)
     {
-        cin>>coins[i];
-    }
-    int dp[n+1][x+1]={{0}};
-    memset(dp,0,sizeof(dp));
-    dp[0][0]=1;
-    for(i=1;i<=n;i++)
-    {
-        for(ll j=0;j<=x;j++)
+        ll n;
+        cin>>n;
+        ll arr[n];
+        ll i;
+        rep(i,n)
         {
-            dp[i][j]=dp[i-1][j];
-            ll left=j-coins[i];
-            if(left>=0)
-            {
-                dp[i][j]+=dp[i][left];
-                dp[i][j]%=mod;
-            }
+            cin>>arr[i];
         }
+        ll g=arr[0];
+        for(i=1;i<n-1;i++)
+        {
+            g=__gcd(arr[i],g);
+        }
+        cout<<g<<endl;
     }
-    cout<<dp[n][x]<<endl;
+    
+
 }
