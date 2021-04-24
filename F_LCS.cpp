@@ -53,7 +53,7 @@ string solve(string x,string y,ll n,ll m)
         {
             // string a=solve(x.substr(n-1),y);
             // string b=solve(x,y.substr(m-1));
-            string a=solve(x,y,n-1,m-1);
+            string a=solve(x,y,n-1,m);
             string b=solve(x,y,n,m-1);
             if(a.length()>b.length())
             return (dp[n][m]=a);
