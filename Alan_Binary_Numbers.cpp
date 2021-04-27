@@ -32,68 +32,62 @@
 // #define fu(i, a, n) for (i = a; i <= n; i++)
 // #define fd(i, n, a) for (i = n; i >= a; i--)
 // #define gi(n) scanf(% d, &n)
-// ll dp[101];
-// ll arr[101];
-// ll n;
-// ll solve(ll task, ll pos)
-// {
-//     if (pos == n - 1)
-//     {
-//         if (arr[pos] == 3)
-//         {
-//             return 0;
-//         }
-//         else
-//         {
-//             if (arr[pos] != task)
-//                 return 0;
-//             else
-//             {
-//                 return 1;
-//             }
-//         }
-//     }
-//     else
-//     {
-//         ll j;
-//         ll ans = 0;
-//         for (j = i + 1; j < n; j++)
-//         {
-//             if (arr[i] == 0)
-//                 ans += 1;
-//             else
-//             {
-//                 ans += (min(solve(2), solve(3)));
-//             }
-//         }
-//         return ans;
-//     }
-// }
 // int main()
 // {
-//     cin >> n;
-//     // memset(dp, -1, sizeof(dp));
-//     ll i;
-//     for (i = 0; i < n; i++)
+//     ll t;
+//     cin >> t;
+//     while (t--)
 //     {
-//         cin >> arr[i];
-//     }
-//     ll ans = 0;
-//     for (i = 0; i < n; i++)
-//     {
-//         if (arr[i] == 0)
+//         ll n;
+//         cin >> n;
+//         string a, b;
+//         cin >> a >> b;
+//         ll i;
+//         ll ans1 = 0, ans2 = 0;
+//         for (i = n - 1; i >= 0; i--)
 //         {
-//             ans += 1;
-//         }
-//         else
-//         {
-//             if (arr[i] == 3)
+//             if (a[i] != b[i])
 //             {
-//                 ans += min(solve(1), solve(2));
+//                 ans1++;
+//             }
+//             else
+//             {
+//                 break;
 //             }
 //         }
+//         for (i = n - 1; i >= 0; i--)
+//         {
+//             if (a[i] == b[i])
+//             {
+//                 ans2++;
+//             }
+//             else
+//             {
+//                 break;
+//             }
+//         }
+//         // ll apos1=-1,aposo=-1,bposo=-1,bpos1=-1;
+//         // for(i=n-1;i>=0;i--)
+//         // {
+//         //     if(a[i]=='1')
+//         //     {
+//         //         a
+//         //     }
+//         // }
+//         bool flag = true;
+//         rep(i, n)
+//         {
+//             if (a[i] != b[i])
+//             {
+//                 flag = false;
+//                 break;
+//             }
+//         }
+//         if (flag)
+//             cout << ans1 << " " << (ans2 - 1) << endl;
+//         else
+//             cout << ans1 << " " << ans2 << endl;
 //     }
-//     cout << ans << endl;
 // }
 #include <iostream>
 #include <bits/stdc++.h>
@@ -129,64 +123,66 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-vll arr;
-ll n;
-ll dp[101][4];
-ll solve(ll pos, ll prevtask)
-{
-    if (pos >= n)
-        return 0;
-    else if (pos == n - 1)
-    {
-        if (arr[pos] == prevtask && arr[pos] != 3)
-        {
-            return 1;
-        }
-        else if (arr[pos] == 0)
-        {
-            return 1;
-        }
-        else
-            return 0;
-    }
-    else if (dp[pos][prevtask] != -1)
-        return dp[pos][prevtask];
-    else
-    {
-        ll ans = 0;
-        if (arr[pos] == 0)
-            ans += 1 + solve(pos + 1, 0);
-        else if (arr[pos] != prevtask && arr[pos] != 3)
-        {
-            ans = solve(pos + 1, arr[pos]);
-        }
-        else if (arr[pos] == 3)
-        {
-            if (prevtask == 0)
-                ans = min(solve(pos + 1, 2), solve(pos + 1, 1));
-            else if (prevtask == 1)
-                ans = min(solve(pos + 1, 2), 1 + solve(pos + 1, 1));
-            else if (prevtask == 2)
-                ans = min(solve(pos + 1, 1), 1 + solve(pos + 1, 2));
-            else
-                ans = min(solve(pos + 1, 2), solve(pos + 1, 1));
-        }
-        else
-            ans = 1 + solve(pos + 1, 0);
-        dp[pos][prevtask] = ans;
-        return ans;
-    }
-}
 int main()
 {
-    memset(dp, -1, sizeof(dp));
-    cin >> n;
-    arr.resize(n);
-    ll i;
-    rep(i, n) cin >> arr[i];
-    ll ans = 0;
-    if (arr[0] == 0)
-        ans += 1;
-    ans += solve(1, arr[0]);
-    cout << ans << endl;
+    ll t;
+    cin >> t;
+    while (t--)
+    {
+        ll n;
+        cin >> n;
+        string a, b;
+        cin >> a >> b;
+        ll i;
+        ll ans1 = 0, ans2 = 0;
+        for (i = n - 1; i >= 0; i--)
+        {
+            if (a[n - 1] == b[i])
+            {
+                break;
+            }
+            else
+            {
+                ans1++;
+            }
+        }
+        for (i = n - 1; i >= 0; i--)
+        {
+            if (b[n - 1] == a[i])
+            {
+                break;
+            }
+            else
+            {
+                ans2++;
+            }
+        }
+        ll x = min(ans1, ans2);
+        ans1 = 0;
+        ans2 = 0;
+        for (i = n - 1; i >= 0; i--)
+        {
+            if (a[n - 1] != b[i])
+            {
+                break;
+            }
+            else
+            {
+                ans1++;
+            }
+        }
+        for (i = n - 1; i >= 0; i--)
+        {
+            if (b[n - 1] != a[i])
+            {
+                break;
+            }
+            else
+            {
+                ans2++;
+            }
+        }
+        ll y = min(ans1, ans2);
+        cout << x << " " << y << endl;
+    }
 }
