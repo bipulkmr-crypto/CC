@@ -32,81 +32,47 @@
 // #define fu(i, a, n) for (i = a; i <= n; i++)
 // #define fd(i, n, a) for (i = n; i >= a; i--)
 // #define gi(n) scanf(% d, &n)
-// ll arr[100][100] = {0};
-// ll currdep = 0;
-// ll h, w;
-// bool visited[100][100] = false;
-// void dfs(ll p, ll q)
-// {
-//     currdep++;
-//     visited[p][q] = true;
-//     if (isvalid(p - 1, q - 1) && !visited[p - 1][q - 1] && (arr[p - 1][q - 1] - arr[p][q]))
-//     {
-//         dfs(p - 1, q - 1);
-//     }
-//     if (isvalid(p, q - 1) && !visited[p][q - 1] && (arr[p][q - 1] - arr[p][q]))
-//     {
-//         dfs(p, q - 1);
-//     }
-//     if (isvalid(p, q + 1) && !visited[p][q + 1] && (arr[p][q + 1] - arr[p][q]))
-//     {
-//         dfs(p, q + 1);
-//     }
-//     if (isvalid(p + 1, q + 1) && !visited[p + 1][q + 1] && (arr[p + 1][q + 1] - arr[p][q]))
-//     {
-//         dfs(p + 1, q + 1);
-//     }
-//     if (isvalid(p + 1, q - 1) && !visited[p + 1][q - 1] && (arr[p + 1][q - 1] - arr[p][q]))
-//     {
-//         dfs(p + 1, q - 1);
-//     }
-//     if (isvalid(p + 1, q) && !visited[p + 1][q ] && (arr[p + 1][q ] - arr[p][q]))
-//     {
-//         dfs(p + 1, q + 1);
-//     }
-// }
-// bool isvaid(ll i, ll j)
-// {
-//     return (i < h && j < w);
-// }
 // int main()
 // {
-//     while (true)
+//     ll x, y;
+//     cin >> y >> x;
+//     if(y<(x-1)||(x==0&&y>0))
 //     {
-
-//         arr[100][100] = {0};
-//         visited[100][100] = false;
-//         cin >> h >> w;
-//         if (h == 0 && w == 0)
-//             return 0;
-//         ll i, j;
-//         ll ans = 0;
-//         rep(i, h)
-//         {
-//             string s;
-//             cin >> s;
-//             rep(i, w)
-//             {
-//                 arr[i][j] = s[j];
-//             }
-//         }
-//         for (i = 0; i < h; i++)
-//         {
-//             for (j = 0; j < w; j++)
-//             {
-//                 if (!visited[i][j])
-//                 {
-//                     if (isvalid(i, j))
-//                     {
-//                         dfs(i, j);
-//                         ans = max(ans, currdep);
-//                     }
-//                 }
-//             }
-//         }
+//         cout<<"No\n";
+//         return 0;
+//     }
+//     ll val = (y - (x - 1)) % 2;
+//     if (val)
+//     {
+//         cout << "No\n";
+//     }
+//     else
+//     {
+//         cout << "Yes\n";
 //     }
 // }
+// // void dfs(ll x)
+// // {
+// //     if(v[x].size()==0)
+// //     {
+// //         return ;
+// //     }
+// //     for(i=0;i<v[i].size();i++)
+// //     {
+// //         if(!visited[(v[x])][i])
+// //         dps(v[x][i]);
+// //     }
+// // }
+// // int count=0;
+// // void dfs(int x)
+// // {
+// //     visited[x]=true;
+// //     count++;
+// //     for(i=0;i<v[i].size();i++)
+// //     {
 
+// //     }
+// // }
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
@@ -141,33 +107,30 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-// vector<vector<ll>> arr(27);
-vector<vector<ll>> arr;
-vector<vector<bool>> visited;
 int main()
 {
-    ll h, w;
-    cin >> h >> w;
-    ll i;
-    ll j;
-    arr.resize(h);
-    visited.resize(h);
-    for (i = 0; i < h; i++)
+    ll x, y;
+    cin >> x >> y;
+    if (y == 0)
     {
-        arr[i].resize(w);
-        visited[i].resize(w);
+        cout << "No\n";
+        return 0;
     }
-
-    for (i = 0; i < h; i++)
+    if (y == 1)
     {
-        for (j = 0; j < w; j++)
-        {
-            char c;
-            cin >> c;
-            arr[i][j] = (c - 64);
-        }
+        if (x == 0)
+            cout << "Yes\n";
+        else
+            cout << "No\n";
+        return 0;
     }
-    ll x[] = {0, 1, 1, -1, 0, -1, -1, -1};
-    ll y[] = {1, 1, 0, -1, -1, -1, 0, 1};
-    for
+    if (x >= (y - 1) && (x - y + 1) % 2 == 0)
+    {
+        cout << "Yes\n";
+    }
+    else
+    {
+        cout << "No\n";
+    }
+    
 }

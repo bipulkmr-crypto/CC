@@ -32,81 +32,50 @@
 // #define fu(i, a, n) for (i = a; i <= n; i++)
 // #define fd(i, n, a) for (i = n; i >= a; i--)
 // #define gi(n) scanf(% d, &n)
-// ll arr[100][100] = {0};
-// ll currdep = 0;
-// ll h, w;
-// bool visited[100][100] = false;
-// void dfs(ll p, ll q)
+// vector<vector<ll>> arr;
+// vector<ll> dist;
+// vector<bool> visited;
+// void dfs(ll x, ll ancestor)
 // {
-//     currdep++;
-//     visited[p][q] = true;
-//     if (isvalid(p - 1, q - 1) && !visited[p - 1][q - 1] && (arr[p - 1][q - 1] - arr[p][q]))
+//     // visited[x] = true;
+//     ll i;
+//     for (i = 0; i < arr[x].size(); i++)
 //     {
-//         dfs(p - 1, q - 1);
+//         // if (!visited[arr[x][i]])
+//         {
+//             if (arr[x][i] == ancestor)
+//                 continue;
+//             // dist[arr[x][i]] = dist[x] + dfs(arr[x][i]);
+//             dist[arr[x][i]] = dist[ancestor] + 1;
+//             dfs(arr[x][i], x);
+//         }
 //     }
-//     if (isvalid(p, q - 1) && !visited[p][q - 1] && (arr[p][q - 1] - arr[p][q]))
-//     {
-//         dfs(p, q - 1);
-//     }
-//     if (isvalid(p, q + 1) && !visited[p][q + 1] && (arr[p][q + 1] - arr[p][q]))
-//     {
-//         dfs(p, q + 1);
-//     }
-//     if (isvalid(p + 1, q + 1) && !visited[p + 1][q + 1] && (arr[p + 1][q + 1] - arr[p][q]))
-//     {
-//         dfs(p + 1, q + 1);
-//     }
-//     if (isvalid(p + 1, q - 1) && !visited[p + 1][q - 1] && (arr[p + 1][q - 1] - arr[p][q]))
-//     {
-//         dfs(p + 1, q - 1);
-//     }
-//     if (isvalid(p + 1, q) && !visited[p + 1][q ] && (arr[p + 1][q ] - arr[p][q]))
-//     {
-//         dfs(p + 1, q + 1);
-//     }
-// }
-// bool isvaid(ll i, ll j)
-// {
-//     return (i < h && j < w);
+//     return;
 // }
 // int main()
 // {
-//     while (true)
+//     ll n;
+//     cin >> n;
+
+//     arr.resize(n + 1);
+//     ll i;
+//     visited.resize(n + 1);
+//     rep(i, n-1)
 //     {
-
-//         arr[100][100] = {0};
-//         visited[100][100] = false;
-//         cin >> h >> w;
-//         if (h == 0 && w == 0)
-//             return 0;
-//         ll i, j;
-//         ll ans = 0;
-//         rep(i, h)
-//         {
-//             string s;
-//             cin >> s;
-//             rep(i, w)
-//             {
-//                 arr[i][j] = s[j];
-//             }
-//         }
-//         for (i = 0; i < h; i++)
-//         {
-//             for (j = 0; j < w; j++)
-//             {
-//                 if (!visited[i][j])
-//                 {
-//                     if (isvalid(i, j))
-//                     {
-//                         dfs(i, j);
-//                         ans = max(ans, currdep);
-//                     }
-//                 }
-//             }
-//         }
+//         ll a, b;
+//         cin >> a >> b;
+//         arr[a].pb(b);
+//         arr[b].pb(a);
 //     }
-// }
+//     dist.resize(n + 1);
+//     dist[1] = 1;
+//     dfs(1, 0);
+//     ll sum = 0;
 
+//     for (i = 1; i <= n; i++)
+//         sum += dist[i];
+//     cout << sum << endl;
+// }
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
@@ -141,33 +110,42 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-// vector<vector<ll>> arr(27);
+vector<ll> dist;
 vector<vector<ll>> arr;
-vector<vector<bool>> visited;
-int main()
+ll dfs(ll x, ll parent)
 {
-    ll h, w;
-    cin >> h >> w;
-    ll i;
-    ll j;
-    arr.resize(h);
-    visited.resize(h);
-    for (i = 0; i < h; i++)
+    dist[x] = dist[parent] + 1;
+    for (int i = 0; i < arr[x].size(); i++)
     {
-        arr[i].resize(w);
-        visited[i].resize(w);
-    }
-
-    for (i = 0; i < h; i++)
-    {
-        for (j = 0; j < w; j++)
+        if (arr[x][i] != parent)
         {
-            char c;
-            cin >> c;
-            arr[i][j] = (c - 64);
+            dfs(arr[x][i],x);
         }
     }
-    ll x[] = {0, 1, 1, -1, 0, -1, -1, -1};
-    ll y[] = {1, 1, 0, -1, -1, -1, 0, 1};
-    for
+    return 0;
+}
+int main()
+{
+    ll n;
+    cin >> n;
+
+    ll i;
+    // ll distance[n+1];
+    arr.resize(n + 1);
+    dist.resize(n + 1);
+    dist[1] = 1;
+    rep(i, n - 1)
+    {
+        ll a, b;
+        cin >> a >> b;
+        arr[a].pb(b);
+        arr[b].pb(a);
+    }
+    dfs(1, 0);
+    ll ans =0;
+    rep(i, n)
+    {
+        ans+=dist[i+1];
+    }
+    cout << ans << endl;
 }
