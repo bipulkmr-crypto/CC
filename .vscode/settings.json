@@ -45,6 +45,10 @@
         "algorithm": "c",
         "scoped_allocator": "c",
         "utility": "c",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "cwchar": "cpp",
+        "exception": "cpp",
+        "new": "cpp",
+        "stdexcept": "cpp"
     }
 }
