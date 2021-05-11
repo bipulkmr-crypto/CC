@@ -32,62 +32,42 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-vector<vector<int>> arr;
-vector<bool> visited;
-ll a = 0;
-void dfs(int x)
-{
-    visited[x] = true;
-    a++;
-    for (int i = 0; i < arr[x].size(); i++)
-    {
-        if (!visited[arr[x][i]])
-        {
-            dfs(arr[x][i]);
-        }
-    }
-}
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    ll n;
+    cin >> n;
+    ll arr[n+1];
+    ll i;
+    rep(i, n) cin >> arr[i+1];
+    ll pre[n+1];
+    ll suff[n+1];
+    ll g = __gcd(arr[2], arr[1]);
+    pre[1] = arr[1];
+    pre[2] = g;
+    for (i = 2; i <= n; i++)
     {
-        int n, m;
-        cin >> n >> m;
-        arr.resize(n + 1);
-        int i;
-        visited.resize(n + 1);
-        rep(i, m)
-        {
-            int a, b;
-            cin >> a >> b;
-            arr[a].pb(b);
-            arr[b].pb(a);
-        }
-        int ans = 0;
-        ll pro = 1;
-        vector<int> size;
-        for (i = 1; i <= n; i++)
-        {
-            if (!visited[i])
-            {
-                ans++;
-                a = 0;
-                dfs(i);
-                pro *= a;
-                pro %= mod;
-            }
-        }
-        // ll pro = 1;
-        // for (i=0;i<size.size();i++)
-        // {
-        //     pro *= size[i];
-        //     pro %= mod;
-        // }
-        cout << ans << " " << pro << endl;
-        arr.clear();
-        visited.clear();
-        size.clear();
+        pre[i] = __gcd(pre[i - 1], arr[i]);
     }
+    suff[n] = arr[n];
+    for (i = n - 1; i > 0; i--)
+    {
+        suff[i] = __gcd(suff[i + 1], arr[i]);
+    }
+    ll ans;
+    // ll d[n];
+    for(i=0;i<n;i++)
+    {
+        if(i==0)
+        ans=suff[2];
+        else if(i==n-1)
+        {
+            ans=ans*pre[n-1]/__gcd(pre[n-1],ans);
+        }
+        else
+        {
+            ans=ans*__gcd(pre[i],suff[i+2])/__gcd(__gcd(pre[i],suff[i+2]),ans);
+        }
+        
+    }
+    cout<<ans<<endl;
 }
