@@ -24,7 +24,8 @@ typedef long long int ll;
 #define present(s, x) (s.find(x) != s.end())
 #define cpresent(s, x) (find(all(s), x) != s.end())
 #define ford(container, it) for (auto it = container.begin(); it != container.end(); it++)
-#define fors(container, it, a, b) for (auto it = a; it != b; it++)
+#define fors(container, it, a, b) for (auto it = a; it != b; it++)#"
+
 #define ff first
 #define all(v) v.begin(), v.end()
 #define ss second
