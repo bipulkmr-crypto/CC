@@ -34,33 +34,46 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 int main()
 {
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
-        ll n;
-        cin>>n;
-        string s;
-        cin >> s;
-        ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
+        int n;
+        cin >> n;
+        int sz = n + 2;
+        vll arr(sz);
+        int i;
+        rep(i, sz) cin >> arr[i];
+        sort(all(arr));
+        ll sum = accumulate(all(arr), 0);
+        vll fx(sz);
+        rep(i, sz - 1)
         {
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if (s[i] == s[j])
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
-                break;
+            fx[i] = sum - (arr[i] + arr[i + 1]);
         }
-        if (flag == true)
-j        else
-            cout << "NO\n";
+        fx[sz - 1] = sum - (arr[0] + arr[sz - 1]);
+        bool flag = false;
+        int pos = -1;
+        rep(i, sz)
+        {
+            if (binary_search(all(arr), fx))
+            {
+                flag = true;
+                pos = find(all(arr), fx[i]) - arr.begin();
+                break;
+            }
+        }
+        if (!flag)
+        {
+            cout << -1 << endl;
+        }
+        else
+        {
+            rep(i, sz)
+            {
+                if (pos != i || pos != (i + 1))
+                    cout << arr[i] << endl;
+            }
+        }
     }
+}

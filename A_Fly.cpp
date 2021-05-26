@@ -32,35 +32,55 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
+int n;
+int m;
+vll a;
+vll b;
+bool good(double x)
+{
+    int i;
+    rep(i, n)
+    {
+        double val = x + m;
+        double p = val / (double(a[i]));
+        x -= p;
+        val = (x + m);
+        p = val / (double(b[i]));
+        x -= p;
+        if (x < 0)
+            return false;
+    }
+    return true;
+}
 int main()
 {
-    ll t;
-    cin >> t;
-    while (t--)
+    cin >> n >> m;
+    a.resize(n);
+    b.resize(n);
+    int i;
+    rep(i, n) cin >> a[i];
+    rep(i, n) cin >> b[i];
+    double low = 0.0, eps = 1e-6, high = 1e13;
+    double mid;
+    while (high - low > eps)
     {
-        ll n;
-        cin>>n;
-        string s;
-        cin >> s;
-        ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
+        mid = (high + low) * 0.50;
+        if (good(mid))
         {
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if (s[i] == s[j])
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
-                break;
+            high = mid;
         }
-        if (flag == true)
-j        else
-            cout << "NO\n";
+        else
+        {
+            low = mid;
+        }
     }
+    if (high == (1e13))
+    {
+        cout << -1 << endl;
+        return 0;
+    }
+    if (good(low))
+        cout << setprecision(10) << fixed << low << endl;
+    else
+        cout << setprecision(10) << fixed << high << endl;
+}

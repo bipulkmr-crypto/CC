@@ -34,33 +34,51 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 int main()
 {
-    ll t;
-    cin >> t;
-    while (t--)
+    string s;
+    cin >> s;
+    int n = s.length();
+    int i;
+    char pre = 'a';
+    int pos = -1;
+    rep(i, n)
     {
-        ll n;
-        cin>>n;
-        string s;
-        cin >> s;
-        ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
+        if (s[i] == 'a')
         {
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if (s[i] == s[j])
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
-                break;
+            pos = i;
+            break;
         }
-        if (flag == true)
-j        else
-            cout << "NO\n";
     }
+    if (pos + 26 > n)
+    {
+        cout << -1 << endl;
+        return 0;
+    }
+    while (pos < n)
+    {
+        if (s[pos] <= pre&&pre<='z')
+        {
+            s[pos] = pre;
+            pre = char(pre + 1);
+        }
+        pos++;
+    }
+    string check = "abcdefghijklmnopqrstuvwxyz";
+    int j = 0;
+    i = 0;
+    while (i < n && j < 26)
+    {
+        if (s[i] == check[j])
+        {
+            i++;
+            j++;
+        }
+        else
+            i++;
+    }
+    if (j < 26)
+    {
+        cout << -1 << endl;
+        return 0;
+    }
+    cout << s << endl;
+}

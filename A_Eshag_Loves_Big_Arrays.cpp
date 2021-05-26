@@ -34,33 +34,33 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 int main()
 {
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
         ll n;
-        cin>>n;
-        string s;
-        cin >> s;
+        cin >> n;
+        ll arr[n];
         ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
-        {
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if (s[i] == s[j])
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
-                break;
-        }
-        if (flag == true)
-j        else
-            cout << "NO\n";
+        mll m;
+        ll mini=LLONG_MAX;
+        rep(i, n){
+            cin >> arr[i];
+            m[arr[i]]++;
+            mini=min(mini,arr[i]);
+        } 
+        sort(arr, arr + n);
+        
+        ll sum = accumulate(arr, arr + n, 0);
+        ll avg = sum / n;
+        ll pos = 0;
+        // rep(i, n)
+        // {
+        //     if (arr[i] > avg)
+        //     {
+        //         break;
+        //     }
+        // // }
+        cout << (n - m[mini]) << endl;
     }
+}

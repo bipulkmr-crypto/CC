@@ -34,33 +34,56 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 int main()
 {
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
-        ll n;
-        cin>>n;
-        string s;
-        cin >> s;
-        ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
-        {
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if (s[i] == s[j])
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
-                break;
-        }
-        if (flag == true)
-j        else
-            cout << "NO\n";
+        // int n;
+        // cin >> n;
+        // ll arr[n];
+        // int i;
+        // mll m;
+        // rep(i, n)
+        // {
+        //     cin >> arr[i];
+        //     m[arr[i]]++;
+        // }
+        // if (m[1] == 1)
+        // {
+        //     cout << 0 << endl;
+        //     continue;
+        // }
+        // int ans = 0;
+        // int a1 = 0, a2 = n - 1;
+        // for (i = 0; i < n-1; i++)
+        // {
+        //     if (arr[i] == 1)
+        //     {
+        //         a1 = i;
+        //     }
+        // }
+        // reverse(arr, arr + n);
+        // // fd(i, n - 1, 0)
+        // rep(i, n-1)
+        // {
+        //     if (arr[i] == 1)
+        //     {
+        //         a2 = i;
+        //         // break;
+        //     }
+        // }
+        // ans = abs(a2 - a1);
+        // cout << ans << endl;
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        for (auto &it : a)
+            cin >> it;
+        while (a.back() == 0)
+            a.pop_back();
+        reverse(a.begin(), a.end());
+        while (a.back() == 0)
+            a.pop_back();
+        cout << count(a.begin(), a.end(), 0) << endl;
     }
+}

@@ -32,35 +32,70 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
+const int M = 1e6 + 3;
+int pr[M];
+vector<int> primes;
+//sieve of erathoses
+void pre()
+{
+    int i;
+    rep(i,M)
+    pr[i]=1;
+    pr[1] = 0, pr[0] = 0;
+    for (i = 2; i * i < M; i++)
+    {
+        if (pr[i])
+        {
+            for (int j = i * i; j < M; j += i)
+            {
+                pr[j] = 0;
+            }
+        }
+    }
+    for (i = 2; i < M; i++)
+    {
+        if (pr[i])
+            primes.pb(i);
+    }
+}
 int main()
 {
-    ll t;
+    int t;
+    pre();
     cin >> t;
-    while (t--)
+    int j;
+    fu(j, 1, t)
     {
-        ll n;
-        cin>>n;
-        string s;
-        cin >> s;
+        ll g;
         ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
+        ll k = 2;
+        cin >> g;
+        ll sum = 0;
+        ll ans = 1;
+        map<ll, ll> m;
+        for (auto x : primes)
         {
-            for (int j = i - 1; j >= 0; j--)
+            if (g % x == 0)
             {
-                if (s[i] == s[j])
+                while (g % x == 0)
                 {
-                    flag = false;
-                    break;
+                    g /= x;
+                    m[x]++;
                 }
             }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
+            if(g<x)
+            {
                 break;
+            }
         }
-        if (flag == true)
-j        else
-            cout << "NO\n";
+        auto it = m.begin();
+        for (; it != m.end(); it++)
+        {
+            if (it->first != 2)
+                ans *= (it->second + 1);
+        }
+        // ans-=1;
+        // ans*=2;
+        cout << "Case #" << j << ": " << ans << endl;
     }
+}

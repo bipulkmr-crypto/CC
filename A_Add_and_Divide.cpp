@@ -38,29 +38,39 @@ int main()
     cin >> t;
     while (t--)
     {
-        ll n;
-        cin>>n;
-        string s;
-        cin >> s;
-        ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
+        ll a, b;
+        cin >> a >> b;
+        int ans = INT_MAX;
+        int i;
+        if (b >= a)
         {
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if (s[i] == s[j])
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
-                break;
+            ans = (a / b) + 1;
+            cout << ans << endl;
+            continue;
         }
-        if (flag == true)
-j        else
-            cout << "NO\n";
+
+        ll p = a;
+        if (b != 1)
+        {
+            ans = 0;
+            while (p > 0)
+            {
+                p /= (b);
+                ans++;
+            }
+        }
+        fu(i, 1, 30)
+        {
+            int val = i;
+            int temp = a;
+            while (temp > 0)
+            {
+                temp /= (b + i);
+                val++;
+            }
+            ans = min(ans, val);
+        }
+
+        cout << ans << endl;
     }
+}

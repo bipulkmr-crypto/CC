@@ -36,31 +36,37 @@ int main()
 {
     ll t;
     cin >> t;
-    while (t--)
+    ll p;
+    fu(p, 1, t)
     {
-        ll n;
-        cin>>n;
+        int n, k;
+        cin >> n >> k;
         string s;
         cin >> s;
+        ll pre[n / 2];
         ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
+        if (n == 1)
         {
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if (s[i] == s[j])
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
-                break;
+            cout << "Case #" << p << ": " << (s[0] - 'a') << endl;
+            continue;
         }
-        if (flag == true)
-j        else
-            cout << "NO\n";
+        ll ans = 0;
+        rep(i, n / 2)
+        {
+            ll val = (min(s[i], s[n - i - 1]) - 'a');
+            if (s[i] != 'a')
+            {
+                val *= k;
+                val %= mod;
+                val *= ((n / 2) - 1);
+                val %= mod;
+                ans += val;
+                if(n%2==1)
+                ans+=(k*val);
+                ans += (min(s[i + 1], s[n - 2 - i]) - 'a');
+                ans %= mod;
+            }
+        }
+        cout << "Case #" << p << ": " << ans << endl;
     }
+}

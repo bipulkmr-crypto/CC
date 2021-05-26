@@ -32,35 +32,50 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
+vector<vector<int>> arr;
+vector<bool> visited;
+vector<pair<int, int>> w;
+vector<ll> dp;
+ll solve(ll x)
+{
+    if (dp[x] != -1)
+        return dp[x];
+    visited[x] = true;
+    ll ans = 0;
+    for (auto v : arr[x])
+    {
+        if (!visited[v])
+            ll ans + = max({abs(w[x].ff - w[v].ff) + solve(v), abs(w[x].ff - w[v].ss) + solve(v), abs(w[x].ss - w[v].ff) + solve(v), abs(w[x].ss - w[v].ss) + solve(v)});
+        dp[x] = ans;
+    }
+}
 int main()
 {
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
-        ll n;
-        cin>>n;
-        string s;
-        cin >> s;
-        ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
+        int i;
+        int n;
+        cin >> n;
+        arr.resize(n + 1);
+        w.resize(n + 1);
+        visited.resize(n + 1);
+        dp.resize(n + 1, -1);
+        int j;
+        rep(i, n)
         {
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if (s[i] == s[j])
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
-                break;
+            int a, b;
+            cin >> a >> b;
+            w[i] = {a, b};
         }
-        if (flag == true)
-j        else
-            cout << "NO\n";
+        rep(i, n - 1)
+        {
+            int a, b;
+            cin >> a >> b;
+            w[a].push_back(b);
+            w[b].pb(a);
+        }
+        ll sum = solve(1);
     }
+}

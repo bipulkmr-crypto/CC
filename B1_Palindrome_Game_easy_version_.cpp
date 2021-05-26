@@ -34,33 +34,24 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 int main()
 {
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
-        ll n;
-        cin>>n;
+        int n;
         string s;
-        cin >> s;
+        cin >> n >> s;
+        int cnt = 0;
         ll i;
-        bool flag = true;
-        for (i = 0; i < n;)
+        rep(i, n) if (s[i] == '0') cnt++;
+        if (cnt % 2 == 0)
+            cout << "BOB\n";
+        else
         {
-            for (int j = i - 1; j >= 0; j--)
-            {
-                if (s[i] == s[j])
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            char ch = s[i];
-            while (ch == s[i])
-                i++;
-            if (flag == false)
-                break;
+            if (cnt == 1)
+                cout << "BOB\n";
+            else
+                cout << "ALICE\n";
         }
-        if (flag == true)
-j        else
-            cout << "NO\n";
     }
+}
