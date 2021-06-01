@@ -35,27 +35,24 @@ typedef long long int ll;
 int n, m;
 vector<vector<int>> arr;
 vector<bool> visited;
-bool dfs(int x)
+void dfs(int x, ll &cnt1, ll &cnt2)
 {
+    if(visited[x])
+    return;
     visited[x] = true;
     int i;
+    cnt1++;
+    cnt2 += arr[x].size();
     for (i = 0; i < arr[x].size(); i++)
     {
 
-        if (visited[arr[x][i]])
-        {
-            return true;
-        }
-        else
-        {
-            dfs(arr[x][i]);
-        }
+        if (!visited[arr[x][i]])
+            dfs(arr[x][i], cnt1, cnt2);
     }
-    // visited[x] = false;
-    return false;
 }
 int main()
 {
+    fast
     cin >> n >> m;
     arr.resize(n + 1);
     visited.resize(n + 1, false);
@@ -65,17 +62,23 @@ int main()
         int a, b;
         cin >> a >> b;
         arr[a].pb(b);
-        // arr[b].pb(a);
+        arr[b].pb(a);
     }
     for (i = 1; i <= n; i++)
     {
-        if (dfs(i))
+        ll cnt1 = 0, cnt2 = 0;
+        if (!visited[i])
         {
-            cout << "YES";
-            exit(0);
+            dfs(i, cnt1, cnt2);
+
+            if (cnt2 != (ll)(cnt1 * (cnt1 - 1)))
+            {
+                cout << "NO\n";
+                exit(0);
+            }
         }
-        visited[i] = false;
+
+        // visited[i] = false;
     }
-    cout << "NO";
-    exit(0);
+    cout << "YES\n";
 }

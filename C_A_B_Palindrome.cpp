@@ -49,20 +49,89 @@ int main()
         int n = s.length();
         rep(i, n)
         {
-            if(s[i]!='?')
-            m[s[i] - '0']--;
+            if (s[i] != '?')
+                m[s[i] - '0']--;
         }
-        if(m[0]%2==1&&m[1]%2==1)
+        if (m[0] < 0 || m[1] < 0)
         {
-            cout<<(-1)<<endl;
+            cout << -1 << endl;
             continue;
         }
-        fu(i,0,n/2-1)
+        // if (m[0] % 2 == 1 && m[1] % 2 == 1)
+        // {
+        //     cout << (-1) << endl;
+        //     continue;
+        // }
+        fu(i, 0, n / 2 - 1)
         {
-            if(s[i]=='?')
+            if (s[i] == '?')
             {
-                
+                if (s[n - i - 1] == '?')
+                {
+                    if (m[0] > 0)
+                    {
+                        s[i] = '0';
+                        s[n - i - 1] = '0';
+                        m[0] -= 2;
+                    }
+                    else
+                    {
+                        s[i] = '1';
+                        s[n - i - 1] = '1';
+                        m[1] -= 2;
+                    }
+                }
+                else
+                {
+                    s[i] = s[n - i - 1];
+                    m[s[n - i - 1] - '0'] -= 1;
+                }
             }
         }
+        if (n % 2 == 1)
+        {
+            fu(i, n / 2 + 1, n - 1)
+            {
+                if (s[i] == '?')
+                {
+
+                    s[i] = s[i - n / 2 - 1];
+                    m[s[i - n / 2 - 1] - '0']--;
+                }
+            }
+        }
+        else
+        {
+            fu(i, n / 2, n - 1)
+            {
+                if (s[i] == '?')
+                {
+                    s[i] = s[i - n / 2 + 1];
+                    m[s[i - n / 2] - '0']--;
+                }
+            }
+        }
+
+        if (n % 2 == 1)
+        {
+            if (m[0] > 0)
+                s[n / 2] = '0';
+            else
+            {
+                s[n / 2] = '1';
+            }
+        }
+        bool flag = true;
+        for (i = 0; i < n / 2; i++)
+        {
+            if (s[i] != s[n - i - 1])
+            {
+                cout << "-1" << endl;
+                flag = false;
+                break;
+            }
+        }
+        if (flag)
+            cout << s << endl;
     }
 }
