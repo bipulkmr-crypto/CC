@@ -35,27 +35,27 @@ typedef long long int ll;
 int arr[2001][2001];
 vector<vector<bool>> marked;
 int n, m;
-void dfs(int i, int j, int x, int y)
-{
-    if (i < 0 || i >= n || j < 0 || j >= m)
-        return;
-    else if (arr[i][j] == int('*'))
-        return;
-    else
-    {
-        marked[i][j] = true;
-        if (x > 0)
-        {
-            dfs(i - 1, j, x - 1, y);
-        }
-        if (y > 0)
-            dfs(i + 1, j, x, y - 1);
-        if (!marked[i][j + 1])
-            dfs(i, j + 1, x, y);
-        if (!marked[i][j - 1])
-            dfs(i, j - 1, x, y);
-    }
-}
+// void dfs(int i, int j, int x, int y)
+// {
+//     if (i < 0 || i >= n || j < 0 || j >= m)
+//         return;
+//     else if (arr[i][j] == int('*'))
+//         return;
+//     else
+//     {
+//         marked[i][j] = true;
+//         if (x > 0)
+//         {
+//             dfs(i - 1, j, x - 1, y);
+//         }
+//         if (y > 0)
+//             dfs(i + 1, j, x, y - 1);
+//         if (!marked[i][j + 1])
+//             dfs(i, j + 1, x, y);
+//         if (!marked[i][j - 1])
+//             dfs(i, j - 1, x, y);
+//     }
+// }
 int main()
 {
 
@@ -71,10 +71,16 @@ int main()
     }
     r--, c--;
     marked.resize(n, vector<bool>(m, false));
+    queue<pair<int, int>>q; q.push({r, c});
+    while (!q.empty())
+    {
+        auto x = q.front();
+
+    }
     int ans = 0;
     dfs(r, c, x, y);
     rep(i, n)
-        rep(j, m) if (marked[i][j])
-            ans++;
+    rep(j, m) if (marked[i][j])
+        ans++;
     cout << ans << endl;
 }

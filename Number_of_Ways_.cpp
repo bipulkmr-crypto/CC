@@ -31,6 +31,7 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
+#define Fo(i,a,n) for(i=a;i<=n;i++)
 int mpow(int base, int exp) {
     int result = 1;
     while (exp > 0) {
@@ -40,36 +41,35 @@ int mpow(int base, int exp) {
     }
     return result;
 }
-
-namespace NcR {
-int fact[200005], ifact[200005];
-int get(int n, int r) {
-    if (n < r || r < 0 || n < 0) return 0;
-    return (((fact[n] * 1LL * ifact[r]) % mod) * 1LL * ifact[n - r]) % mod;
-}
-
-void init() {
-    fact[0] = 1;
-    for (int i = 1; i <= 200000; i++) {
-        fact[i] = (fact[i - 1] * 1LL * i) % mod;
-    }
-
-    ifact[200000] = mpow(fact[200000], mod - 2);
-    for (int i = 199999; i >= 0; i--) {
-        ifact[i] = (ifact[i + 1] * 1LL * (i + 1)) % mod;
+const int N = 1e6 + 1;
+ll fac[N], inv[N], b[N];
+void pre() {
+    int i;
+    fac[0] = inv[0] = 1;
+    fac[1] = inv[1] = 1;
+    Fo(i, 2, N) {
+        fac[i] = (i * fac[i - 1]) % mod;
+        inv[i] = (mpow(i, mod - 2) * inv[i - 1]) % mod;
     }
 }
-};
-
+ll C(int n, int r) {
+    if (r > n)return 0;
+    ll ans = fac[n];
+    ans *= inv[r];
+    ans %= mod;
+    ans *= inv[n - r];
+    ans %= mod;
+    return ans;
+}
 int main() {
 
-    NcR::init();
+    pre();
     // cout << NcR::get(4, 2) << endl;
     int t;
     cin >> t; while (t--)
     {
-        int n, k; cin >> n >> k;
-        ll ans = NcR::get(n + k + 1, k + 2);
+        ll n, k; cin >> n >> k;
+        ll ans = C(n + k + 1, k + 2);
         ans %= mod;
         ans = (2 * ans - n + mod) % mod;
         // ans = (ans % mod) * (n % mod);
