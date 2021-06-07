@@ -32,7 +32,24 @@ typedef long long int ll;
 #define gi(n) scanf(%d,&n)
 void still_single()
 {
-    
+    int arr[3];
+    int i;
+    rep(i,3)cin>>arr[i];
+    sort(arr,arr+3);
+    if(arr[0]==arr[2]&&arr[2]==arr[1])
+    {
+        cout<<"YES\n";
+        cout<<arr[0]<<' '<<arr[1]<<' '<<arr[2]<<endl;
+    }
+    else if(arr[0]==arr[1]||arr[2]!=arr[1])
+    {
+        cout<<"NO"<<endl;
+    }   
+    else
+    {
+        cout<<"YES\n";
+        cout<<arr[0]<<" "<<arr[0]<<" "<<arr[2]<<endl;
+    }
 }
 int main()
 {

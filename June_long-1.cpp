@@ -30,17 +30,16 @@ typedef long long int ll;
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)
-void still_single()
-{
-    
-}
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        still_single();
-    }
-    return 0;
+	int t;
+	cin >> t;
+	while (t--)
+	{
+		int a, b, x1, y1;
+		cin >> a >> b >> x1 >> y1;
+		int ans = x1 / a + y1 / b;
+		cout << ans << endl;
+	}
+
 }

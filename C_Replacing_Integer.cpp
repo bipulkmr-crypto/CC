@@ -30,17 +30,11 @@ typedef long long int ll;
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)
-void still_single()
-{
-    
-}
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        still_single();
-    }
-    return 0;
+    ll n,k;
+    cin>>n>>k;
+    ll val=n%k;
+    val=min(val,abs(k-val));
+    cout<<val<<endl;
 }

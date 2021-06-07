@@ -30,17 +30,18 @@ typedef long long int ll;
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)
-void still_single()
-{
-    
-}
 int main()
 {
-    int t;
+    int t ;
     cin>>t;
     while(t--)
     {
-        still_single();
+        ll arr[4];
+        ll i;
+        rep(i,4)
+        cin>>arr[i];
+        sort(arr,arr+4);
+        ll ans=min(arr[0],arr[1])*min(arr[2],arr[3]);
+        cout<<ans<<endl;
     }
-    return 0;
 }

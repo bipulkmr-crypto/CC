@@ -30,8 +30,9 @@ typedef long long int ll;
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)
-void still_single()
+void stil_single()
 {
+    int a;
     
 }
 int main()

@@ -29,18 +29,17 @@ typedef long long int ll;
 #define rep(i,n) for(i=0;i<n;i++)
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
-#define gi(n) scanf(%d,&n)
-void still_single()
-{
-    
-}
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        still_single();
-    }
-    return 0;
+	int t;
+	cin >> t;
+	while (t--)
+	{
+		int D, d, P, q;
+		cin >> D >> d >> P >> q;
+		int val = D / d;
+		ll ans = P * D + ((val * (val - 1)) / 2) * q * d + ((val) * q) * (D - val * d );
+		cout << ans << endl;
+	}
+
 }

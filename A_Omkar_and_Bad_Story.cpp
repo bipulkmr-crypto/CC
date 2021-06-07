@@ -32,7 +32,31 @@ typedef long long int ll;
 #define gi(n) scanf(%d,&n)
 void still_single()
 {
-    
+    int n;
+    cin>>n;
+    vll arr(n);
+    int i;
+    bool flag=true;
+    rep(i,n)cin>>arr[i];
+    int j;
+    rep(i,n)
+    {
+        if(arr[i]<0)
+        {
+            flag=false;
+            break;
+        }
+    }
+    if(!flag)
+    {
+        cout<<"NO"<<endl;
+        return;
+    }
+    cout<<"YES\n";
+    cout<<101<<endl;
+    fu(i,0,100)cout<<i<<' ';
+    cout<<endl;
+
 }
 int main()
 {

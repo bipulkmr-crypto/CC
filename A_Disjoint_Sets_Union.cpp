@@ -30,17 +30,66 @@ typedef long long int ll;
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)
-void still_single()
+using namespace std;
+const int MAX_N = 100001;
+int parent[MAX_N];
+int size[MAX_N] = {1};
+int maxi[MAX_N] = {INT_MIN};
+int mini[MAX_N] = {INT_MAX};
+void make_set(int v)
 {
-    
+	parent[v] = v;
+	maxi[v] = v; mini[v] = v;
+	size[v] = 1;
 }
-int main()
+int find_set(int v)
 {
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        still_single();
-    }
-    return 0;
+	if (v == parent[v])
+		return v;
+	return parent[v] = find_set(parent[v]);
+}
+void union_sets(int a, int b)
+{
+	a = find_set(a);
+	b = find_set(b);
+	if (a != b)
+	{
+		if (size[a] < size[b])
+		{
+			swap(a, b);
+		}
+		parent[b] = a;
+		maxi[a] = max(maxi[a], maxi[b]);
+		mini[a] = min(mini[a], mini[b]);
+		size[a] += size[b];
+	}
+}
+int  main()
+{
+	memset(parent, -1, sizeof(parent));
+	int n, q;
+	cin >> n >> q;
+	int i;
+	for (i = 1; i <= n; i++)
+	{
+		make_set(i);
+	}
+	while (q--)
+	{
+		string s; int a, b;
+		cin >> s;
+		if (s == "union")
+		{
+			cin >> a >> b;
+			union_sets(a, b);
+		}
+		else
+		{
+			cin >> a;
+			if (find_set(a))
+			{
+				cout << mini[a] << ' ' << maxi[a] << ' ' << size[a] << endl;
+			}
+		}
+	}
 }

@@ -30,14 +30,36 @@ typedef long long int ll;
 #define fu(i,a,n) for(i=a;i<=n;i++)
 #define fd(i,n,a) for(i=n;i>=a;i--)
 #define gi(n) scanf(%d,&n)
+vector<vector<int>> arr;
+vector<bool>visited;
 void still_single()
 {
-    
+    int n,m;
+    mll m1,m2;
+    int i;
+    cin>>n>>m;
+    // fu(i,1,n)m1[i]=1;
+    rep(i,m)
+    {
+        int a,b;cin>>a>>b;
+        m1[a]=1;
+        m2[b]=1;
+    }
+    ll ans;
+    if(m2.size()!=0)
+    ans=m1.size()*m2.size();
+    else ans=n;
+    ford(m2,it)
+    {
+        m1.erase(it->first);
+    }
+    ans+=m1.size();
+    cout<<ans<<endl;
 }
 int main()
 {
-    int t;
-    cin>>t;
+    int t=1;
+    // cin>>t;
     while(t--)
     {
         still_single();

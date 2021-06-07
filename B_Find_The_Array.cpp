@@ -32,7 +32,37 @@ typedef long long int ll;
 #define gi(n) scanf(%d,&n)
 void still_single()
 {
-    
+    int n;
+    cin>>n;
+    vll arr(n);
+    int i;
+    rep(i,n)cin>>arr[i];
+    ll sum=0,s=0;
+    rep(i,n)s+=arr[i];
+    // s=s/n;
+    string s1="",s3="";
+    rep(i,n)
+    {
+        if(i%2==0){
+            sum+=abs(arr[i]-1);
+            s1+="1 ";
+        }
+        else s1+=to_string(arr[i])+' ';
+    }
+    if(2*sum<s)
+    cout<<s1<<endl;
+    else 
+    {
+        rep(i,n)
+        {
+            if(i%2==1)
+            cout<<1<<' ';
+            else 
+            cout<<arr[i]<<' ';
+        }
+    }
+
+    // cout<<endl;
 }
 int main()
 {

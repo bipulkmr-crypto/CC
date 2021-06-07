@@ -32,7 +32,25 @@ typedef long long int ll;
 #define gi(n) scanf(%d,&n)
 void still_single()
 {
-    
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    char c[100]={'a'};
+    int pos=0;
+    while(true)
+    {
+        int i;
+        string cmp="";
+        rep(i,pos+1)
+        cmp+=c[i];
+        map<string,int>m;
+        rep(i,n)
+        {
+            m[s[i]]+=1;
+        }
+
+    }
 }
 int main()
 {

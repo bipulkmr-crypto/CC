@@ -1,9 +1,7 @@
 #include <iostream>
 #define V 8
 #define I 32767
-
 using namespace std;
-
 void PrintMST(int T[][V - 2], int G[V][V]) {
     cout << "\nMinimum Spanning Tree Edges (w/ cost)\n" << endl;
     int sum {0};

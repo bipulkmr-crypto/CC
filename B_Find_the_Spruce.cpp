@@ -32,7 +32,25 @@ typedef long long int ll;
 #define gi(n) scanf(%d,&n)
 void still_single()
 {
-    
+    int n,m;
+    cin>>n>>m;
+    char arr[n][m];
+    int i,j;
+    rep(i,n)rep(j,m)cin>>arr[i][j];
+    ll cnt=0;
+    rep(i,n)
+    {
+        rep(j,m)
+        {
+            if(arr[i][j]=='*')
+            {
+                cnt++;
+                int k=1;
+                int lx=i,ly=j;
+                for(k=)
+            }
+        }
+    }   
 }
 int main()
 {
