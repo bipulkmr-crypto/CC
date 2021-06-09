@@ -6,14 +6,6 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << j << ': ' << x << endl;
-#define mod9 1000000009
-#define mod7 1000000007
-#define INF 1e18
-#define sp(y) fixed << setprecision(y)
-#define vi vector<int>
-#define setbits(x) __builtin_popcountll(x)
-#define zerobits(x) __builtin_ctzll(x)
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
@@ -42,6 +34,13 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    ll D,d,P,Q;
+    cin>>D>>d>>P>>Q;
+    ll ans=P*D;
+    ll val=D/d-1;
+    ans+=((val*(val+1))/2)*d*Q;
+    ans+=((D%d)*(val+1)*Q);
+    cout<<ans<<endl;
 }
 /*Don't just sit and hope that God will solve this
   fucking do some	thing, try to observe or solve it a different way.
@@ -49,6 +48,7 @@ void still_single()
   If nothing works take a deep breath and start again*/
 int main()
 {
+    fast
     int t;
     cin >> t;
     while (t--)

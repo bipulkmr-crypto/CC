@@ -6,14 +6,6 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << j << ': ' << x << endl;
-#define mod9 1000000009
-#define mod7 1000000007
-#define INF 1e18
-#define sp(y) fixed << setprecision(y)
-#define vi vector<int>
-#define setbits(x) __builtin_popcountll(x)
-#define zerobits(x) __builtin_ctzll(x)
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
@@ -42,6 +34,33 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int arr[4], a, b;
+
+    int i;
+    rep(i, 4) cin >> arr[i];
+    cin >> a >> b;
+    sort(arr, arr + 4);
+    int cnt=0;
+    int mini=*min_element(arr,arr+4);
+
+    {
+        for(i=a;i<=min(b,mini-1);i++)
+        {
+            bool flag=true;
+            int k;
+            int p=i;
+            rep(k,4)
+            {
+                p%=arr[k];
+            }
+            if(p==i)
+            cnt++;
+        }
+        cout<<cnt<<endl;
+    }
+    // int p1,p2,p4,p3,a,b;
+    // cin>>p1>>p2>>p3>>p4>>a>>b;
+    // int mini=*min_element({p1,p2,p3,p4});
 }
 /*Don't just sit and hope that God will solve this
   fucking do some	thing, try to observe or solve it a different way.
@@ -49,8 +68,8 @@ void still_single()
   If nothing works take a deep breath and start again*/
 int main()
 {
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--)
     {
         still_single();

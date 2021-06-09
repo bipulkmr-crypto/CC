@@ -6,14 +6,6 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << j << ': ' << x << endl;
-#define mod9 1000000009
-#define mod7 1000000007
-#define INF 1e18
-#define sp(y) fixed << setprecision(y)
-#define vi vector<int>
-#define setbits(x) __builtin_popcountll(x)
-#define zerobits(x) __builtin_ctzll(x)
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
@@ -25,6 +17,14 @@ typedef long long int ll;
 #define vll vector<long long>
 #define vll vector<long long>
 #define mii map<int, int>
+#define print(x) cout << 'Case #' << j << ': ' << x << endl;
+#define mod9 1000000009
+#define mod7 1000000007
+#define INF 1e18
+#define sp(y) fixed << setprecision(y)
+#define vi vector<int>
+#define setbits(x) __builtin_popcountll(x)
+#define zerobits(x) __builtin_ctzll(x)
 #define mll map<long long, long long>
 #define lob lower_bound
 #define upb upper_bound
@@ -42,6 +42,39 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n, m;
+    cin >> n >> m;
+    double arr[n];
+    int i;
+    ll death[n];
+    rep(i, n)
+    {
+        cin >> arr[i];
+    }
+    rep(i, n)
+    {
+        cin >> death[i];
+    }
+    double tot = 0.0;
+    rep(i, n)
+    {
+        if (death[i] >= m)
+        {
+            tot += arr[i];
+        }
+    }
+    rep(i, n)
+    {
+        if (death[i] < m)
+        {
+            cout << "0.00000000" << endl;
+        }
+        else
+        {
+            double prob=arr[i]/tot;
+            cout<<sp(10)<<prob<<' ';
+        }
+    }
 }
 /*Don't just sit and hope that God will solve this
   fucking do some	thing, try to observe or solve it a different way.
@@ -49,8 +82,8 @@ void still_single()
   If nothing works take a deep breath and start again*/
 int main()
 {
-    int t;
-    cin >> t;
+    int t=1;
+    // cin >> t;
     while (t--)
     {
         still_single();

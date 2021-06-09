@@ -6,14 +6,6 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << j << ': ' << x << endl;
-#define mod9 1000000009
-#define mod7 1000000007
-#define INF 1e18
-#define sp(y) fixed << setprecision(y)
-#define vi vector<int>
-#define setbits(x) __builtin_popcountll(x)
-#define zerobits(x) __builtin_ctzll(x)
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
@@ -42,15 +34,62 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n;
+    string s;
+    cin >> n >> s;
+    int i, j;
+    int cnt=0;
+    multiset<char, greater<char>> ms;
+    rep(i, n)
+    {
+        if(s[i]!='a')
+        ms.insert(s[i]);
+    }
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            if (j > 0 && j < n - 1)
+            {
+                if (s[j] == *ms.begin())
+                {
+                    if (s[j] - s[j - 1] || s[j] - s[j + 1])
+                    {
+                        cnt++;
+                        s[j] = '#';
+                    }
+
+                    break;
+                }
+            }
+            else if(j==0&&s[j]==*ms.begin()&&(s[0]-s[1])==1)
+            {
+                cnt++;
+                s[0]='#';
+                break;
+            
+            }
+            else if(j==n-1&&s[j]==*ms.begin()&&(s[n-1]-s[n-2])==1)
+            {
+                s[n-1]='#';
+                cnt++;
+                break;
+            }
+        }
+        if(!ms.empty())
+        ms.erase(ms.begin());
+    }
+    // rep(i, n)
+    // {
+    //     if (s[i] != ' ')
+    //         cout << s[i];
+    // }
+    cout<<cnt<<endl;
 }
-/*Don't just sit and hope that God will solve this
-  fucking do some	thing, try to observe or solve it a different way.
-  Use that pen and paper.
-  If nothing works take a deep breath and start again*/
 int main()
 {
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--)
     {
         still_single();

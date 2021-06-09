@@ -32,41 +32,77 @@ typedef long long int ll;
 #define gi(n) scanf(%d,&n)
 void still_single()
 {
-    string alpha="abcdefghijklmnopqrstuvxyz";
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    int i,j,k;
-    for(i=1;i<=3;i++)
+    int mask,a,b;
+    cin>>mask>>a>>b;
+    ll ans=0;
+    if(a<b)
     {
-        string temp=alpha;
-        string p="";
-        for(j=0;j<26-i;j++)
+        swap(a,b);
+    }
+    ll cnt1=__builtin_popcount(a);
+    ll cnt2=__builtin_popcount(b);
+    if(cnt1<cnt2)
+    {
+        swap(cnt1,cnt2);
+    }
+    ll pos_excluded=abs(cnt1-cnt2);
+    int mas[mask]={0};
+    int i;
+    for(i=mask-1;i>=0;i--)
+    {
+        if(cnt1>0)
         {
-            p="";
-            for(k=j;k<j+i;k++)
-            {
-                p+=alpha[k];
-            }
-            bool flag=false;
-            rep(k,n-i)
-            {
-                string check=s.substr(k,i);
-                if(check==p)
-                {
-                    flag=true;
-                    break;
-                }
-            }
-            if(flag==false)
-            {
-                cout<<p<<endl;
-                return ;
-            }
+            mas[i]=1;
+            cnt1--;
+        }
+        else break;
+    }
+    for(i=0;i<mask;i++)
+    {
+        if(cnt2>0)
+        {
+            if(mas[i])
+            mas[i]=0;
+            else
+            mas[i]=1;
+            cnt2--;
+        }
+        else break;
+    }
+    int pos=-1;
+    for(i=mask-1;i>=0;i--)
+    {
+        if(mas[i]==0)
+        {
+            pos=i;
+            break;
         }
     }
+    int p=0;
+    for(i=pos-1;i>=0;i--)
+    {
+        if(mas[i]==1)
+        {
+            mas[i]=0;
+            p++;
+        }
+    }
+    for(i=pos;i>=0;i--)
+    {
+        if(p>0)
+        {
+            mas[i]=1;
+            p--;
+        }
+        else break;
+    }
 
+    for(i=0;i<mask;i++)
+    {
+        ans+=(1<<i)*mas[i];
+    }
+    
+    cout<<ans<<endl;
 }
 int main()
 {

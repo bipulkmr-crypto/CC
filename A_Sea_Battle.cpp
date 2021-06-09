@@ -32,46 +32,18 @@ typedef long long int ll;
 #define gi(n) scanf(%d,&n)
 void still_single()
 {
-    string alpha="abcdefghijklmnopqrstuvxyz";
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    int i,j,k;
-    for(i=1;i<=3;i++)
-    {
-        string temp=alpha;
-        string p="";
-        for(j=0;j<26-i;j++)
-        {
-            p="";
-            for(k=j;k<j+i;k++)
-            {
-                p+=alpha[k];
-            }
-            bool flag=false;
-            rep(k,n-i)
-            {
-                string check=s.substr(k,i);
-                if(check==p)
-                {
-                    flag=true;
-                    break;
-                }
-            }
-            if(flag==false)
-            {
-                cout<<p<<endl;
-                return ;
-            }
-        }
-    }
-
+    int x1,x2,y1,y2;
+    cin>>x1>>y1>>x2>>y2;
+    ll ans=0;
+    // ans=(max(x1,x2))*(min(y1,y2)+2);
+    ans=(y1+y2+2)*2+2*(max(x1,x2));
+    // ans*=2;
+    cout<<ans<<endl;
 }
 int main()
 {
-    int t;
-    cin>>t;
+    int t=1;
+    // cin>>t;
     while(t--)
     {
         still_single();

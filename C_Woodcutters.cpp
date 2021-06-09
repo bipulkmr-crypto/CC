@@ -32,46 +32,69 @@ typedef long long int ll;
 #define gi(n) scanf(%d,&n)
 void still_single()
 {
-    string alpha="abcdefghijklmnopqrstuvxyz";
     int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    int i,j,k;
-    for(i=1;i<=3;i++)
+    int cnt=1;
+    int i;
+    int lastx,preheight,curx,curhei;
+    cin>>lastx;
+    cin>>preheight;
+    bool fell=true;
+    for(i=1;i<n;i++)
     {
-        string temp=alpha;
-        string p="";
-        for(j=0;j<26-i;j++)
+        cin>>curx;
+        cin>>curhei;
+        if(!fell&&(lastx+preheight)<curx)
         {
-            p="";
-            for(k=j;k<j+i;k++)
+            cnt++;
+            if((curx-curhei)>(lastx+preheight))
             {
-                p+=alpha[k];
-            }
-            bool flag=false;
-            rep(k,n-i)
-            {
-                string check=s.substr(k,i);
-                if(check==p)
-                {
-                    flag=true;
-                    break;
-                }
-            }
-            if(flag==false)
-            {
-                cout<<p<<endl;
-                return ;
+                fell=true;
+                cnt++;
             }
         }
+        else if((curx-curhei)>(lastx+preheight)&&i<n-1)
+        {
+            cnt++;
+            fell=true;
+        }
+        else 
+        fell=false;
     }
-
+    cout<<cnt<<endl;
+    // cin>>n;
+    // int a[n],b[n];
+    // rep(i,n)
+    // {
+    //     cin>>a[i]>>b[i];
+    // }
+    // cnt=1;
+    // int marked[n]={0};
+    // for(i=1;i<n;i++)
+    // {
+    //     if((a[i]-a[i-1])>=b[i])
+    //     {
+    //         marked[i]=1;
+    //         cnt+=1;
+    //     }
+    //     else if((a[i+1]-a[i])>=b[i])
+    //     {
+    //         marked[i]=1;
+    //         i++;
+    //         cnt++;
+    //     }
+    // }
+    // marked[0]=1;
+    // ll ans=0;
+    // rep(i,n)
+    // {
+    //     if(marked[i])ans+=1;
+    // }
+    // cout<<ans<<endl;
 }
 int main()
 {
-    int t;
-    cin>>t;
+    int t=1;
+    // cin>>t;
     while(t--)
     {
         still_single();

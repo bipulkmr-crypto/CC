@@ -6,14 +6,6 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << j << ': ' << x << endl;
-#define mod9 1000000009
-#define mod7 1000000007
-#define INF 1e18
-#define sp(y) fixed << setprecision(y)
-#define vi vector<int>
-#define setbits(x) __builtin_popcountll(x)
-#define zerobits(x) __builtin_ctzll(x)
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
@@ -42,15 +34,60 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n;
+    cin >> n;
+    vll arr(n+1);
+    int i;
+    vll b(n+1);
+    fu(i,1, n) cin >> arr[i];
+    sort(all(arr));
+    int j;
+	j=1;int k=n;
+	fu(i,1,n)
+	{
+		if (i&1) b[j++]=arr[i]; else b[k--]=arr[i];
+	}
+    fu(i,1,n)
+	cout<<b[i]<<' ';
+	// return 0;
+   // if (n % 2)
+    // {
+    //     rep(i, n)
+    //     {
+    //         if (i % 2 == 0)
+    //         {
+    //             ans[i] = arr[i];
+    //         }
+    //     }
+    //     for (i = n - 1; i >= 0; i--)
+    //     {
+    //         if (i % 2 == 1)
+    //         {
+    //             ans[n - i - 1] = arr[i];
+    //         }
+    //     }
+    // }
+    // else
+    // {
+    //     rep(i,n)
+    //     {
+    //         if(i % 2==0)
+    //         ans[i]=arr[i];
+    //     }
+    //     for(i=n-1;i>=0;i--)
+    //     {
+    //         if(i%2==1)
+    //         ans[n-i]=arr[i];
+    //     }
+    // }
+    // for (auto x : ans)
+    //     cout << x << " ";
+    // cout << endl;
 }
-/*Don't just sit and hope that God will solve this
-  fucking do some	thing, try to observe or solve it a different way.
-  Use that pen and paper.
-  If nothing works take a deep breath and start again*/
 int main()
 {
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin>>t;
     while (t--)
     {
         still_single();

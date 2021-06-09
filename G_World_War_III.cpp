@@ -42,6 +42,16 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    ll a,b;
+    cin>>a>>b;
+    if(__gcd(a,b)!=a||((a*b)/__gcd(a,b))!=b)
+    {
+        cout<<-1<<endl;
+    }
+    else
+    {
+        cout<<(a)<<' '<<(b)<<endl;
+    }
 }
 /*Don't just sit and hope that God will solve this
   fucking do some	thing, try to observe or solve it a different way.
@@ -49,8 +59,8 @@ void still_single()
   If nothing works take a deep breath and start again*/
 int main()
 {
-    int t;
-    cin >> t;
+    int t=1;
+    // cin >> t;
     while (t--)
     {
         still_single();

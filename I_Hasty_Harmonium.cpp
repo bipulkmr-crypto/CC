@@ -42,15 +42,33 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    string s;
+    cin>>s;
+    int n=s.length();
+    int i,j;
+    string p;
+    vector<string> q;
+    for(i=0;i<n-1;i++)
+    {
+        p="";
+        for(int j=i;j<i+2;j++)
+        {
+            p+=s[j];
+        }
+        q.push_back(p);
+    }
+    sort(all(q));
+    cout<<q[0]<<endl;
 }
+
 /*Don't just sit and hope that God will solve this
   fucking do some	thing, try to observe or solve it a different way.
   Use that pen and paper.
   If nothing works take a deep breath and start again*/
 int main()
 {
-    int t;
-    cin >> t;
+    int t=1;
+    // cin >> t;
     while (t--)
     {
         still_single();

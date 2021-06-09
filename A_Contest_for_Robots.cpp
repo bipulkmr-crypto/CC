@@ -32,46 +32,44 @@ typedef long long int ll;
 #define gi(n) scanf(%d,&n)
 void still_single()
 {
-    string alpha="abcdefghijklmnopqrstuvxyz";
     int n;
     cin>>n;
-    string s;
-    cin>>s;
-    int i,j,k;
-    for(i=1;i<=3;i++)
+    int a[n];
+    int b[n];
+    int i;
+    rep(i,n)cin>>a[i];
+    rep(i,n)cin>>b[i];
+    int cnt1=0,cnt2=0;
+    rep(i,n)
     {
-        string temp=alpha;
-        string p="";
-        for(j=0;j<26-i;j++)
-        {
-            p="";
-            for(k=j;k<j+i;k++)
-            {
-                p+=alpha[k];
-            }
-            bool flag=false;
-            rep(k,n-i)
-            {
-                string check=s.substr(k,i);
-                if(check==p)
-                {
-                    flag=true;
-                    break;
-                }
-            }
-            if(flag==false)
-            {
-                cout<<p<<endl;
-                return ;
-            }
-        }
+        if(a[i]==1&&b[i]==0)cnt1++;
+        else if(a[i]==0&&b[i]==1)cnt2++;
     }
-
+    if(cnt1==0)
+    {
+        cout<<-1<<endl;
+    }
+    else if(cnt2<cnt1)
+    {
+        cout<<1<<endl;
+    }
+    else
+    {
+        int ans=0;
+         
+        if(cnt2%cnt1==0)
+        {
+            ans=cnt2/cnt1+1;
+        }
+        else
+        ans=ceil((double)cnt2/(double)cnt1);
+        cout<<ans<<endl;
+    }
 }
 int main()
 {
-    int t;
-    cin>>t;
+    int t=1;
+    // cin>>t;
     while(t--)
     {
         still_single();

@@ -40,8 +40,41 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
+long long binpow(long long a, long long b)
+{
+    a %= mod;
+    long long res = 1;
+    while (b > 0)
+    {
+        if (b & 1)
+            res = res * a % mod;
+        a = a * a % mod;
+        b >>= 1;
+    }
+    return res;
+}
+ll count_ones(ll a, ll b)
+{
+    ll div = (1 << b);
+    ll count = a / div;
+    return count;
+}
 void still_single()
 {
+    ll a, b, c, d;
+    cin >> a >> b >> c >> d;
+    ll ans = 0;
+    ll i, j;
+    rep(i, 32)
+    {
+        ll c1 = 0, c2 = 0, x1 = 0, x2 = 0;
+        c1 = count_ones(b, i) - count_ones(a - 1, i);
+        x1 = count_ones(d, i) - count_ones(c - 1, i);
+        c2 = (b - a + 1) - c1;
+        x2 = (d - c + 1) - x1;
+        ans += ((c1 * x2%mod + x1 * c1%mod)) * binpow(2, i);
+    }
+    cout << ans << endl;
 }
 /*Don't just sit and hope that God will solve this
   fucking do some	thing, try to observe or solve it a different way.

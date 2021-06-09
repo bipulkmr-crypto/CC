@@ -6,14 +6,6 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << j << ': ' << x << endl;
-#define mod9 1000000009
-#define mod7 1000000007
-#define INF 1e18
-#define sp(y) fixed << setprecision(y)
-#define vi vector<int>
-#define setbits(x) __builtin_popcountll(x)
-#define zerobits(x) __builtin_ctzll(x)
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
@@ -42,15 +34,36 @@ typedef long long int ll;
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n;
+    vector<pll>arr;
+    int i;
+    cin>>n;
+    arr.resize(n+1,{0,0});
+    fu(i,1,n)
+    {
+        ll a,b;
+        cin>>a>>b;
+        arr[i]={a,b};
+    }
+    ll cnt=0;
+    fu(i,1,n)
+    {
+        if(arr[i-1].ff==arr[i-1].ss)
+        {
+            cnt+=(min(arr[i].ff,arr[i].ss)-arr[i-1].ff);
+        }
+        else
+        {
+            cnt+=(max(0ll,1+min(arr[i].ff,arr[i].ss)-max(arr[i-1].ss,arr[i-1].ff)));
+        }
+    }
+    cout<<cnt+1<<endl;
+
 }
-/*Don't just sit and hope that God will solve this
-  fucking do some	thing, try to observe or solve it a different way.
-  Use that pen and paper.
-  If nothing works take a deep breath and start again*/
 int main()
 {
-    int t;
-    cin >> t;
+    int t=1;
+    // cin >> t;
     while (t--)
     {
         still_single();
