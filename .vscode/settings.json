@@ -49,6 +49,7 @@
         "cwchar": "cpp",
         "exception": "cpp",
         "new": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "span": "cpp"
     }
 }

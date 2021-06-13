@@ -56,8 +56,12 @@ long long binpow(long long a, long long b)
 ll count_ones(ll a, ll b)
 {
     ll div = (1 << b);
-    ll count = a / div;
-    return count;
+    // ll count = a / div;
+    if(div>a)
+    return 0;
+    int d=a-div+1;
+    ll ans=div*(d/(div*2))+min(div,(d%(2*div)));
+    return ans;
 }
 void still_single()
 {
@@ -65,7 +69,7 @@ void still_single()
     cin >> a >> b >> c >> d;
     ll ans = 0;
     ll i, j;
-    rep(i, 32)
+    for(i=30;i>=0;i--)
     {
         ll c1 = 0, c2 = 0, x1 = 0, x2 = 0;
         c1 = count_ones(b, i) - count_ones(a - 1, i);
@@ -73,6 +77,7 @@ void still_single()
         c2 = (b - a + 1) - c1;
         x2 = (d - c + 1) - x1;
         ans += ((c1 * x2%mod + x1 * c1%mod)) * binpow(2, i);
+        ans%=mod;
     }
     cout << ans << endl;
 }
