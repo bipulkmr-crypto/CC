@@ -40,18 +40,87 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
+// void still_single()
+// {
+//     ll n,q;
+//     cin>>n>>q;
+//     ll i;
+//     vll s;
+//     fu(i,1,1e6)
+//     {
+//         s.pb(i);
+//     }
+//     vll arr(n);
+//     int cnt=0;
+//     rep(i,n)
+//     {
+//         ll x;
+//         cin>>x;
+//         if(x<1e6)
+//         {
+//             cnt++;
+//             s.erase(find(all(s),x));
+//         }
+//     }
+//     rep(i,q)
+//     {
+//         ll pos;
+//         cin>>pos;
+//         if(pos>1e6)
+//         {
+//             ll eps=1e6;
+//             ll y=arr.end()-upper_bound(all(arr),eps);
+//             cout<<(pos-cnt-1-y)<<endl;
+//         }
+//         else
+//         {
+//             cout<<s[pos-1]<<endl;
+//         }
+//     }
+// }
 void still_single()
 {
+    ll n,q;
+    cin>>n>>q;
+    ll i;
+    vll arr(n);
+    rep(i,n)cin>>arr[i];
+    sort(all(arr));
+    while(q--)
+    {
+        ll x;
+        cin>>x;
+        ll low=0,high=n-1,mid;
+        while(high-low>1)
+        {
+            mid=low+(high-low)/2;
+            if((arr[mid]-arr[mid])>x)
+            {
+                high=mid;
+            }
+            else
+            {
+                low=mid;
+            }
+        }
+        if((arr[low]-low)>x)
+        {
+            cout<<low+x<<endl;
+        }
+        else
+        cout<<high+x<<endl;
+    }
 }
-/*Don't just sit and hope that God will solve this
+/*Do
+n't just sit and hope that God will solve this
   fucking do some	thing, try to observe or solve it a different way.
   Use that pen and paper.
   If nothing works take a deep breath and start again*/
 int main()
 {
     fast
-    int t;
-    cin >> t;
+    int t=1;
+    // cin >> t;
     while (t--)
     {
         still_single();
