@@ -40,92 +40,50 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-#define Fo(i, a, n) for (i = a; i < n; i++)
-long long binpow(long long a, long long b)
-{
-    a %= mod;
-    long long res = 1;
-    while (b > 0)
-    {
-        if (b & 1)
-            res = res * a % mod;
-        a = a * a % mod;
-        b >>= 1;
-    }
-    return res;
-}
-const int N = 2*(1e6 + 3);
-ll fac[N], inv[N], b[N];
-void pre()
-{
-    int i;
-    fac[0] = inv[0] = 1;
-    fac[1] = inv[1] = 1;
-    Fo(i, 2, N)
-    {
-        fac[i] = (i * fac[i - 1]) % mod;
-        inv[i] = (binpow(i, mod - 2) * inv[i - 1]) % mod;
-    }
-}
-ll C(int n, int r)
-{
-    if (r > n)
-        return 0;
-    ll ans = fac[n];
-    ans *= inv[r];
-    ans %= mod;
-    ans *= inv[n - r];
-    ans %= mod;
-    return ans;
-}
-ll no_of_ways(ll n, ll m)
-{
-    ll ans = 1;
-    ll i;
-    if(n<0||m<0)
-    return 0;
-    fu(i, 1, n + m)
-    {
-        ans *= i;
-        ans %= mod;
-    }
-    fu(i, 1, n)
-    {
-        ans *= inv[i];
-        ans %= mod;
-    }
-    fu(i, 1, m)
-    {
-        ans *= inv[i];
-        ans %= mod;
-    }
-
-    return ans;
-}
+ll n, m;
+ll dp[100005];
+ll arr[105];
+// void solve(ll k)
+// {
+//     if(k<0)return ;
+//     ll i;
+//     if(dp[])
+// }
 void still_single()
 {
-    ll n, m, k;
-    cin >> n >> m >> k;
-    if (n > m + k)
+    cin >> n >> m;
+    ll i, j;
+    rep(i, n) cin >> arr[i + 1];
+    // memset(dp, 0, sizeof(dp));
+    // rep(i, n)
+    // {
+    //     dp[arr[i]] = 1;
+    // }
+    // solve(k);
+    rep(i, m + 1)
+        dp[i] = 1;
+    for (i = 1; i <= m; i++)
     {
-        cout << 0 << endl;
-        return;
+        for (int j = 1; j <= n; j++)
+        {
+            if (i - arr[j] >= 0)
+            {
+                if (dp[i - arr[j]])
+                    dp[i] = 0;
+            }
+        }
     }
-    ll val1=C(n+m,n)%mod;
-    ll val2=C(n+m,m+k+1)%mod;
-    // ll val1 = no_of_ways(n, m);
-    // ll val2 = no_of_ways(n - k - 1, m + k + 1);
-    ll ans = val1 - val2;
-    ans=(ans+mod)%mod;
-    cout << ans << endl;
+    if (dp[m] == 0)
+        cout << "First" << endl;
+    else
+        cout << "Second" << endl;
 }
 /*Don't just sit and hope that God will solve this
-  fucking do some	thing, try to observe or solve it a different way.
-  Use that pen and paper.
-  If nothing works take a deep breath and start again*/
+fucking do some	thing, try to observe or solve it a different way.
+Use that pen and paper.
+If nothing works take a deep breath and start again*/
 int main()
 {
-    pre();
     fast int t = 1;
     // cin >> t;
     while (t--)

@@ -42,6 +42,24 @@ cin.tie(NULL);
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n;
+    cin>>n;
+    int k;
+    cin>>k;
+    vll arr(n);
+    int i;
+    rep(i,n)cin>>arr[i];
+    ll cost=0;
+    rep(i,n)
+    {
+        int j;
+        int pos=i;
+        for(j=i;j<n-(i+k);j++)
+        {
+            if(arr[j]
+            )
+        }
+    }
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.

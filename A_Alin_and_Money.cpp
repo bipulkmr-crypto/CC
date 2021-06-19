@@ -40,18 +40,49 @@ cin.tie(NULL);
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
+#define int ll
 void still_single()
 {
+    int n;
+    cin>>n;
+    vll arr(n);
+    int i;
+    rep(i,n)cin>>arr[i];
+    int pre[n];
+    pre[0]=arr[0];
+    fu(i,1,n-1)
+    {
+        pre[i]=pre[i-1]+arr[i];
+    }
+    int maxi=0;
+    int pos=0;
+    bool flag=true;
+    rep(i,n)
+    {
+        if(maxi<pre[i])
+        {
+            pos=i;
+            maxi=pre[i];
+        }
+        if(pre[i]>0)
+        {
+            flag=false;
+        }
+    }
+    if(flag)
+    cout<<0<<endl;
+    else
+    cout<<pos+1<<endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
 Use that pen and paper.
 If nothing works take a deep breath and start again*/
-int main()
+signed main()
 {
 fast
 int t=1;
-cin >> t;
+// cin >> t;
 while (t--)
 {
     still_single();

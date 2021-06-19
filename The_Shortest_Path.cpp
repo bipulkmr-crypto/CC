@@ -36,98 +36,77 @@ typedef long long int ll;
 #define ff first
 #define all(v) v.begin(), v.end()
 #define ss second
+#define rep(i, a, n) for (i = a; i < n; i++)
 #define rep(i, n) for (i = 0; i < n; i++)
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-#define Fo(i, a, n) for (i = a; i < n; i++)
-long long binpow(long long a, long long b)
-{
-    a %= mod;
-    long long res = 1;
-    while (b > 0)
-    {
-        if (b & 1)
-            res = res * a % mod;
-        a = a * a % mod;
-        b >>= 1;
-    }
-    return res;
-}
-const int N = 2*(1e6 + 3);
-ll fac[N], inv[N], b[N];
-void pre()
+#define int ll
+vector<pii> adj[100005];
+bool visited[100005];
+int n;
+dist[100005];
+void dijkstra(int source)
 {
     int i;
-    fac[0] = inv[0] = 1;
-    fac[1] = inv[1] = 1;
-    Fo(i, 2, N)
+    rep(i, 2, n + 1) dis[i] = 1e16;
+    priority_queue<pii, vector<pii>, greater<pii>> q;
+    q.push(make_pair(0, 1));
+    while (!q.empty())
     {
-        fac[i] = (i * fac[i - 1]) % mod;
-        inv[i] = (binpow(i, mod - 2) * inv[i - 1]) % mod;
+        int u = q.top().ss;
+        q.pop();
+        if (vis[u])
+            continue;
+        vis[u] = 1;
+        for (auto [v, w] : adj[u])
+        {
+            if (dis[v] > dis[u] + w)
+            {
+                dis[v] = dis[u] + w;
+                q.push(make_pair(dis[v], v));
+            }
+        }
     }
-}
-ll C(int n, int r)
-{
-    if (r > n)
-        return 0;
-    ll ans = fac[n];
-    ans *= inv[r];
-    ans %= mod;
-    ans *= inv[n - r];
-    ans %= mod;
-    return ans;
-}
-ll no_of_ways(ll n, ll m)
-{
-    ll ans = 1;
-    ll i;
-    if(n<0||m<0)
-    return 0;
-    fu(i, 1, n + m)
-    {
-        ans *= i;
-        ans %= mod;
-    }
-    fu(i, 1, n)
-    {
-        ans *= inv[i];
-        ans %= mod;
-    }
-    fu(i, 1, m)
-    {
-        ans *= inv[i];
-        ans %= mod;
-    }
-
-    return ans;
 }
 void still_single()
 {
-    ll n, m, k;
-    cin >> n >> m >> k;
-    if (n > m + k)
+
+    cin >> n;
+    map<string, int> m;
+    int j;
+    int i;
+    fu(i, 1, n)
     {
-        cout << 0 << endl;
-        return;
+        string s;
+        cin >> s;
+        m[s] = i;
+        cin >> j;
+
+        while (j--)
+        {
+            int a, b;
+            cin >> a >> b;
+            adj[i].pb({a, b});
+        }
     }
-    ll val1=C(n+m,n)%mod;
-    ll val2=C(n+m,m+k+1)%mod;
-    // ll val1 = no_of_ways(n, m);
-    // ll val2 = no_of_ways(n - k - 1, m + k + 1);
-    ll ans = val1 - val2;
-    ans=(ans+mod)%mod;
-    cout << ans << endl;
+    int q;
+    while(q--)
+    {
+        memset(visited,false,sizeof(visited));
+        string s1,s2;
+        dijkstra(m[s1]);
+        cout<<dist[m[s2]]<<endl;
+    }
 }
 /*Don't just sit and hope that God will solve this
-  fucking do some	thing, try to observe or solve it a different way.
-  Use that pen and paper.
-  If nothing works take a deep breath and start again*/
-int main()
+fucking do some	thing, try to observe or solve it a different way.
+Use that pen and paper.
+If nothing works take a deep breath and start again*/
+signed main()
 {
-    pre();
-    fast int t = 1;
-    // cin >> t;
+    fast int t;
+    cin >> t;
     while (t--)
     {
         still_single();

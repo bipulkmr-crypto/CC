@@ -50,7 +50,7 @@ If nothing works take a deep breath and start again*/
 int main()
 {
 fast
-int t=1;
+int t;
 cin >> t;
 while (t--)
 {

@@ -50,6 +50,8 @@
         "exception": "cpp",
         "new": "cpp",
         "stdexcept": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "codecvt": "c",
+        "ranges": "c"
     }
 }

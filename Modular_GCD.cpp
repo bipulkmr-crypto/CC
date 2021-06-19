@@ -40,7 +40,6 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-#define Fo(i, a, n) for (i = a; i < n; i++)
 long long binpow(long long a, long long b)
 {
     a %= mod;
@@ -54,80 +53,40 @@ long long binpow(long long a, long long b)
     }
     return res;
 }
-const int N = 2*(1e6 + 3);
-ll fac[N], inv[N], b[N];
-void pre()
-{
-    int i;
-    fac[0] = inv[0] = 1;
-    fac[1] = inv[1] = 1;
-    Fo(i, 2, N)
-    {
-        fac[i] = (i * fac[i - 1]) % mod;
-        inv[i] = (binpow(i, mod - 2) * inv[i - 1]) % mod;
-    }
-}
-ll C(int n, int r)
-{
-    if (r > n)
-        return 0;
-    ll ans = fac[n];
-    ans *= inv[r];
-    ans %= mod;
-    ans *= inv[n - r];
-    ans %= mod;
-    return ans;
-}
-ll no_of_ways(ll n, ll m)
-{
-    ll ans = 1;
-    ll i;
-    if(n<0||m<0)
-    return 0;
-    fu(i, 1, n + m)
-    {
-        ans *= i;
-        ans %= mod;
-    }
-    fu(i, 1, n)
-    {
-        ans *= inv[i];
-        ans %= mod;
-    }
-    fu(i, 1, m)
-    {
-        ans *= inv[i];
-        ans %= mod;
-    }
-
-    return ans;
-}
 void still_single()
 {
-    ll n, m, k;
-    cin >> n >> m >> k;
-    if (n > m + k)
+    ll a, b, n;
+    cin >> a >> b >> n;
+    if (a < b)
     {
-        cout << 0 << endl;
-        return;
+        swap(a, b);
     }
-    ll val1=C(n+m,n)%mod;
-    ll val2=C(n+m,m+k+1)%mod;
-    // ll val1 = no_of_ways(n, m);
-    // ll val2 = no_of_ways(n - k - 1, m + k + 1);
-    ll ans = val1 - val2;
-    ans=(ans+mod)%mod;
-    cout << ans << endl;
+    ll x = a + b;
+    ll y = binpow(a, n) + binpow(b, n);
+    y %= mod;
+    ll i;
+    for (i = a - b; i >= 1; i--)
+    {
+        ll inv = binpow(x, mod - 2);
+        if(((y*inv)%mod)==1)
+        {
+            cout<<i<<endl;
+            return ;
+        }
+    }
+
+    // ll ans = __gcd(x, y);
+    // cout << ans << endl;
 }
 /*Don't just sit and hope that God will solve this
-  fucking do some	thing, try to observe or solve it a different way.
-  Use that pen and paper.
-  If nothing works take a deep breath and start again*/
+fucking do some	thing, try to observe or solve it a different way.
+Use that pen and paper.
+If nothing works take a deep breath and start again*/
 int main()
 {
-    pre();
-    fast int t = 1;
-    // cin >> t;
+    fast 
+    int t;
+    cin >> t;
     while (t--)
     {
         still_single();

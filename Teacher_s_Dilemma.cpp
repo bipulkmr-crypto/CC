@@ -40,93 +40,72 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-#define Fo(i, a, n) for (i = a; i < n; i++)
-long long binpow(long long a, long long b)
+const int MAX_N = 100005;
+int parent[MAX_N];
+int sizee[MAX_N] = {0};
+void make_set(int v)
 {
-    a %= mod;
-    long long res = 1;
-    while (b > 0)
-    {
-        if (b & 1)
-            res = res * a % mod;
-        a = a * a % mod;
-        b >>= 1;
-    }
-    return res;
+    parent[v] = v;
+    sizee[v]=1;
 }
-const int N = 2*(1e6 + 3);
-ll fac[N], inv[N], b[N];
-void pre()
+int find_set(int v)
 {
-    int i;
-    fac[0] = inv[0] = 1;
-    fac[1] = inv[1] = 1;
-    Fo(i, 2, N)
-    {
-        fac[i] = (i * fac[i - 1]) % mod;
-        inv[i] = (binpow(i, mod - 2) * inv[i - 1]) % mod;
-    }
+    if (v == parent[v])
+        return v;
+    return parent[v] = find_set(parent[v]);
 }
-ll C(int n, int r)
+void union_sets(int a, int b)
 {
-    if (r > n)
-        return 0;
-    ll ans = fac[n];
-    ans *= inv[r];
-    ans %= mod;
-    ans *= inv[n - r];
-    ans %= mod;
-    return ans;
-}
-ll no_of_ways(ll n, ll m)
-{
-    ll ans = 1;
-    ll i;
-    if(n<0||m<0)
-    return 0;
-    fu(i, 1, n + m)
+    a = find_set(a);
+    b = find_set(b);
+    if (a != b)
     {
-        ans *= i;
-        ans %= mod;
+        if (sizee[a] < sizee[b])
+        {
+            swap(a, b);
+        }
+        parent[b] = a;
+        sizee[a] += sizee[b];
     }
-    fu(i, 1, n)
-    {
-        ans *= inv[i];
-        ans %= mod;
-    }
-    fu(i, 1, m)
-    {
-        ans *= inv[i];
-        ans %= mod;
-    }
-
-    return ans;
 }
 void still_single()
 {
-    ll n, m, k;
-    cin >> n >> m >> k;
-    if (n > m + k)
+    int n,m;
+    int i;
+    cin>>n>>m;
+    fu(i,1,n)
     {
-        cout << 0 << endl;
-        return;
+        make_set(i);
     }
-    ll val1=C(n+m,n)%mod;
-    ll val2=C(n+m,m+k+1)%mod;
-    // ll val1 = no_of_ways(n, m);
-    // ll val2 = no_of_ways(n - k - 1, m + k + 1);
-    ll ans = val1 - val2;
-    ans=(ans+mod)%mod;
-    cout << ans << endl;
+    fu(i,1,m)
+    {
+        int a,b;
+        cin>>a>>b;
+        union_sets(a,b);
+    }
+    mll mp;
+    fu(i,1,n)
+    {
+        if(mp[find_set(i)]==0)
+        {
+            mp[find_set(i)]=sizee[find_set(i)];
+        }
+    }
+    ll ans=1;
+    ford(mp,it)
+    {
+        ans*=it->second;
+        ans%=mod;
+    }
+    cout<<ans<<endl;
 }
 /*Don't just sit and hope that God will solve this
-  fucking do some	thing, try to observe or solve it a different way.
-  Use that pen and paper.
-  If nothing works take a deep breath and start again*/
+fucking do some	thing, try to observe or solve it a different way.
+Use that pen and paper.
+If nothing works take a deep breath and start again*/
 int main()
 {
-    pre();
-    fast int t = 1;
+    fast int t=1;
     // cin >> t;
     while (t--)
     {

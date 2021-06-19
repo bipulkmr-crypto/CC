@@ -42,6 +42,15 @@ cin.tie(NULL);
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    string s;
+    cin>>s;
+    if(s[0]=='7'||s[1]=='7'||s[2]=='7')
+    {
+
+        cout<<"Yes";
+    }
+    else
+    cout<<"No";
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -51,7 +60,7 @@ int main()
 {
 fast
 int t=1;
-cin >> t;
+// cin >> t;
 while (t--)
 {
     still_single();

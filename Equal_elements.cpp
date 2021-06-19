@@ -42,6 +42,30 @@ cin.tie(NULL);
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n;
+    cin>>n;
+    vll arr(n);
+    int i;
+    rep(i,n)cin>>arr[i];
+    sort(all(arr));
+    int cost=0;
+    int maxi=arr[n-1];
+    int c2=0;
+    rep(i,n-1)
+    {
+        if(!(arr[i]&maxi))
+        {
+            cost+=1;
+        }
+    }
+    fu(i,1,n-1)
+    {
+        if(!(arr[0]&arr[i]))
+        {
+            c2+=1;
+        }
+    }
+    cout<<max(c2,cost)<<endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.

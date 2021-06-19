@@ -40,109 +40,100 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-vector<vector<int>> forest;
-vector<vector<int>> arr;
-vector<bool> visited;
-vector<int> path;
-vector<int> dist;
-bool bfs(int n)
+#include "bits/stdc++.h"
+using namespace std;
+const int MAX_N = 10000;
+// vector<mii> count(100001);
+vector<map<int,int>> cnt;
+int parent[MAX_N];
+int sizee[MAX_N] = {0};
+void make_set(int v)
 {
-    queue<int> q;
-    q.push(1);
-    dist[1] = 0;
-    path[1] = 0;
-    while (!q.empty())
+    parent[v] = v;
+}
+int find_set(int v)
+{
+    if (v == parent[v])
+        return v;
+    return parent[v] = find_set(parent[v]);
+}
+void union_sets(int a, int b)
+{
+    a = find_set(a);
+    b = find_set(b);
+    if (a != b)
     {
-        int v = q.front();
-        visited[v] = true;
-        q.pop();
-        for (auto u : arr[v])
+        if (sizee[a] < sizee[b])
         {
-            if (!visited[u])
-            {
-                visited[u] = true;
-                if (dist[v] + 1 < dist[u])
-                {
-                    dist[u] = dist[v] + 1;
-                    path[u] = v;
-                }
-                if (u == n)
-                {
-                    return true;
-                }
-                q.push(u);
-            }
+            swap(a, b);
+        }
+        parent[b] = a;
+        sizee[a] += sizee[b];
+        for(auto x:cnt[b])
+        {
+            cnt[a][x.first]+=x.second;
         }
     }
-    return false;
 }
+// int  main()
+// {
+
+// 	while (q--)
+// 	{
+// 		string s; int a, b;
+// 		cin >> s >> a >> b;
+// 		if (s == "union")
+// 		{
+// 			union_sets(a, b);
+// 		}
+// 		else
+// 		{
+// 			if (find_set(a) == find_set(b))
+// 			{
+// 				cout << "YES" << endl;
+// 			}
+// 			else
+// 				cout << "NO" << endl;
+// 		}
+// 	}
+// }
 
 void still_single()
 {
+    memset(parent, -1, sizeof(parent));
     int n, q;
     cin >> n >> q;
-    forest.resize(n + 1);
-    arr.resize(n + 1);
-    visited.resize(n + 1);
-    int j;
-    dist.resize(n + 1, 1e8);
-    path.resize(n + 1, -1);
-
+    cnt.resize(n+1);
     int i;
-    rep(i, q)
+    for (i = 1; i <= n; i++)
     {
-        int a, b;
-        cin >> a >> b;
-        arr[a].pb(b);
-        arr[b].pb(a);
+        make_set(i);
+        
     }
-
-    if (bfs(n))
+    rep(i,n)
     {
-        cout << dist[n] + 1 << endl;
-        i = n;
-        if(n==2)
-        {
-            // cout<<2<<endl;
-            cout<<1<<' '<<2<<endl;
-            return;
-        }
-        // string s="";
-        vll s;
-        mll m;
-        while (path[i] != 1)
-        {
-            // ans.pb(i);
-            if (m[i] == 0)
-            {
-                s.pb(i);
-                m[i]++;
-            }
-            // s+=to_string(i)+" ";
-
-            i = path[i];
-            if (m[i] == 0)
-            {
-                s.pb(i);
-                m[i]++;
-            }
-            // ans.pb(i);
-
-            // s+=to_string(i)+" ";
-        }
-        // s+="1";
-        // ans.pb(1);
-        s.pb(1);
-        // reverse(all(s));
-        reverse(all(s));
-        // cout<<s<<endl;
-        for (auto b : s)
-            cout << b << ' ';
+        int x;
+        cin>>x;
+        cnt[i+1][x]=1;
     }
-    else
+    while(q--)
     {
+        int t;
+        cin>>t;
+        if(t==1)
+        {
+            int a,b;
+            cin>>a>>b;
+            union_sets(a,b);
+        }
+        else if(t==2)
+        {
+            int x,y;
+            cin>>x>>y;
+            cout<<cnt[find_set(x)][y]<<endl;
 
-        cout << "IMPOSSIBLE" << endl;
+        }
+
     }
 }
 /*Don't just sit and hope that God will solve this
@@ -151,7 +142,7 @@ Use that pen and paper.
 If nothing works take a deep breath and start again*/
 int main()
 {
-    fast int t = 1;
+    fast int t=1;
     // cin >> t;
     while (t--)
     {

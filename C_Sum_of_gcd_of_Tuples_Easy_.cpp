@@ -42,6 +42,22 @@ cin.tie(NULL);
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int i;
+    int j,k;
+    int n;
+    cin>>n;
+    ll sum=0;
+    fu(i,1,n)
+    {
+        fu(j,1,n)
+        {
+            fu(k,1,n)
+            {
+                sum+=(__gcd(i,__gcd(j,k)));
+            }
+        }
+    }
+    cout<<sum<<endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -51,7 +67,7 @@ int main()
 {
 fast
 int t=1;
-cin >> t;
+// cin t;
 while (t--)
 {
     still_single();

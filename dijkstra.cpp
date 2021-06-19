@@ -3,17 +3,9 @@
 using namespace std;
 typedef long long int ll;
 #define fast                          \
-ios_base::sync_with_stdio(false); \
-cin.tie(NULL);
+	ios_base::sync_with_stdio(false); \
+	cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << j << ': ' << x << endl;
-#define mod9 1000000009
-#define mod7 1000000007
-#define INF 1e18
-#define sp(y) fixed << setprecision(y)
-#define vi vector<int>
-#define setbits(x) __builtin_popcountll(x)
-#define zerobits(x) __builtin_ctzll(x)
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
@@ -37,24 +29,55 @@ cin.tie(NULL);
 #define all(v) v.begin(), v.end()
 #define ss second
 #define rep(i, n) for (i = 0; i < n; i++)
+#define rep(i, a, n) for (i = a; i < n; i++)
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-void still_single()
+#define int ll
+int vis[100005], dis[100005];
+vector<pii> adj[100005];
+void solve()
 {
+	int n, m;
+	cin >> n >> m;
+	int i;
+	rep(i, 0, m)
+	{
+		int u, v, w;
+		cin>>u>>v>>w;
+		adj[u].pb(make_pair(v,w));
+	}
+	//dijkstra
+	rep(i, 2, n + 1) dis[i] = 1e16;
+	priority_queue<pii, vector<pii>, greater<pii>> q;
+	q.push(make_pair(0,1));
+	while (!q.empty())
+	{
+		int u = q.top().ss;
+		q.pop();
+		if (vis[u])
+			continue;
+		vis[u] = 1;
+		for (auto [v, w] : adj[u])
+		{
+			if (dis[v] > dis[u] + w)
+			{
+				dis[v] = dis[u] + w;
+				q.push(make_pair(dis[v], v));
+			}
+		}
+	}
+	rep(i, 1, n + 1) cout<<(dis[i])<<' ';
 }
-/*Don't just sit and hope that God will solve this
-fucking do some	thing, try to observe or solve it a different way.
-Use that pen and paper.
-If nothing works take a deep breath and start again*/
-int main()
+signed main()
 {
-fast
-int t=1;
-cin >> t;
-while (t--)
-{
-    still_single();
-}
-return 0;
+	fast
+	int t = 1;
+	//cin>>t;
+	while (t--)
+	{
+		solve();
+		//cout<<'\n';
+	}
+
 }

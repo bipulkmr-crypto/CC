@@ -42,6 +42,29 @@ cin.tie(NULL);
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n,k;
+    cin>>n>>k;
+    string s;
+    cin>>s;
+    // int k=n-1;
+    while(s[s.length()-1]>s[0])
+    {
+        s.pop_back();
+    }
+    int i;
+    string temp="";
+    // rep(i,k)
+    temp+=s;
+    while(temp.length()<k)
+    {
+        temp+=temp;
+    }
+    while(temp.length()>k)
+    {
+        temp.pop_back();
+    }
+    cout<<temp<<endl;
+
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -51,7 +74,7 @@ int main()
 {
 fast
 int t=1;
-cin >> t;
+// cin >> t;
 while (t--)
 {
     still_single();

@@ -42,6 +42,20 @@ cin.tie(NULL);
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n;
+    cin>>n;
+    vll arr(n);
+    int i;
+    rep(i,n)cin>>arr[i];
+    ll sum=0;
+    rep(i,n)sum+=arr[i];
+    if(sum<n)
+    {
+        cout<<1<<endl;
+        return ;
+    }
+    if(sum<0)sum*=-1;
+    cout<<(sum-n)<<endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.

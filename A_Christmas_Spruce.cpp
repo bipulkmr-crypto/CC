@@ -42,6 +42,34 @@ cin.tie(NULL);
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n;
+    cin>>n;
+    mll m;
+    int i;
+    vector<vector<int>>arr;
+    arr.resize(n+1);
+    rep(i,n-1)
+    {
+        int x;
+        arr[x].pb(i+2);
+    }
+    queue<int>q;
+    q.push(1);
+    vector<bool>visited(n+1,false);
+    visited[1]=1;
+    while(!q.empty())
+    {
+        int x=q.front();
+        q.pop();
+        for(auto u:arr[x])
+        {
+            if(!visited[u])
+            {
+                if()
+            }
+        }
+    }
+    cout<<"Yes"<<endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -51,7 +79,7 @@ int main()
 {
 fast
 int t=1;
-cin >> t;
+// cin >> t;
 while (t--)
 {
     still_single();

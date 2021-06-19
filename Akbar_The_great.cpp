@@ -40,110 +40,80 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-vector<vector<int>> forest;
 vector<vector<int>> arr;
 vector<bool> visited;
-vector<int> path;
-vector<int> dist;
-bool bfs(int n)
+
+vector<int> val;
+bool flag = true;
+void bfs(int source, int str)
 {
+    visited[source] = true;
     queue<int> q;
-    q.push(1);
-    dist[1] = 0;
-    path[1] = 0;
+    q.push(source);
+    if (val[source] == -1)
+    {
+        val[source] = str;
+        // str--;
+    }
+    else
+    {
+        flag = false;
+    }
     while (!q.empty())
     {
-        int v = q.front();
-        visited[v] = true;
+        int p = q.front();
         q.pop();
-        for (auto u : arr[v])
+        str--;
+        if (str >= 0)
         {
-            if (!visited[u])
+            for (auto u : arr[p])
             {
-                visited[u] = true;
-                if (dist[v] + 1 < dist[u])
+                if (!visited[u])
                 {
-                    dist[u] = dist[v] + 1;
-                    path[u] = v;
+                    visited[u] = true;
+                    val[u] = str;
                 }
-                if (u == n)
+                else
                 {
-                    return true;
+                    flag = false;
+                    return;
                 }
                 q.push(u);
             }
         }
+        else
+        {
+            return;
+        }
     }
-    return false;
 }
-
 void still_single()
 {
-    int n, q;
-    cin >> n >> q;
-    forest.resize(n + 1);
+    int n, r, m;
+    cin >> n >> m >> r;
+    int i;
     arr.resize(n + 1);
     visited.resize(n + 1);
-    int j;
-    dist.resize(n + 1, 1e8);
-    path.resize(n + 1, -1);
-
-    int i;
-    rep(i, q)
+    val.resize(n + 1, -1);
+    rep(i, m)
     {
         int a, b;
         cin >> a >> b;
         arr[a].pb(b);
         arr[b].pb(a);
     }
-
-    if (bfs(n))
+    rep(i, r)
     {
-        cout << dist[n] + 1 << endl;
-        i = n;
-        if(n==2)
+        int k, s;
+        cin >> k >> s;
+        bfs(k, s);
+        if (flag == false)
         {
-            // cout<<2<<endl;
-            cout<<1<<' '<<2<<endl;
+            cout << "No" << endl;
             return;
         }
-        // string s="";
-        vll s;
-        mll m;
-        while (path[i] != 1)
-        {
-            // ans.pb(i);
-            if (m[i] == 0)
-            {
-                s.pb(i);
-                m[i]++;
-            }
-            // s+=to_string(i)+" ";
-
-            i = path[i];
-            if (m[i] == 0)
-            {
-                s.pb(i);
-                m[i]++;
-            }
-            // ans.pb(i);
-
-            // s+=to_string(i)+" ";
-        }
-        // s+="1";
-        // ans.pb(1);
-        s.pb(1);
-        // reverse(all(s));
-        reverse(all(s));
-        // cout<<s<<endl;
-        for (auto b : s)
-            cout << b << ' ';
     }
-    else
-    {
-
-        cout << "IMPOSSIBLE" << endl;
-    }
+    cout << "Yes" << endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -151,11 +121,15 @@ Use that pen and paper.
 If nothing works take a deep breath and start again*/
 int main()
 {
-    fast int t = 1;
-    // cin >> t;
+    fast int t;
+    cin >> t;
     while (t--)
     {
         still_single();
+        arr.clear();
+        visited.clear();
+        val.clear();
+        flag=true;
     }
     return 0;
 }

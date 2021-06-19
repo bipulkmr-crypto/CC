@@ -42,6 +42,39 @@ cin.tie(NULL);
 #define gi(n) scanf(% d, &n)
 void still_single()
 {
+    int n;
+    cin>>n;
+    vll arr(n);
+    int i;
+    rep(i,n)cin>>arr[i];
+    sort(all(arr));
+    ll val=INT_MAX;
+    rep(i,n)
+    {
+        if(arr[i]%2==0)
+        {
+            val=min(arr[i],val);
+        }
+    }
+    if(val==INT_MAX)
+    {
+        cout<<-1<<endl;
+    }
+    else
+    {
+        bool flag=false;
+        for(i=n-1;i>=0;i--)
+        {
+            if(arr[i]==val&&!flag)
+            {
+                flag=true;
+                continue;
+            }
+            else    
+            cout<<arr[i];
+        }
+        cout<<val;
+    }
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -51,7 +84,7 @@ int main()
 {
 fast
 int t=1;
-cin >> t;
+// cin >> t;
 while (t--)
 {
     still_single();
