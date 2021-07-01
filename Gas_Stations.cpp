@@ -40,32 +40,24 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-long long binpow(long long a, long long b) {
-    if (b == 0)
-        return 1;
-    long long res = binpow(a, b / 2);
-    if (b % 2)
-        return res * res * a;
-    else
-        return res * res;
-}
 void still_single()
 {
-    int n,k;
-    cin>>n>>k;
-    double sum=0;
-    // double x=binpow(n,k);
-    // x=1.0/x;
-    ll i;
-    fu(i,1,n)
+    int n;
+    cin>>n;
+    int x;
+    cin>>x;
+    int arr[n];
+    int i;
+    rep(i,n)cin>>arr[i];
+    int j;
+    int cnt=0;
+    i=0;
+    while(x>0&&i<n)
     {
-        double x=(double(i))/(double(n));
-        double y=double(i-1)/(double(n));
-        double val=i*((pow(x,k)-pow(y,k)));
-        sum+=val;
+        cnt++;
+        x-=arr[i++];
     }
-    // double ans=sum*x;
-    cout<<sp(12)<<sum;
+    cout<<cnt<<endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.

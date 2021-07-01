@@ -40,32 +40,95 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-long long binpow(long long a, long long b) {
-    if (b == 0)
-        return 1;
-    long long res = binpow(a, b / 2);
-    if (b % 2)
-        return res * res * a;
-    else
-        return res * res;
-}
 void still_single()
 {
-    int n,k;
-    cin>>n>>k;
-    double sum=0;
-    // double x=binpow(n,k);
-    // x=1.0/x;
-    ll i;
-    fu(i,1,n)
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int i, j;
+    int cnt = 0;
+    string temp;
+    string b = "abacaba";
+    if (n < 7)
     {
-        double x=(double(i))/(double(n));
-        double y=double(i-1)/(double(n));
-        double val=i*((pow(x,k)-pow(y,k)));
-        sum+=val;
+        cout << "No" << endl;
+        ret;
     }
-    // double ans=sum*x;
-    cout<<sp(12)<<sum;
+    else if (n == 7)
+    {
+        string tem = s;
+        rep(j, 7)
+        {
+            if (tem[j] == '?')
+                tem[j] = b[j];
+        }
+        if (tem == b)
+        {
+            cout << "Yes" << endl;
+            cout << tem << endl;
+        }
+        else
+            cout << "No" << endl;
+        return;
+    }
+    for (i = 0; i < n - 7; i++)
+    {
+        temp = "";
+        rep(j, 7)
+        {
+            temp += s[i + j];
+        }
+        rep(j, 7)
+        {
+            if (temp[j] == '?')
+                temp[j] = b[j];
+        }
+        if (temp == b)
+        {
+            cnt++;
+            int k = 0;
+            j = i;
+            while (j < n && k < 7)
+            {
+                if (s[j] == '?')
+                    s[j] = b[k];
+                k++;
+                j++;
+            }
+        }
+    }
+    j = n - 1;
+    int p = 6;
+    bool flag = true;
+    while (p >= 0 && j >= 0)
+    {
+        if (s[j] == '?')
+            s[j] = b[p];
+        else if (s[j] != b[p])
+        {
+            flag = false;
+            break;
+        }
+        j--;
+        p--;
+    }
+    if (flag == true)
+        cnt++;
+    if (cnt == 1)
+    {
+        rep(i, n)
+        {
+            if (s[i] == '?')
+                s[i] = 'z';
+        }
+        cout << "Yes" << endl;
+        cout << s << endl;
+    }
+    else
+    {
+        cout << "No" << endl;
+    }
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -74,7 +137,7 @@ If nothing works take a deep breath and start again*/
 int main()
 {
     fast int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
     {
         still_single();

@@ -6,14 +6,6 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << j << ': ' << x << endl;
-#define mod9 1000000009
-#define mod7 1000000007
-#define INF 1e18
-#define sp(y) fixed << setprecision(y)
-#define vi vector<int>
-#define setbits(x) __builtin_popcountll(x)
-#define zerobits(x) __builtin_ctzll(x)
 #define pb push_back
 #define mp make_pair
 #define pii pair<int, int>
@@ -40,44 +32,36 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-long long binpow(long long a, long long b) {
-    if (b == 0)
-        return 1;
-    long long res = binpow(a, b / 2);
-    if (b % 2)
-        return res * res * a;
-    else
-        return res * res;
-}
-void still_single()
-{
-    int n,k;
-    cin>>n>>k;
-    double sum=0;
-    // double x=binpow(n,k);
-    // x=1.0/x;
-    ll i;
-    fu(i,1,n)
-    {
-        double x=(double(i))/(double(n));
-        double y=double(i-1)/(double(n));
-        double val=i*((pow(x,k)-pow(y,k)));
-        sum+=val;
-    }
-    // double ans=sum*x;
-    cout<<sp(12)<<sum;
-}
-/*Don't just sit and hope that God will solve this
-fucking do some	thing, try to observe or solve it a different way.
-Use that pen and paper.
-If nothing works take a deep breath and start again*/
 int main()
 {
-    fast int t = 1;
-    // cin >> t;
-    while (t--)
+    int n;
+    cin >> n;
+    cin >> n;
+    sll s;
+    int i;
+    rep(i, n)
     {
-        still_single();
+        int x;
+        cin >> x;
+        s.insert(x);
     }
-    return 0;
+    cin >> n;
+    // int i;
+    rep(i, n)
+    {
+        int x;
+        cin >> x;
+        s.erase(x);
+    }
+    cin >> n;
+    int cnt = 0;
+    rep(i, n)
+    {
+        int x;
+        cin >> x;
+        if (s.find(x) != s.end())
+            cnt++;
+    }
+    double ans = double(cnt) / double(n);
+    cout << setprecision(2) << fixed << ans << endl;
 }

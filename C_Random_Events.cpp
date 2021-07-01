@@ -40,32 +40,52 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-long long binpow(long long a, long long b) {
-    if (b == 0)
-        return 1;
-    long long res = binpow(a, b / 2);
-    if (b % 2)
-        return res * res * a;
-    else
-        return res * res;
-}
 void still_single()
 {
-    int n,k;
-    cin>>n>>k;
-    double sum=0;
-    // double x=binpow(n,k);
-    // x=1.0/x;
-    ll i;
-    fu(i,1,n)
+    int n;
+    int q;
+    int i;
+    cin >> n >> q;
+    vll arr(n + 1);
+    fu(i, 1, n)
     {
-        double x=(double(i))/(double(n));
-        double y=double(i-1)/(double(n));
-        double val=i*((pow(x,k)-pow(y,k)));
-        sum+=val;
+        cin >> arr[i];
     }
-    // double ans=sum*x;
-    cout<<sp(12)<<sum;
+    // double ans[n+1];
+    int pos = 0;
+    for (i = n; i >= 1; i--)
+    {
+        if (arr[i] != i)
+        {
+            pos=i;
+            break;
+        }
+    }
+    if (pos == 1)
+    {
+        cout << "1.00"<< endl;
+        ret;
+    }
+    
+    double ans = 1.00000000;
+    while (q--)
+    {
+        int x;
+        cin >> x;
+        double y;
+        cin >> y;
+        if (x >= pos)
+        {
+            ans = ans * (1.00000000 - y);
+        }
+    }
+    if (pos == 0)
+    {
+        cout << "1.0000000\n"; return;
+    }
+    ans = 1.00000000 - ans;
+    // printf("%.7lf\n", ans);
+    cout << sp(10) << ans << endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -74,7 +94,7 @@ If nothing works take a deep breath and start again*/
 int main()
 {
     fast int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
     {
         still_single();

@@ -40,32 +40,30 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-long long binpow(long long a, long long b) {
-    if (b == 0)
-        return 1;
-    long long res = binpow(a, b / 2);
-    if (b % 2)
-        return res * res * a;
-    else
-        return res * res;
-}
 void still_single()
 {
-    int n,k;
-    cin>>n>>k;
-    double sum=0;
-    // double x=binpow(n,k);
-    // x=1.0/x;
+    ll n, m, k;
+    cin >> n >> m >> k;
     ll i;
-    fu(i,1,n)
+    ll arr[m];
+    rep(i, n)
     {
-        double x=(double(i))/(double(n));
-        double y=double(i-1)/(double(n));
-        double val=i*((pow(x,k)-pow(y,k)));
-        sum+=val;
+        cin >> arr[i];
     }
-    // double ans=sum*x;
-    cout<<sp(12)<<sum;
+    ll cnt = 0;
+    sort(arr, arr + m);
+    ll l = arr[0], r = lower_bound(arr, arr + m, n / 2);
+    int pos = 0;
+    while (true)
+    {
+        if (arr[pos] <= (n / 2 + cnt))
+        {
+            while (pos < n && arr[pos] <= (n / 2 + cnt))
+            {
+                
+            }
+        }
+    }
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -74,7 +72,7 @@ If nothing works take a deep breath and start again*/
 int main()
 {
     fast int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
     {
         still_single();

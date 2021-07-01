@@ -1,0 +1,1 @@
+{"name":"Local: hit_ratio","url":"/home/crypto/git_workspace/CC/hit_ratio.cpp","tests":[{"id":1624940704059,"input":"3\n6\n5 4 3 2 8 1\n2\n3 4\n2\n8 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/hit_ratio.cpp","group":"local","local":true}
