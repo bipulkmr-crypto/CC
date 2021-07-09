@@ -1,0 +1,1 @@
+{"name":"Local: cu","url":"/home/crypto/git_workspace/CC/cu.cpp","tests":[{"id":1625234779651,"input":"3\n3\n1 2 2 3 3 1\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/cu.cpp","group":"local","local":true}

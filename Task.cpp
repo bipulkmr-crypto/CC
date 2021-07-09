@@ -3,8 +3,8 @@
 using namespace std;
 typedef long long int ll;
 #define fast                          \
-ios_base::sync_with_stdio(false); \
-cin.tie(NULL);
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);
 #define mod 1000000007
 #define print(x) cout << 'Case #' << j << ': ' << x << endl;
 #define mod9 1000000009
@@ -40,22 +40,35 @@ cin.tie(NULL);
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-void still_single()
+const int N = 1e5 + 4;
+int arr[N];
+int cnt[31][N];
+void pre()
 {
-    int h,m;
-    char ch;
-    cin>>h>>ch>>m;
-    int val[24];
     int i;
-    ll x=h*60+m;
-    val[0]=1;
-    fu(i,1,23)
+    fu(i, 1, N)
     {
-        if(i<11)
+        arr[i] = setbits(i);
+    }
+    int j;
+    rep(j, 31)
+    {
+        int x = 0;
+        fu(i, 1, N)
         {
-            val=
+            if (arr[i] == j)
+                x++;
+            cnt[j][i] = x;
         }
     }
+}
+void still_single()
+{
+    int n, v, k;
+    cin >> n >> v >> k;
+    ll x = v - cnt[k][n];
+    int ans = lower_bound(arr[k], arr[k] + N, x) - arr[k];
+    cout << ans << endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -63,12 +76,12 @@ Use that pen and paper.
 If nothing works take a deep breath and start again*/
 int main()
 {
-fast
-int t=1;
-cin >> t;
-while (t--)
-{
-    still_single();
-}
-return 0;
+    pre();
+    fast int t = 1;
+    cin >> t;
+    while (t--)
+    {
+        still_single();
+    }
+    return 0;
 }

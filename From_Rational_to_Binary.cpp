@@ -4,7 +4,7 @@ using namespace std;
 typedef long long int ll;
 #define fast                          \
     ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);\
+    cin.tie(NULL);                    \
     cout.tie(NULL);
 #define mod 1000000007
 #define print(x) cout << 'Case #' << j << ': ' << x << endl;
@@ -44,19 +44,20 @@ typedef long long int ll;
 #define int ll
 void still_single()
 {
-    int a,b;
-    cin>>a>>b;
-    int cnt=0;
-    if(b%(2ll)==0)
-    cnt++;
-    if(b%(5ll)==0)
-    cnt++;
-    if(cnt>0)
+    int a, b;
+    scanf("%lld", &a);
+    scanf("%lld", &b);
+    int cnt = 0;
+    if (b % (2ll) == 0)
+        cnt++;
+    if (b % (5ll) == 0)
+        cnt++;
+    if ((b & (b - 1)) == 0)
     {
-        cout<<"Yes"<<endl;
+        printf("Yes\n");
     }
     else
-    cout<<"No"<<endl;
+        printf("No\n");
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -64,7 +65,7 @@ Use that pen and paper.
 If nothing works take a deep breath and start again*/
 signed main()
 {
-    fast 
+    // fast
     int t = 1;
     cin >> t;
     while (t--)

@@ -45,25 +45,25 @@ void still_single()
     ll n, m, k;
     cin >> n >> m >> k;
     ll i;
-    ll arr[m];
-    rep(i, n)
+    ll arr[m + 1];
+    rep(i, m)
     {
-        cin >> arr[i];
+        cin >> arr[i + 1];
     }
-    ll cnt = 0;
-    sort(arr, arr + m);
-    ll l = arr[0], r = lower_bound(arr, arr + m, n / 2);
-    int pos = 0;
-    while (true)
+    int ans = 0;
+    int sum = 0;
+    int now = 1;
+    while (now <= m)
     {
-        if (arr[pos] <= (n / 2 + cnt))
+        ll r = ((arr[now] - sum - 1) / k + 1) * k + sum;
+        while (now <= m && arr[now] <= r)
         {
-            while (pos < n && arr[pos] <= (n / 2 + cnt))
-            {
-                
-            }
+            sum++;
+            now++;
         }
+        ans++;
     }
+    cout << ans << endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -72,7 +72,7 @@ If nothing works take a deep breath and start again*/
 int main()
 {
     fast int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
     {
         still_single();

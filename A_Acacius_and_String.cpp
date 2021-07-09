@@ -87,6 +87,51 @@ void still_single()
         if (temp == b)
         {
             cnt++;
+        }
+    }
+    j = n - 1;
+    int p = 6;
+    bool flag = true;
+    while (p >= 0 && j >= 0)
+    {
+        // if (s[j] == '?')
+        //     s[j] = b[p];
+        if (s[j] != b[p])
+        {
+            flag = false;
+            break;
+        }
+        j--;
+        p--;
+    }
+    if (flag == true)
+        cnt++;
+    if (cnt == 1)
+    {
+        rep(i, n)
+        {
+            if (s[i] == '?')
+                s[i] = 'z';
+        }
+        cout << "Yes" << endl;
+        cout << s << endl;
+        ret;
+    }
+    for (i = 0; i < n - 7; i++)
+    {
+        temp = "";
+        rep(j, 7)
+        {
+            temp += s[i + j];
+        }
+        rep(j, 7)
+        {
+            if (temp[j] == '?')
+                temp[j] = b[j];
+        }
+        if (temp == b)
+        {
+            cnt++;
             int k = 0;
             j = i;
             while (j < n && k < 7)
@@ -98,14 +143,15 @@ void still_single()
             }
         }
     }
+
     j = n - 1;
-    int p = 6;
-    bool flag = true;
+    p = 6;
+    flag = true;
     while (p >= 0 && j >= 0)
     {
-        if (s[j] == '?')
-            s[j] = b[p];
-        else if (s[j] != b[p])
+        // if (s[j] == '?')
+        //     s[j] = b[p];
+        if (s[j] != b[p])
         {
             flag = false;
             break;

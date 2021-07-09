@@ -1,12 +1,13 @@
 using namespace std;
 #include <bits/stdc++.h>
 long long int k, n, a, b;
+
 bool good(long long int x)
 {
     // return ((x + (k - a * x) / b) >= n);
-    return(((k-n*b)+(b-a)*x)>=0);
+    return (((k - n * b) + (b - a) * x) >= 0);
 }
-int main()
+signed main()
 {
     int q;
     cin >> q;
@@ -14,13 +15,13 @@ int main()
     {
 
         cin >> k >> n >> a >> b;
-        int ans = -1;
+        long long int ans = -1;
         long long int l = 0;
         long long int r, mid;
         long long int u = k / a;
         if (k % a == 0)
         {
-            r = u -1;
+            r = u - 1;
         }
         else
             r = u;
@@ -38,32 +39,34 @@ int main()
         // }
         // if(ans>n)
         // ans=-1;
-        while(r-l>1)
+        while (r - l > 1)
         {
-            mid=l+(r-l)/2;
-            if(good(mid))
+            mid = l + (r - l) / 2;
+            if (good(mid))
             {
-                l=mid;
+                l = mid;
             }
             else
             {
-                r=mid;
+                r = mid;
             }
         }
-        if(good(r))
+        if (good(r))
         {
-            ans=r;
+            ans = r;
         }
-        else 
-        ans=l;
-        ans=min(ans,n);
-        if(ans==0)
+        else
         {
-            long long int test=k/b;
-            if(k%b==0)
-            test=test-1;
-            if(test<n)
-            ans=-1;
+            ans = l;
+            ans = min(ans, n);
+            if (ans == 0)
+            {
+                long long int test = k / b;
+                if (k % b == 0)
+                    test = test - 1;
+                if (test < n)
+                    ans = -1;
+            }
         }
         cout << ans << endl;
     }

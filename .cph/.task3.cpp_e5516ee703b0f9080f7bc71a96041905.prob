@@ -1,0 +1,1 @@
+{"name":"Local: task3","url":"/home/crypto/git_workspace/CC/task3.cpp","tests":[{"id":1625680714650,"input":"2\n5    \n3 2 1 3 5\n1 2\n2 3\n2 4\n1 5\n3\n1 2 3\n1 2\n1 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/crypto/git_workspace/CC/task3.cpp","group":"local","local":true}
