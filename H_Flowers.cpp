@@ -6,7 +6,7 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << t << ': ' << x << endl;
+#define print(x) cout << 'Case #' << j << ': ' << x << endl;
 #define mod9 1000000009
 #define mod7 1000000007
 #define INF 1e18
@@ -40,9 +40,70 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-int t = 1;
+int k;
+// ll cnt = 0;
+// // ll dp[1e3 + 1][1e3 + 1];
+// void solve(int a, int b)
+// {
+//     if (a == 0 && b < k)
+//     {
+//         return;
+//     }
+//     else
+//     {
+//         if (b >= k && a > 0)
+//         {
+//             solve(a - 1, b);
+//             solve(a, b - k);
+//             cnt += 2;
+//             cnt %= mod;
+//         }
+//         else if (b >= k)
+//         {
+//             cnt += 1;
+//             solve(a, b - k);
+//             cnt %= mod;
+//         }
+//         else
+//         {
+//             cnt += 1;
+//             solve(a - 1, b);
+//             cnt %= mod;
+//         }
+//     }
+// }
+ll dp[100001];
+ll sum[100001];
+void pre()
+{
+    int i, j;
+    dp[0] = 1;
+    dp[1] = 1;
+    if (k == 1)
+        dp[1] += 1;
+    for (i = 2; i <= (int)1e5; i++)
+    {
+        dp[i] = dp[i - 1];
+        int cnt = 0;
+        if (i >= k)
+            dp[i] += dp[i - k];
+        // dp[i] += (cnt * dp[i - 1] % mod);
+        dp[i] %= mod;
+    }
+    sum[0] = 0;
+    fu(i, 1, 100000)
+    {
+        sum[i] = sum[i - 1] + dp[i];
+        sum[i] %= mod;
+    }
+}
 void still_single()
 {
+    int a, b;
+    cin >> a >> b;
+    ll ans = sum[b] - sum[a - 1];
+    ans = (ans + mod) % mod;
+    cout << ans << endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -50,11 +111,14 @@ Use that pen and paper.
 If nothing works take a deep breath and start again*/
 int main()
 {
-    fast 
-    int x;
-    cin >> x;
-    for(t=1;t<=x;t++)
+    fast int t = 1;
+    cin >> t;
+    cin >> k;
+    memset(dp, 0, sizeof(dp));
+    pre();
+    while (t--)
     {
+        // cnt = 0;b
         still_single();
     }
     return 0;

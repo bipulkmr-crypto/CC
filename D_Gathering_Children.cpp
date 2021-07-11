@@ -6,7 +6,7 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << t << ': ' << x << endl;
+#define print(x) cout << 'Case #' << j << ': ' << x << endl;
 #define mod9 1000000009
 #define mod7 1000000007
 #define INF 1e18
@@ -40,9 +40,41 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-int t = 1;
 void still_single()
 {
+    string s;
+    cin >> s;
+    int i, n = s.length();
+    int cnt = 0;
+    int ans[n];
+    s += "R";
+    // cout << n << endl;
+    memset(ans, 0, sizeof(ans));
+    i = 0;
+
+    while (i < n)
+    {
+        int c1 = 0;
+        int c2 = 0;
+        int pos1 = i;
+        int r = i;
+        while (s[r] == 'R')
+            r++;
+        pos1 = r - 1;
+        int pos2 = r;
+        while (s[r+1] == 'L')
+            r++;
+        for (int j = i; j <= r; j++)
+        {
+            if (j % 2 == pos1 % 2)
+                ans[pos1]++;
+            else
+                ans[pos2]++;
+        }
+        i = r + 1;
+    }
+    for (auto x : ans)
+        cout << x << ' ';
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -50,10 +82,9 @@ Use that pen and paper.
 If nothing works take a deep breath and start again*/
 int main()
 {
-    fast 
-    int x;
-    cin >> x;
-    for(t=1;t<=x;t++)
+    fast int t = 1;
+    // cin >> t;
+    while (t--)
     {
         still_single();
     }

@@ -6,7 +6,7 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << t << ': ' << x << endl;
+#define print(x) cout << 'Case #' << j << ': ' << x << endl;
 #define mod9 1000000009
 #define mod7 1000000007
 #define INF 1e18
@@ -40,9 +40,52 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-int t = 1;
 void still_single()
 {
+    int n;
+    cin >> n;
+    string s = to_string(n);
+    sort(all(s));
+    int x = s[s.length() - 1] - '0';
+    char mask[x + 1][s.length() + 1];
+    int i, j;
+    s = to_string(n);
+    int siz = s.length();
+    rep(i, siz)
+    {
+        rep(j, x)
+        {
+            mask[j][i] = '0';
+        }
+    }
+    for (i = 0; i < siz; i++)
+    {
+        int k = s[i] - '0';
+        j = 0;
+        while (j < x && k > 0)
+        {
+            mask[j][i] = char(mask[j][i] + 1);
+            j++;
+            k--;
+        }
+    }
+    cout << x << endl;
+    bool flag=false;
+    rep(i, x)
+    {
+        flag = false;
+        rep(j, siz)
+        {
+            if(mask[i][j]=='1')
+            {
+                flag=true;
+            }
+            if(flag)
+            cout << mask[i][j];
+        }
+        cout << " ";
+    }
+    cout << endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -50,10 +93,9 @@ Use that pen and paper.
 If nothing works take a deep breath and start again*/
 int main()
 {
-    fast 
-    int x;
-    cin >> x;
-    for(t=1;t<=x;t++)
+    fast int t = 1;
+    // cin >> t;
+    while (t--)
     {
         still_single();
     }

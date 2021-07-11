@@ -6,7 +6,7 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << t << ': ' << x << endl;
+#define print(x) cout << 'Case #' << j << ': ' << x << endl;
 #define mod9 1000000009
 #define mod7 1000000007
 #define INF 1e18
@@ -40,9 +40,40 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-int t = 1;
 void still_single()
 {
+    pii arr[3];
+    int i;
+    rep(i, 3)
+    {
+        int a, b;
+        cin >> a >> b;
+        arr[i] = {a, b};
+    }
+    bool flag = true;
+    rep(i, 3)
+    {
+        if (arr[i].ff != arr[0].ff)
+        {
+            flag = false;
+            break;
+        }
+    }
+    bool flag2 = true;
+    rep(i, 3)
+    {
+        if (arr[i].ss != arr[0].ss)
+        {
+            flag2 = false;
+            break;
+        }
+    }
+    ll ans = abs(arr[0].ff - arr[1].ff) + abs(arr[0].ss - arr[1].ss);
+    if (flag == true && flag2 == false && arr[2].ss > min(arr[0].ss, arr[1].ss) && arr[2].ss < max(arr[1].ss, arr[0].ss))
+        ans += 2;
+    else if (flag == false && flag2 == true && arr[2].ff > min(arr[0].ff, arr[1].ff) && arr[2].ff < max(arr[1].ff, arr[0].ff))
+        ans += 2;
+    cout << ans << endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
@@ -50,10 +81,9 @@ Use that pen and paper.
 If nothing works take a deep breath and start again*/
 int main()
 {
-    fast 
-    int x;
-    cin >> x;
-    for(t=1;t<=x;t++)
+    fast int t = 1;
+    cin >> t;
+    while (t--)
     {
         still_single();
     }

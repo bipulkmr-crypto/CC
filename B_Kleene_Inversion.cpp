@@ -6,7 +6,7 @@ typedef long long int ll;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 #define mod 1000000007
-#define print(x) cout << 'Case #' << t << ': ' << x << endl;
+#define print(x) cout << 'Case #' << j << ': ' << x << endl;
 #define mod9 1000000009
 #define mod7 1000000007
 #define INF 1e18
@@ -40,20 +40,67 @@ typedef long long int ll;
 #define fu(i, a, n) for (i = a; i <= n; i++)
 #define fd(i, n, a) for (i = n; i >= a; i--)
 #define gi(n) scanf(% d, &n)
-int t = 1;
+#define int ll
+long long binpow(long long a, long long b)
+{
+    a %= mod;
+    long long res = 1;
+    while (b > 0)
+    {
+        if (b & 1)
+            res = res * a % mod;
+        a = a * a % mod;
+        b >>= 1;
+    }
+    return res;
+}
 void still_single()
 {
+    int n, k;
+    cin >> n >> k;
+    vll arr(n);
+    int i;
+    vll temp(n);
+    rep(i, n) cin >> arr[i];
+    rep(i, n) temp[i] = arr[i];
+    sort(all(temp));
+    ll ans = 0;
+    ll mod_2 = binpow(2, mod - 2);
+    int cnt1[n]={0}, cnt2[n]={0};
+    int j;
+    rep(i, n)
+    {
+        rep(j, n)
+        {
+            if (arr[j] > arr[i] && i > j)
+            {
+                cnt1[i]++;
+            }
+            if (arr[i] > arr[j])
+            {
+                cnt2[i]++;
+            }
+        }
+    }
+    ll mul = k * (k - 1);
+    mul /= 2;
+    mul %= mod;
+    rep(i, n)
+    {
+        ans += (cnt1[i] * k) % mod + (cnt2[i] * mul) % mod;
+        ans %= mod;
+    }
+    cout << ans << endl;
 }
 /*Don't just sit and hope that God will solve this
 fucking do some	thing, try to observe or solve it a different way.
 Use that pen and paper.
 If nothing works take a deep breath and start again*/
-int main()
+signed main()
 {
-    fast 
-    int x;
-    cin >> x;
-    for(t=1;t<=x;t++)
+    fast int t = 1;
+    // cin >> t;
+    while (t--)
     {
         still_single();
     }
